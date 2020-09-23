@@ -55,7 +55,7 @@
     <div class="col-sm">
        <h2 style="text-align: center">Lubuskie</h2>
         {% for k,v in result.items() %}<br/>
-          <b>Powiat {{ k }} w gminach:</b><br/>
+          Powiat <b>{{ k }} </b>w gminach:<br/>
 <br/>
 <table class="table" >
                         <tr>
@@ -70,7 +70,7 @@
 {#      <td style="width:40%; text-align: left">{{ i }}</td>#}
 {#        <td style="width:30%; text-align: center" >{{ '{:,}'.format(dicn[i]).replace(',', ' ') }} zł</td>#}
           <td style="width:40%; text-align: left">{{ i }}</td>
-        <td style="width:30%; text-align: center" >{{ '{:,}'.format(lub[i]).replace(',', ' ') }} zł</td>
+        <td style="width:30%; text-align: center" ><b>{{ '{:,}'.format(lub[i]).replace(',', ' ') }} zł</b></td>
 {#        <td style="width: 30%; text-align: center" >#}
 {#            {% set test = dicn[i]/cena | float %}#}
 {#          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} &euro;#}

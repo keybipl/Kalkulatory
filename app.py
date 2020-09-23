@@ -409,7 +409,10 @@ def pomoc():
 @app.route('/lokalizacje', methods=['GET', 'POST'])
 def lokalizacje():
     if request.method == 'GET':
-        return render_template('indexlok.html', rate=cena, date=date)
+        rd = None
+        currency = None
+        value = None
+        return render_template('indexlok.html', cena=cena, date=date, rd=rd, currency=currency, value=value)
     else:
         currency = request.form['currency']
         value = float(request.form['value'])
@@ -441,7 +444,7 @@ def lokalizacje():
         wlkp = places.gnw()
 
         return render_template('indexlok.html', result=result, resultw=resultw, resultz=resultz, rd=rd, value=value,
-                               currency=places.currency, zach=zach, size=size, lub=lub, wlkp=wlkp, date=date)
+                               currency=places.currency, zach=zach, size=size, lub=lub, wlkp=wlkp, date=date, cena=cena)
 
 
 @app.route('/naklady', methods=['GET', 'POST'])
