@@ -1,0 +1,217 @@
+{% extends 'bootstrap/base.html' %}
+
+{% block title %}PSI - kalkulator pomocy{% endblock %}
+
+{% block content %}
+<br/>
+{#  TOP #}
+    <div class="container">
+  <div class="row">
+    <div class="col-sm-4" style="text-align: center">
+        <img alt="Polska Strefa Inwestycji" height="75" src="http://kssse.pl/assets/img/psi.png">
+    </div>
+    <div class="col-sm-4" style="text-align: center" >
+        <img alt="Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A." height="75" src="http://kssse.pl/assets/img/KSSSE_logo.png">
+    </div>
+    <div class="col-sm-4" style="text-align: center" >
+        <img alt="Invest in the West" height="75" src="http://kssse.pl/assets/img/Invest_in_the_west.png">
+    </div>
+  </div>
+</div>
+<br/>
+    <div class="jumbotron text-center">
+  <h1>Kalkulator pomocy publicznej</h1>
+        <p>Policz ile zwrotu możesz dostać za realizację nowej inwestycji w Kostrzyńsko-Słubickiej SSE S.A.</p>
+</div>
+
+{# MIDDLE #}
+<div class="container">
+    <div class="row">
+  <div class="col-sm-4" align="center">
+
+      <form method="POST" action="/pomoc" >
+  <div class="form-group" style="width: 25rem;">
+
+             <label for="exampleFormControlSelect1">Wybierz walutę</label>
+    <select class="form-control" id="exampleFormControlSelect1" name="waluta" required>
+        <option></option>
+      <option>PLN</option>
+        <option>EURO</option>
+    </select>
+
+<hr />
+
+       <div class="form-group">
+    <label for="formGroupExampleInput">Koszty kwalifikowane (w mln)</label>
+    <input type="number" step="0.05" class="form-control" id="formGroupExampleInput" placeholder="proszę podać w mln" name="value" required>
+  </div>
+<hr />
+
+    <label for="exampleFormControlSelect2">Wybierz województwo</label>
+    <select class="form-control" id="exampleFormControlSelect2" name="region" required>
+        <option></option>
+      <option>lubuskie</option>
+        <option>wielkopolskie</option>
+      <option>zachodniopomorskie</option>
+    </select>
+
+<hr />
+          <label for="exampleFormControlSelect3">Wielkość przedsiębiorstwa</label>
+    <select class="form-control" id="exampleFormControlSelect3" name="size" required>
+        <option></option>
+      <option>duży</option>
+        <option>średni</option>
+      <option>mały</option>
+      <option>mikro</option>
+    </select>
+      <br />
+
+<button type="submit" class="btn btn-primary">Policz</button>
+
+
+  </div>
+
+      </form></div>
+  <div class="col-sm-8" style="text-align: justify" >
+
+            <p><b>1. Waluta:</b> Proszę wybrać w jakiej walucie zostanie policzona pomoc publiczna.
+          Kalkulator liczy po średnim kursie Narodowego Banku Polskiego <b>{{ cena }}</b> za PLN z dnia
+          <b>{{ date[8:10] }}.{{ date[5:7] }}.{{ date[0:4] }} roku.</b>
+</p><hr />
+      <p><b>2. Koszty kwalifikowane: </b>Proszę podać wartość planowanej inwestycji, czyli koszty kwalifikujące
+          się do objęcia pomocą. <br/>
+
+           <p style="text-align: center"> <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+    Definicja kosztów kwalifikowanych inwestycji
+</button></p>
+<div class="collapse" id="collapseExample1">
+  <div class="card card-body" style="text-align: center">
+    <p style="text-align: justify">Koszty kwalifikowane inwestycji zdefiniowane są w paragrafie 8 punkcie 1
+        Rozporządzenia Rady Ministrów z dnia 28 sierpnia 2018 r. w sprawie pomocy publicznej udzielanej niektórym
+        przedsiębiorcom na realizację nowych inwestycji (Dz.U. 2018 poz. 1713)
+        <a href="http://kssse.pl/upload/pictures/rozporzadzenie-ke-ue-nr-6512014-z-dnia-17-czerwca-2014.pdf"
+        target="_blank">
+            LINK
+        </a><br/><br/>
+        <b>Do kosztów kwalifikujących się do objęcia wsparciem na nowe inwestycje zalicza się koszty będące:</b><br/>
+1) kosztem związanym z nabyciem gruntów lub prawa ich użytkowania wieczystego,<br/>
+2) ceną nabycia albo kosztem wytworzenia we własnym zakresie środków trwałych, pod warunkiem zaliczenia ich,
+        zgodnie z odrębnymi przepisami, do składników majątku podatnika i zaliczenia ich do ewidencji środków
+        trwałych oraz wartości niematerialnych i prawnych,<br/>
+3) kosztem rozbudowy lub modernizacji istniejących środków trwałych,<br/>
+4) ceną nabycia wartości niematerialnych i prawnych związanych z transferem technologii przez nabycie praw patentowych,
+        licencji, know-how i nieopatentowanej wiedzy technicznej, z zastrzeżeniem ust. 2 i 3,<br/>
+5) kosztem związanym z najmem lub dzierżawą gruntów, budynków i budowli – pod warunkiem że okres najmu lub dzierżawy
+        trwa co najmniej 5 lat, a w przypadku mikroprzedsiębiorców, małych przedsiębiorców i średnich
+        przedsiębiorców – co najmniej 3 lata, licząc od przewidywanego terminu zakończenia nowej inwestycji,<br/>
+6) ceną nabycia aktywów innych niż grunty, budynki i budowle objęte najmem lub dzierżawą, w przypadku gdy najem
+        lub dzierżawa ma postać leasingu finansowego oraz obejmuje zobowiązanie do nabycia aktywów z dniem upływu
+        okresu najmu lub dzierżawy<br/><br/>
+– pomniejszone o naliczony podatek od towarów i usług oraz o podatek akcyzowy, jeżeli możliwość ich odliczeń wynika z odrębnych przepisów, poniesione w okresie ważności decyzji o wsparciu wydanej dla konkretnej lokalizacji.
+<br/><br/>
+        Według ustawy z dnia 10 maja 2018r. o wspieraniu nowych inwestycji (Dz.U.2018 poz 1162 -
+        <a href="http://kssse.pl/upload/pictures/Dz_U_2018_poz_1162.pdf" target="_blank">LINK</a>)  defincija kosztów kwalifikownaych
+        brzmi następująco:<br/><br/>
+
+        <b>koszty kwalifikowane nowej inwestycji</b> – koszty inwestycji kwalifikujące się do objęcia pomocą publiczną z tytułu
+nowej inwestycji pomniejszone o naliczony podatek od towarów i usług oraz o podatek akcyzowy, jeżeli możliwość
+ich odliczeń wynika z odrębnych przepisów, poniesione w okresie ważności decyzji o wsparciu lub <b>dwuletnie koszty
+            pracy</b>, jakie mogą być uwzględnione przy określaniu maksymalnej pomocy publicznej, ponoszone w okresie ważności
+decyzji o wsparciu.
+
+
+    </p>
+  </div>
+</div>
+      </p><hr/>
+
+      <p><b>3. Województwo:</b> Proszę pamiętać, że każde województwo ma ustaloną maksymalną możliwą pomoc publiczną
+          i może ona się różnić dla różnych lokalizacji. Poniższy przycisk wyświetla aktualną mapę pomocy
+          w Polsce. </p>
+
+       <p class="text-danger" style="text-align: justify">
+          UWAGA!: Dla przedsiębiorców z sektora MŚP intensywność powiększona jest o 10% dla średniego podmiotu
+          oraz o 20% dla małego i mikro.
+
+</p>
+
+      <p style="text-align: center"> <button class="btn btn-primary" type="button" data-toggle="collapse"
+                                           data-target="#collapseExample" aria-expanded="false"
+                                           aria-controls="collapseExample">
+    Mapa pomocy publicznej
+</button></p>
+<div class="collapse" id="collapseExample">
+  <div class="card card-body" style="text-align: center">
+   <br/> <img width="80%" alt="Mapa pomocy publicznej" src="{{ url_for('static', filename='mapa.PNG') }}">
+  </div>
+</div>
+      <hr />
+      <p><b>3. Wielkość przedsiębiorstwa: </b> Proszę określić wielkość przedsiębiorstwa według przepisów unijnych.</p>
+
+                <p style="text-align: center"> <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+    Jak określić wielkość przedsiębiorstwa
+</button></p>
+<div class="collapse" id="collapseExample3">
+  <div class="card card-body" style="text-align: center">
+    <p style="text-align: justify">Wielkość przedsiębiorstwa ubiegającego się o pomoc publiczną definiuje załącznik nr 1
+        do Rozporządzenia Komisji (UE) nr 651/2014 z dnia 17 czerwca 2014r. uznające niektóre rodzaje pomocy za zgodne z rynkiem
+        wewnętrznym w zastosowaniu art. 107 i 108 Traktatu (obowiązuje od 1 lipca 2014)
+        <a href="http://kssse.pl/upload/pictures/rozporzadzenie-ke-ue-nr-6512014-z-dnia-17-czerwca-2014.pdf"
+        target="_blank">
+            LINK
+        </a><br/><br/>
+        Do kategorii mikroprzedsiębiorstw oraz małych i średnich przedsiębiorstw („MŚP”) należą przedsiębiorstwa,
+        które zatrudniają mniej niż 250 pracowników i których roczny obrót nie przekracza 50 milionów EUR, lub roczna
+        suma bilansowa nie przekracza 43 milionów EUR. 2. W kategorii MŚP małe przedsiębiorstwo definiuje się jako
+        przedsiębiorstwo, które zatrudnia mniej niż 50 pracowników i którego roczny obrót lub roczna suma bilansowa
+        nie przekracza 10 milionów EUR. 3. W kategorii MŚP mikroprzedsiębiorstwo definiuje się jako przedsiębiorstwo,
+        które zatrudnia mniej niż 10 pracowników i którego roczny obrót lub roczna suma bilansowa nie przekracza
+        2 milionów EUR.
+        <p style="text-align: center"><img width="95%" alt="MSP" src="/static/msp.PNG">
+
+        </p>
+  </div>
+</div>
+      </p>
+
+</div>
+</div>
+</div>
+
+<hr />
+
+         <div class="container">
+    <div class="row">
+  <div class="col-sm-6" style="text-align: left" >
+<img alt="Kostrzyńsko-Słubicka Specjalna Strefa Ekpnomiczna S.A." width="80%" src="http://kssse.pl/assets/img/KSSSE_logo.png">
+      <br/><br/><a href="http://kssse.pl" target="_blank"><button type="button" class="btn btn-danger">Zapraszamy na naszą stronę internetową</button></a>
+
+</div>
+  <div class="col-sm-6" style="text-align: justify; background-color: #f5f3f3;" >
+      <p style="text-align: left"><i class="fas fa-map-marker-alt"></i>  <b>Kostrzyńsko - Słubicka Specjalna Strefa Ekonomiczna S.A.</b><br/>
+        ul. Orła Białego 22<br/>
+        66-470 Kostrzyn nad Odrą<br/>
+      NIP: 598-13-16-916
+        <p><i class="fas fa-at"></i> info@kssse.pl<br/>
+            <i class='fas fa-phone'></i>  +48 95 721 98 00<br/>
+      <i class="fab fa-facebook"></i><a href="https://fb.me/investpoland" target="_blank"> @investpoland</a><br/>
+      <a href="http://kssse.pl" target="_blank">www.investinthewest.pl</a>
+
+
+</div>
+
+    </div></div>
+
+    <div class="container">
+
+    <p style="text-align: right">created by: <a href="https://babij.eu" target="_blank">babij.eu</a></p>
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+{% endblock %}
