@@ -444,7 +444,7 @@ def lokalizacje():
         lub = places.gnl()
         wlkp = places.gnw()
 
-        return render_template('indexlok.html', result=result, resultw=resultw, resultz=resultz, rd=rd, value=value,
+        return render_template('resultslok.html', result=result, resultw=resultw, resultz=resultz, rd=rd, value=value,
                                currency=places.currency, zach=zach, size=size, lub=lub, wlkp=wlkp, date=date, cena=cena)
 
 
