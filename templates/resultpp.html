@@ -1,24 +1,15 @@
-{% extends 'bootstrap/base.html' %}
+{% extends 'base.html' %}
 
 {% block content %}
-{#  TOP #}
-    <div class="container">
-  <div class="row">
-    <div class="col-sm-4" style="text-align: center">
-        <a href="/"><img alt="Polska Strefa Inwestycji" height="75" src="http://kssse.pl/assets/img/psi.png"></a>
-    </div>
-    <div class="col-sm-4" style="text-align: center" >
-        <img alt="Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A." height="75" src="http://kssse.pl/assets/img/KSSSE_logo.png">
-    </div>
-    <div class="col-sm-4" style="text-align: center" >
-        <img alt="Invest in the West" height="75" src="http://kssse.pl/assets/img/Invest_in_the_west.png">
-    </div>
+
+    <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-5" style="text-align: center" >Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A.</h1>
+    <p class="lead" style="text-align: center" >Kalkulatory przydatne do uzyskania wsparcia w ramach Polskiej Strefy Inwestycji</p>
+      <div class="box">
+      <a class="btn btn-success btn-lg" href="/" role="button">Pokaż inne kalkulatory</a>
+          </div>
   </div>
-</div>
-<br/>
-    <div class="jumbotron text-center">
-  <h1>Kalkulator pomocy publicznej</h1>
-        <p>Policz ile zwrotu możesz dostać za realizację nowej inwestycji w Kostrzyńsko-Słubickiej SSE S.A.</p>
 </div>
 
 {# MIDDLE #}
@@ -26,19 +17,19 @@
     <div class="row">
   <div class="col-sm-4" align="center">
 
-      <h4>Podane parametry:</h4>
+      <h5>Podane parametry:</h5>
       <hr />
-      <p><h5><b>Wartość inwestycji</b></h5></p>
+      <p><h6><b>Wartość inwestycji</b></h6></p>
       <p>{{ wynik.value }} {{ wynik.waluta }}{{ pp }}</p>
       <hr />
 
-            <p><h5><b>Województwo</b></h5></p>
+            <p><h6><b>Województwo</b></h6></p>
       <p>{{ wynik.region }}</p>
       <hr />
 
-                 <p><h5><b>Wielkość przedsiębiorstwa</b></h5></p>
+                 <p><h6><b>Wielkość przedsiębiorstwa</b></h6></p>
       <p>{{ wynik.size }}</p>
-      <a href="/"><button type="button" class="btn btn-primary" input type="submit">Policz jeszcze raz</button></a>
+      <a href="/pomoc"><button type="button" class="btn btn-ownb" input type="submit">Policz jeszcze raz</button></a>
 
   </div>
 
@@ -72,7 +63,7 @@
       Inwestycji</b> na terenie województwa {{ wynik.region }}go mozliwe jest w następujących lokalizacjach:<br/><br/>
 
 
-          <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1"
+          <button class="btn btn-own" type="button" data-toggle="collapse" data-target="#collapseExample1"
                   aria-expanded="false" aria-controls="collapseExample1">
     Pokaż lokalizacje
   </button>
@@ -82,13 +73,13 @@
 <br/>
 
   {% if result %}
-                      <p class="text-danger">Poniżej lokalizacje spełniające kryteria ilościowe przy podanych parametrach oraz
+                      <p>Poniżej lokalizacje spełniające kryteria ilościowe przy podanych parametrach oraz
                        minimalne nakłady w poszczególnych gminach:</p>
 
                 {% for k,v in result.items() %}
 
                     <br/>
-          <b>Powiat {{ k }} w gminach:</b><br/>
+          <p>Powiat <b>{{ k }}</b> w gminach:</p>
 <br/>
 <table class="table" >
                         <tr>
@@ -129,7 +120,7 @@
 </tbody>
 
 </table>
- {% endfor %}<br/><br/>
+ {% endfor %}<br/>
           {% endfor %}
       {% else %}
 
@@ -142,64 +133,15 @@
 
   </div>
 
-<hr />
-  <p style="text-align: justify">
-      Zapraszamy do kontaktu z naszymi specjalistami, którzy pomogą w podjęciu decyzji oraz przedstawią mozliwości
-      uzyskania wsparcia na nową inwestycję.<br/><br/>
-
-{% if specialist == 1 %}
-{% include 'babij.html' %}
-
-{% elif specialist == 2 %}
-{% include 'borowski.html' %}
-
-    {% elif specialist == 3 %}
-{% include 'matula.html' %}
-
-    {% elif specialist == 4 %}
-{% include 'kail.html' %}
-
-    {% else %}
-    {% include 'babij.html' %}
-      {% endif %}
-
-
 
   </div>
 </div>
 </div>
 <hr/>
-       <div class="container">
-    <div class="row">
-  <div class="col-sm-6" style="text-align: left" >
-<img alt="Kostrzyńsko-Słubicka Specjalna Strefa Ekpnomiczna S.A." width="80%" src="http://kssse.pl/assets/img/KSSSE_logo.png">
-      <br/><br/><a href="https://kssse.pl" target="_blank"><button type="button" class="btn btn-danger">Zapraszamy na naszą stronę internetową</button></a>
-
-</div>
-  <div class="col-sm-6" style="text-align: justify; background-color: #f5f3f3;" >
-      <p style="text-align: left"><i class="fas fa-map-marker-alt"></i>  <b>Kostrzyńsko - Słubicka Specjalna Strefa Ekonomiczna S.A.</b><br/>
-        ul. Orła Białego 22<br/>
-        66-470 Kostrzyn nad Odrą<br/>
-      NIP: 598-13-16-916
-        <p><i class="fas fa-at"></i> info@kssse.pl<br/>
-            <i class='fas fa-phone'></i>  +48 95 721 98 00<br/>
-      <i class="fab fa-facebook"></i><a href="https://fb.me/investpoland" target="_blank"> @investpoland</a><br/>
-      <a href="http://kssse.pl" target="_blank">www.investinthewest.pl</a>
-
-</div>
-
-    </div></div>
-    <div class="container">
-
-    <p style="text-align: right">created by: <a href="https://babij.eu" target="_blank">babij.eu</a></p>
-    </div>
 
 {% endblock %}
 
 {% block scripts %}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
 
 {% endblock %}

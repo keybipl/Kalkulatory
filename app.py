@@ -349,17 +349,17 @@ cena = float(cena)
 cena = float(round(cena, 2))
 date = data()
 
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    jumbo = False
-    return render_template('index.html', jumbo=jumbo)
+    specialist = randint(1, 4)
+    return render_template('index.html', specialist=specialist)
 
 
 @app.route('/pomoc', methods=['GET', 'POST'])
 def pomoc():
     if request.method == 'GET':
-        return render_template('indexpp.html', date=date, cena=cena)
+        specialist = randint(1, 4)
+        return render_template('indexpp.html', date=date, cena=cena, specialist=specialist)
     else:
         waluta = request.form['waluta']
         region = request.form['region']

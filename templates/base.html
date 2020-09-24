@@ -25,13 +25,19 @@
 
 <style>
     .btn-own{background-color:#577CBD;color: #FFF;}
-    .btn-own:hover{background-color:#272D57;color: #FFF;}</style>
+    .btn-own:hover{background-color:#272D57;color: #FFF;}
+</style>
+
+<style>
+    .btn-ownb{background-color:#9E2F29;color: #FFF;}
+    .btn-ownb:hover{background-color:#4F181E;color: #FFF;}
+</style>
 
 </head>
 
 <body>
 <!--TOP-->
-<!--TOP-->
+<br/>
 <div class="container">
   <div class="row">
     <div class="col-sm-4">
@@ -55,36 +61,40 @@
 </div>
 <br/>
 
-
-<!--JUMBO-->
- {%  if not jumbo %}
-        <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-5" style="text-align: center" >Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A.</h1>
-    <p class="lead" style="text-align: center" >Kalkulatory przydatne do uzyskania wsparcia w ramach Polskiej Strefy Inwestycji</p>
-  </div>
-</div>
-
-{% else %}
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-5" style="text-align: center" >Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A.</h1>
-    <p class="lead" style="text-align: center" >Kalkulatory przydatne do uzyskania wsparcia w ramach Polskiej Strefy Inwestycji</p>
-      <div class="box">
-      <a class="btn btn-success btn-lg" href="/" role="button">Pokaż inne kalkulatory</a>
-          </div>
-  </div>
-</div>
-    {% endif %}
-
 {% block content %}{% endblock %}
 
+<div class="container">
+<p style="text-align: justify">
+      Zapraszamy do kontaktu z naszymi specjalistami, którzy pomogą w podjęciu decyzji oraz przedstawią mozliwości
+      uzyskania wsparcia na nową inwestycję.<br/><br/>
+
+ <button class="btn btn-own" type="button" data-toggle="collapse" data-target="#collapseExample8" aria-expanded="false" aria-controls="collapseExample8">
+    Kontakt ze specjalistą
+  </button>
+
+{% if specialist == 1 %}
+{% include 'babij.html' %}
+
+{% elif specialist == 2 %}
+{% include 'borowski.html' %}
+
+    {% elif specialist == 3 %}
+{% include 'matula.html' %}
+
+    {% elif specialist == 4 %}
+{% include 'kail.html' %}
+
+    {% else %}
+    {% include 'babij.html' %}
+      {% endif %}
+</div>
+<hr />
 <!--STOPKA-->
 <div class="container">
     <div class="row">
   <div class="col-sm-6" style="text-align: left" >
 <img alt="Kostrzyńsko-Słubicka Specjalna Strefa Ekpnomiczna S.A." width="80%" src="http://kssse.pl/assets/img/KSSSE_logo.png">
-      <br/><br/><a href="http://kssse.pl" target="_blank"><button type="button" class="btn btn-danger">Zapraszamy na naszą stronę internetową</button></a>
+      <br/><br/><a href="http://kssse.pl" target="_blank"><button type="button" class="btn btn-ownb">Zapraszamy na naszą stronę internetową</button></a>
 
 </div>
   <div class="col-sm-6" style="text-align: justify; background-color: #f5f3f3;" >
@@ -103,12 +113,16 @@
     <p style="text-align: right">created by: <a href="https://babij.eu" target="_blank">babij.eu</a></p>
     </div>
 
-{% block script %}
+
 <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
-{% endblock %}
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+{% block script %}{% endblock %}
 
 </body>
 </html>

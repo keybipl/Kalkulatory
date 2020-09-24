@@ -1,28 +1,21 @@
-{% extends 'bootstrap/base.html' %}
+{% extends 'base.html' %}
 
 {% block title %}PSI - kalkulator pomocy{% endblock %}
 
 {% block content %}
-<br/>
-{#  TOP #}
-    <div class="container">
-  <div class="row">
-    <div class="col-sm-4" style="text-align: center">
-        <img alt="Polska Strefa Inwestycji" height="75" src="http://kssse.pl/assets/img/psi.png">
-    </div>
-    <div class="col-sm-4" style="text-align: center" >
-        <img alt="Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A." height="75" src="http://kssse.pl/assets/img/KSSSE_logo.png">
-    </div>
-    <div class="col-sm-4" style="text-align: center" >
-        <img alt="Invest in the West" height="75" src="http://kssse.pl/assets/img/Invest_in_the_west.png">
-    </div>
+
+
+    <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-5" style="text-align: center" >Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A.</h1>
+    <p class="lead" style="text-align: center" >Kalkulatory przydatne do uzyskania wsparcia w ramach Polskiej Strefy Inwestycji</p>
+      <div class="box">
+      <a class="btn btn-success btn-lg" href="/" role="button">Pokaż inne kalkulatory</a>
+          </div>
   </div>
 </div>
-<br/>
-    <div class="jumbotron text-center">
-  <h1>Kalkulator pomocy publicznej</h1>
-        <p>Policz ile zwrotu możesz dostać za realizację nowej inwestycji w Kostrzyńsko-Słubickiej SSE S.A.</p>
-</div>
+
+
 
 {# MIDDLE #}
 <div class="container">
@@ -30,7 +23,7 @@
   <div class="col-sm-4" align="center">
 
       <form method="POST" action="/pomoc" >
-  <div class="form-group" style="width: 25rem;">
+  <div class="form-group" style="width: 15rem;">
 
              <label for="exampleFormControlSelect1">Wybierz walutę</label>
     <select class="form-control" id="exampleFormControlSelect1" name="waluta" required>
@@ -66,7 +59,7 @@
     </select>
       <br />
 
-<button type="submit" class="btn btn-primary">Policz</button>
+<button type="submit" class="btn btn-ownb">Policz</button>
 
 
   </div>
@@ -81,7 +74,7 @@
       <p><b>2. Koszty kwalifikowane: </b>Proszę podać wartość planowanej inwestycji, czyli koszty kwalifikujące
           się do objęcia pomocą. <br/>
 
-           <p style="text-align: center"> <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+           <p style="text-align: center"> <button class="btn btn-own" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
     Definicja kosztów kwalifikowanych inwestycji
 </button></p>
 <div class="collapse" id="collapseExample1">
@@ -135,7 +128,7 @@ decyzji o wsparciu.
 
 </p>
 
-      <p style="text-align: center"> <button class="btn btn-primary" type="button" data-toggle="collapse"
+      <p style="text-align: center"> <button class="btn btn-own" type="button" data-toggle="collapse"
                                            data-target="#collapseExample" aria-expanded="false"
                                            aria-controls="collapseExample">
     Mapa pomocy publicznej
@@ -148,7 +141,7 @@ decyzji o wsparciu.
       <hr />
       <p><b>3. Wielkość przedsiębiorstwa: </b> Proszę określić wielkość przedsiębiorstwa według przepisów unijnych.</p>
 
-                <p style="text-align: center"> <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+                <p style="text-align: center"> <button class="btn btn-own" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
     Jak określić wielkość przedsiębiorstwa
 </button></p>
 <div class="collapse" id="collapseExample3">
@@ -180,36 +173,10 @@ decyzji o wsparciu.
 
 <hr />
 
-         <div class="container">
-    <div class="row">
-  <div class="col-sm-6" style="text-align: left" >
-<img alt="Kostrzyńsko-Słubicka Specjalna Strefa Ekpnomiczna S.A." width="80%" src="http://kssse.pl/assets/img/KSSSE_logo.png">
-      <br/><br/><a href="http://kssse.pl" target="_blank"><button type="button" class="btn btn-danger">Zapraszamy na naszą stronę internetową</button></a>
-
-</div>
-  <div class="col-sm-6" style="text-align: justify; background-color: #f5f3f3;" >
-      <p style="text-align: left"><i class="fas fa-map-marker-alt"></i>  <b>Kostrzyńsko - Słubicka Specjalna Strefa Ekonomiczna S.A.</b><br/>
-        ul. Orła Białego 22<br/>
-        66-470 Kostrzyn nad Odrą<br/>
-      NIP: 598-13-16-916
-        <p><i class="fas fa-at"></i> info@kssse.pl<br/>
-            <i class='fas fa-phone'></i>  +48 95 721 98 00<br/>
-      <i class="fab fa-facebook"></i><a href="https://fb.me/investpoland" target="_blank"> @investpoland</a><br/>
-      <a href="http://kssse.pl" target="_blank">www.investinthewest.pl</a>
-
-
-</div>
-
-    </div></div>
-
-    <div class="container">
-
-    <p style="text-align: right">created by: <a href="https://babij.eu" target="_blank">babij.eu</a></p>
-    </div>
-
 {% endblock %}
 
 {% block scripts %}
+    {{ super() }}
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
