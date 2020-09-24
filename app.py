@@ -352,7 +352,8 @@ date = data()
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    jumbo = False
+    return render_template('index.html', jumbo=jumbo)
 
 
 @app.route('/pomoc', methods=['GET', 'POST'])

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-reboot.min.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-reboot.css') }}">
+            <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.min.css') }}">
+                <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.css') }}">
+<style>
+        .box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box div {
+  width: 100px;
+  height: 100px;
+}
+</style>
+
+</head>
+
+<body>
+<!--TOP-->
+<!--TOP-->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+        <div class="box">
+        <img alt="Polska Strefa Inwestycji" height="75" src="http://kssse.pl/assets/img/psi.png">
+            </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="box">
+        <img alt="Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A."
+             height="75" src="http://kssse.pl/assets/img/KSSSE_logo.png">
+        </div>
+    </div>
+    <div class="col-sm-4" style="text-align: center" >
+        <div class="box">
+        <img alt="Invest in the West" height="75" src="http://kssse.pl/assets/img/Invest_in_the_west.png">
+        </div>
+    </div>
+  </div>
+</div>
+<br/>
+
+
+<!--JUMBO-->
+ {%  if not jumbo %}
+        <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-5" style="text-align: center" >Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A.</h1>
+    <p class="lead" style="text-align: center" >Kalkulatory przydatne do uzyskania wsparcia w ramach Polskiej Strefy Inwestycji</p>
+  </div>
+</div>
+
+{% else %}
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-5" style="text-align: center" >Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A.</h1>
+    <p class="lead" style="text-align: center" >Kalkulatory przydatne do uzyskania wsparcia w ramach Polskiej Strefy Inwestycji</p>
+      <div class="box">
+      <a class="btn btn-success btn-lg" href="/" role="button">Pokaż inne kalkulatory</a>
+          </div>
+  </div>
+</div>
+    {% endif %}
+
+{% block content %}{% endblock %}
+
+<!--STOPKA-->
+<div class="container">
+    <div class="row">
+  <div class="col-sm-6" style="text-align: left" >
+<img alt="Kostrzyńsko-Słubicka Specjalna Strefa Ekpnomiczna S.A." width="80%" src="http://kssse.pl/assets/img/KSSSE_logo.png">
+      <br/><br/><a href="http://kssse.pl" target="_blank"><button type="button" class="btn btn-danger">Zapraszamy na naszą stronę internetową</button></a>
+
+</div>
+  <div class="col-sm-6" style="text-align: justify; background-color: #f5f3f3;" >
+      <p style="text-align: left"><i class="fas fa-map-marker-alt"></i>  <b>Kostrzyńsko - Słubicka Specjalna Strefa Ekonomiczna S.A.</b><br/>
+        ul. Orła Białego 22<br/>
+        66-470 Kostrzyn nad Odrą<br/>
+      NIP: 598-13-16-916
+        <p><i class="fas fa-at"></i> info@kssse.pl<br/>
+            <i class='fas fa-phone'></i>  +48 95 721 98 00<br/>
+      <i class="fab fa-facebook"></i><a href="https://fb.me/investpoland" target="_blank"> @investpoland</a><br/>
+      <a href="http://kssse.pl" target="_blank">www.investinthewest.pl</a>
+
+  </p></div></div></div>
+    <div class="container">
+
+    <p style="text-align: right">created by: <a href="https://babij.eu" target="_blank">babij.eu</a></p>
+    </div>
+
+{% block script %}
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+{% endblock %}
+
+</body>
+</html>
