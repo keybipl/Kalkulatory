@@ -25,7 +25,7 @@
       <form method="POST" action="/pomoc" >
   <div class="form-group" style="width: 15rem;">
 
-             <label for="exampleFormControlSelect1">Wybierz walutę</label>
+      <label for="exampleFormControlSelect1"><b>Wybierz walutę</b></label>
     <select class="form-control" id="exampleFormControlSelect1" name="waluta" required>
         <option></option>
       <option>PLN</option>
@@ -35,12 +35,12 @@
 <hr />
 
        <div class="form-group">
-    <label for="formGroupExampleInput">Koszty kwalifikowane (w mln)</label>
+           <label for="formGroupExampleInput"><b>Koszty kwalifikowane (w mln)</b></label>
     <input type="number" step="0.05" class="form-control" id="formGroupExampleInput" placeholder="proszę podać w mln" name="value" required>
   </div>
 <hr />
 
-    <label for="exampleFormControlSelect2">Wybierz województwo</label>
+      <label for="exampleFormControlSelect2"><b>Wybierz województwo</b></label>
     <select class="form-control" id="exampleFormControlSelect2" name="region" required>
         <option></option>
       <option>lubuskie</option>
@@ -49,7 +49,7 @@
     </select>
 
 <hr />
-          <label for="exampleFormControlSelect3">Wielkość przedsiębiorstwa</label>
+      <label for="exampleFormControlSelect3"><b>Wielkość przedsiębiorcy</b></label>
     <select class="form-control" id="exampleFormControlSelect3" name="size" required>
         <option></option>
       <option>duży</option>
@@ -135,7 +135,11 @@ decyzji o wsparciu.
 </button></p>
 <div class="collapse" id="collapseExample">
   <div class="card card-body" style="text-align: center">
-   <br/> <img width="80%" alt="Mapa pomocy publicznej" src="{{ url_for('static', filename='mapa.PNG') }}">
+   <br/>
+      <div class="box">
+      <img width="80%" alt="Mapa pomocy publicznej" src="{{ url_for('static', filename='mapa.PNG') }}">
+      </div>
+
   </div>
 </div>
       <hr />

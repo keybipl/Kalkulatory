@@ -345,16 +345,17 @@ cena = float(cena)
 cena = float(round(cena, 2))
 date = data()
 
-
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    specialist = randint(1, 4)
+    return render_template('index.html', specialist=specialist)
 
 
 @app.route('/pomoc', methods=['GET', 'POST'])
 def pomoc():
     if request.method == 'GET':
-        return render_template('indexpp.html', date=date, cena=cena)
+        specialist = randint(1, 4)
+        return render_template('indexpp.html', date=date, cena=cena, specialist=specialist)
     else:
         waluta = request.form['waluta']
         region = request.form['region']
@@ -405,7 +406,10 @@ def pomoc():
 @app.route('/lokalizacje', methods=['GET', 'POST'])
 def lokalizacje():
     if request.method == 'GET':
-        return render_template('indexlok.html', rate=cena, date=date)
+        rd = None
+        currency = None
+        value = None
+        return render_template('indexlok.html', cena=cena, date=date, rd=rd, currency=currency, value=value)
     else:
         currency = request.form['currency']
         value = float(request.form['value'])
@@ -436,8 +440,8 @@ def lokalizacje():
         lub = places.gnl()
         wlkp = places.gnw()
 
-        return render_template('indexlok.html', result=result, resultw=resultw, resultz=resultz, rd=rd, value=value,
-                               currency=places.currency, zach=zach, size=size, lub=lub, wlkp=wlkp, date=date)
+        return render_template('resultslok.html', result=result, resultw=resultw, resultz=resultz, rd=rd, value=value,
+                               currency=places.currency, zach=zach, size=size, lub=lub, wlkp=wlkp, date=date, cena=cena)
 
 
 @app.route('/naklady', methods=['GET', 'POST'])
