@@ -52,7 +52,28 @@
   <!--KOLUMNA2-->
     <div class="col-sm-8">
 
-        {{ '{:,}'.format(pay).replace(',', ' ').replace('.', ',') }} {{ currency }}
+    <p style="text-align: center">Przy podanych parametrach opłata miesięczna do zarządzającego specjalną strefą
+        ekonomiczną wynosi:</p>
+
+    <p style="text-align: center; font-size: 36px"><i class='fas fa-handshake' style='font-size:48px;color:#577CBD'></i>
+    <b>{{ '{:,.2f}'.format(pay).replace(',', ' ').replace('.', ',') }} {{ currency }}</b></p>
+    <p>co daje <b>{{ '{:,.2f}'.format(przelicznik).replace(',', ' ').replace('.', ',') }}
+     {% if currency == 'EURO' %}
+        PLN
+        {% else %}
+        EURO
+        {% endif %}
+
+    </b>według kursu EURO Narodowego Banku Polskiego <b>{{ cena }} zł</b>
+        z dnia <b>{{ date[8:10] }}.{{ date[5:7] }}.{{ date[0:4] }} roku.</b></p>
+
+
+
+
+{{ '{:,.2f}'.format(pay*12).replace(',', ' ').replace('.', ',') }}
+
+
+
 
     </div><!--end column2-->
   </div> <!--end row-->

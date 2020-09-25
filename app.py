@@ -566,6 +566,10 @@ def fee():
         currency = request.form['currency']
         expenditures = int(request.form['expenditures'])
         expenditures *= 1000000
+        if currency == 'EURO':
+            expenditures *= cena
+        else:
+            pass
         jobs = int(request.form['jobs'])
         size = request.form['size']
         area = int(request.form['area'])
@@ -581,9 +585,17 @@ def fee():
         xn = 0.05 * (xw + xp + xz + xi) * xmsp
         pay = xn * expenditures / months
         pay = round(pay, 2)
+        if currency == 'EURO':
+            expenditures /= cena
+            pay /= cena
+            przelicznik = pay * cena
+        else:
+            przelicznik = pay / cena
+        przelicznik = float(round(przelicznik, 2))
+
         return render_template('resultopl.html', pay=pay, time=time, specialist=specialist, date=date, cena=cena,
                                expenditures=expenditures, area=area, currency=currency, jobs=jobs, size=size,
-                               infrastructure=infrastructure, months=months)
+                               infrastructure=infrastructure, months=months, przelicznik=przelicznik)
 
 
 if __name__ == '__main__':
