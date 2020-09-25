@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Opłata za administrowanie{% endblock %}
+
+{% block content %}
+
+        <!--JUMBO-->
+        <div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <h1 class="display-5" style="text-align: center" >Opłata za administrowanie</h1>
+    <p class="lead" style="text-align: center" >Policz jaką opłatę poniesiesz mając decyzję o wspraciu</p>
+      <div class="box">
+      <a class="btn btn-success btn-lg" href="/" role="button">Pokaż inne kalkulatory</a>
+          </div>
+  </div>
+</div>
+    <!--ENDJUMBO-->
+
+    <!--RESULT-->
+    <div class="container">
+  <div class="row">
+    <div class="col-sm-4"> <!-- KOLUMNA1-->
+
+        <h5 style="text-align: center">Podane parametry:</h5>
+        <hr />
+        <h6 style="text-align: center">Koszty kwalifikowane</h6>
+        <p style="text-align: center">{{ '{:,}'.format(expenditures).replace(',', ' ') }} {{ currency }}</p>
+        <hr />
+
+        <h6 style="text-align: center">Powierzchnia</h6>
+        <p style="text-align: center">{{ '{:,}'.format(area).replace(',', ' ') }} m<sup>2</sup></p>
+        <hr />
+
+        <h6 style="text-align: center">Nowe miejsca pracy</h6>
+        <p style="text-align: center">{{ jobs }}</p>
+        <hr />
+
+        <h6 style="text-align: center">Przedsiębiorca</h6>
+        <p style="text-align: center">{{ size }}</p>
+        <hr />
+
+        <h6 style="text-align: center">Infrastruktura techniczna</h6>
+        <p style="text-align: center">{% if infrastructure == 'option1' %}TAK{% else %}NIE{% endif %}</p>
+        <hr />
+
+        <h6 style="text-align: center">Okres obowiązywanie decyzji</h6>
+        <p style="text-align: center">{{ '{:,}'.format(time).replace(',', ' ') }}</p>
+        <hr />
+
+    </div><!--end column1-->
+
+  <!--KOLUMNA2-->
+    <div class="col-sm-8">
+
+        {{ '{:,}'.format(pay).replace(',', ' ').replace('.', ',') }} {{ currency }}
+
+    </div><!--end column2-->
+  </div> <!--end row-->
+    </div>  <!--end CONTAINER-->
+
+
+
+{% endblock %}

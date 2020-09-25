@@ -21,10 +21,6 @@ def get_db():
     return g.sqlite_db
 
 
-# db = sqlite3.connect('gminy.db', check_same_thread=False)
-# mycursor = db.cursor()
-
-
 # ściaga kurs NBP ze strony
 def kurs():
     global kurs
@@ -344,6 +340,68 @@ class Where:
             return gminyz
 
 
+class Fee:
+
+    def __init__(self, expenditures, jobs, size, area, infrastructure):
+        self.expenditures = expenditures
+        self.jobs = jobs
+        self.size = size
+        self.area = area
+        self.infrastructure = infrastructure
+
+    def xw(self):
+        if 10000000 > self.expenditures > 0:
+            xw = 0.2
+        elif 50000000 >= self.expenditures >= 10000000:
+            xw = 0.07
+        elif self.expenditures > 50000000:
+            xw = 0.02
+        else:
+            xw = 0
+        return float(xw)
+
+    def xp(self):
+        if 10000 > self.area > 0:
+            xp = 0.005
+        elif 50000 >= self.area >= 10000:
+            xp = 0.02
+        elif self.area > 50000:
+            xp = 0.01
+        else:
+            xp = 0
+        return xp
+
+
+    def xz(self):
+        if 50 > self.jobs > 0:
+            xz = 0.2
+        elif 250 >= self.jobs >= 50:
+            xz = 0.15
+        elif self.jobs > 250:
+            xz = 0.1
+        else:
+            xz = 0
+        return xz
+
+    def xi(self):
+        if self.infrastructure == 'option1':
+            xi = 0.1
+        else:
+            xi = 0
+        return xi
+
+    def xmsp(self):
+        if self.size == 'duży':
+            xmsp = 1
+        elif self.size == 'średni':
+            xmsp = 0.9
+        elif self.size == 'mały':
+            xmsp = 0.8
+        else:
+            xmsp = 0.7
+        return xmsp
+
+
 cena = kurs()
 cena = float(cena)
 cena = float(round(cena, 2))
@@ -409,11 +467,14 @@ def pomoc():
 
 @app.route('/lokalizacje', methods=['GET', 'POST'])
 def lokalizacje():
+    specialist = randint(1, 4)
     if request.method == 'GET':
         rd = None
         currency = None
         value = None
-        return render_template('indexlok.html', cena=cena, date=date, rd=rd, currency=currency, value=value)
+        specialist = randint(1, 4)
+        return render_template('indexlok.html', cena=cena, date=date, rd=rd, currency=currency, value=value,
+                               specialist=specialist)
     else:
         currency = request.form['currency']
         value = float(request.form['value'])
@@ -445,12 +506,13 @@ def lokalizacje():
         wlkp = places.gnw()
 
         return render_template('resultslok.html', result=result, resultw=resultw, resultz=resultz, rd=rd, value=value,
-                               currency=places.currency, zach=zach, size=size, lub=lub, wlkp=wlkp, date=date, cena=cena)
+                               currency=places.currency, zach=zach, size=size, lub=lub, wlkp=wlkp, date=date, cena=cena,
+                               specialist=specialist)
 
 
 @app.route('/naklady', methods=['GET', 'POST'])
 def naklady():
-
+    specialist = randint(1, 4)
     if request.method == 'GET':
         db = get_db()
         lubuskie_cur = db.execute("SELECT DISTINCT powiat FROM gminy where wojewodztwo = 'lubuskie'")
@@ -463,7 +525,7 @@ def naklady():
         zachodniopomorskie_powiaty = zachodniopomorskie_cur.fetchall()
 
         return render_template('indexnak.html', lubuskie_powiaty=lubuskie_powiaty, wielkopolskie_powiaty=wielkopolskie_powiaty,
-                               zachodniopomorskie_powiaty=zachodniopomorskie_powiaty)
+                               zachodniopomorskie_powiaty=zachodniopomorskie_powiaty, specialist=specialist)
 
     else:
         db = get_db()
@@ -491,7 +553,37 @@ def naklady():
 
         return render_template('indexnak.html', powiatl=powiatl, powiatw=powiatw, powiatz=powiatz, gminyl=gminyl,
                                gminyw=gminyw, gminyz=gminyz, lubuskie_powiaty=lubuskie_powiaty,
-                               wielkopolskie_powiaty=wielkopolskie_powiaty, zachodniopomorskie_powiaty=zachodniopomorskie_powiaty)
+                               wielkopolskie_powiaty=wielkopolskie_powiaty,
+                               zachodniopomorskie_powiaty=zachodniopomorskie_powiaty, specialist=specialist)
+
+
+@app.route('/oplata', methods=['GET', 'POST'])
+def fee():
+    specialist = randint(1, 4)
+    if request.method == 'GET':
+        return render_template('indexopl.html', date=date, cena=cena, specialist=specialist)
+    else:
+        currency = request.form['currency']
+        expenditures = int(request.form['expenditures'])
+        expenditures *= 1000000
+        jobs = int(request.form['jobs'])
+        size = request.form['size']
+        area = int(request.form['area'])
+        time = int(request.form['time'])
+        infrastructure = request.form['options']
+        payment = Fee(expenditures=expenditures, jobs=jobs, size=size, area=area, infrastructure=infrastructure)
+        xw = payment.xw()
+        xp = payment.xp()
+        xz = payment.xz()
+        xi = payment.xi()
+        xmsp = payment.xmsp()
+        months = time * 12
+        xn = 0.05 * (xw + xp + xz + xi) * xmsp
+        pay = xn * expenditures / months
+        pay = round(pay, 2)
+        return render_template('resultopl.html', pay=pay, time=time, specialist=specialist, date=date, cena=cena,
+                               expenditures=expenditures, area=area, currency=currency, jobs=jobs, size=size,
+                               infrastructure=infrastructure, months=months)
 
 
 if __name__ == '__main__':
