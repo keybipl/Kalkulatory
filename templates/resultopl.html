@@ -56,7 +56,17 @@
         ekonomiczną wynosi:</p>
 
     <p style="text-align: center; font-size: 36px"><i class='fas fa-handshake' style='font-size:48px;color:#577CBD'></i>
-    <b>{{ '{:,.2f}'.format(pay).replace(',', ' ').replace('.', ',') }} {{ currency }}</b></p>
+
+    <b>{% set monthly = '{:,.2f}'.format(pay).replace(',', ' ').replace('.', ',') %}
+        {% if monthly[-1] == '0' and monthly[-2] == '0' %}
+        {{ monthly[:-3] }}
+        {% else %}
+        {{ monthly }}
+        {% endif %}
+
+        {{ currency }}</b></p>
+
+
     <p>co daje <b>{{ '{:,.2f}'.format(przelicznik).replace(',', ' ').replace('.', ',') }}
      {% if currency == 'EURO' %}
         PLN
@@ -68,11 +78,7 @@
         z dnia <b>{{ date[8:10] }}.{{ date[5:7] }}.{{ date[0:4] }} roku.</b></p>
 
 
-
-
-{{ '{:,.2f}'.format(pay*12).replace(',', ' ').replace('.', ',') }}
-
-
+{% endif %}
 
 
     </div><!--end column2-->
