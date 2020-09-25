@@ -592,6 +592,7 @@ def fee():
         else:
             przelicznik = pay / cena
         przelicznik = float(round(przelicznik, 2))
+        expenditures = int(expenditures)
 
         return render_template('resultopl.html', pay=pay, time=time, specialist=specialist, date=date, cena=cena,
                                expenditures=expenditures, area=area, currency=currency, jobs=jobs, size=size,

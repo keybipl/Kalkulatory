@@ -52,8 +52,8 @@
   <!--KOLUMNA2-->
     <div class="col-sm-8">
 
-    <p style="text-align: center">Przy podanych parametrach opłata miesięczna do zarządzającego specjalną strefą
-        ekonomiczną wynosi:</p>
+        <p style="text-align: center">Przy podanych parametrach <b>opłata miesięczna</b> do zarządzającego specjalną strefą
+        ekonomiczną wyniesie:</p>
 
     <p style="text-align: center; font-size: 36px"><i class='fas fa-handshake' style='font-size:48px;color:#577CBD'></i>
 
@@ -67,7 +67,13 @@
         {{ currency }}</b></p>
 
 
-    <p>co daje <b>{{ '{:,.2f}'.format(przelicznik).replace(',', ' ').replace('.', ',') }}
+    co daje <b>{% set calc = '{:,.2f}'.format(przelicznik).replace(',', ' ').replace('.', ',') %}
+            {% if calc[-1] == '0' and calc[-2] == '0' %}
+        {{ calc[:-3] }}
+        {% else %}
+        {{ calc }}
+        {% endif %}
+
      {% if currency == 'EURO' %}
         PLN
         {% else %}
@@ -78,7 +84,44 @@
         z dnia <b>{{ date[8:10] }}.{{ date[5:7] }}.{{ date[0:4] }} roku.</b></p>
 
 
+    <p style="text-align: justify">W skali roku wyniesie ona
+        {% set yearly = '{:,.2f}'.format(pay*12).replace(',', ' ').replace('.', ',') %}
+        {% if yearly[-1] == '0' and yearly[-2] == '0' %}
+        <b>{{ yearly[:-3] }}</b>
+        {% else %}
+        <b>{{ yearly }}</b>
+        {% endif %}
+        <b>{{ currency }}</b>
+
+    {% if currency == 'EURO' %}
+    {% set policz = pay*12 * cena %}
+    {% else %}
+    {% set policz = pay*12 / cena %}
 {% endif %}
+
+ -
+            {% set yearlyp = '{:,.2f}'.format(policz).replace(',', ' ').replace('.', ',') %}
+        {% if yearlyp[-1] == '0' and yearlyp[-2] == '0' %}
+        {{ yearlyp[:-3] }}
+        {% else %}
+        {{ yearlyp }}
+        {% endif %}
+        {% if currency == 'EURO' %}PLN{% else %}EURO{% endif %}
+
+
+    </p>
+
+    <p> Przez cały okres ważności decyzji
+
+     {% set all = '{:,.2f}'.format(pay*12*time).replace(',', ' ').replace('.', ',') %}
+        {% if all[-1] == '0' and all[-2] == '0' %}
+        <b>{{ all[:-3] }}</b>
+        {% else %}
+        <b>{{ all }}</b>
+        {% endif %}
+<b>{{ currency }}</b>, co daje odpowiednio
+    </p>
+
 
 
     </div><!--end column2-->
