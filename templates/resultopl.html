@@ -45,14 +45,16 @@
 
         <h6 style="text-align: center">Okres obowiązywanie decyzji</h6>
         <p style="text-align: center">{{ '{:,}'.format(time).replace(',', ' ') }}</p>
-        <hr />
+<div class="box">
+    <a href="/oplata"><button type="button" class="btn btn-ownb" input type="submit">Policz jeszcze raz</button></a>
+</div><!--end box-->
 
     </div><!--end column1-->
 
   <!--KOLUMNA2-->
     <div class="col-sm-8">
 
-        <p style="text-align: center">Przy podanych parametrach <b>opłata miesięczna</b> do zarządzającego specjalną strefą
+        <p style="text-align: center">Przy podanych parametrach <b>opłata miesięczna</b> dla zarządzającego specjalną strefą
         ekonomiczną wyniesie:</p>
 
     <p style="text-align: center; font-size: 36px"><i class='fas fa-handshake' style='font-size:48px;color:#577CBD'></i>
@@ -67,7 +69,9 @@
         {{ currency }}</b></p>
 
 
-    co daje <b>{% set calc = '{:,.2f}'.format(przelicznik).replace(',', ' ').replace('.', ',') %}
+    co daje:<br/> <br>
+        <li>
+        <b>{% set calc = '{:,.2f}'.format(przelicznik).replace(',', ' ').replace('.', ',') %}
             {% if calc[-1] == '0' and calc[-2] == '0' %}
         {{ calc[:-3] }}
         {% else %}
@@ -78,40 +82,35 @@
         PLN
         {% else %}
         EURO
-        {% endif %}
+     {% endif %}</b></li>
 
-    </b>według kursu EURO Narodowego Banku Polskiego <b>{{ cena }} zł</b>
-        z dnia <b>{{ date[8:10] }}.{{ date[5:7] }}.{{ date[0:4] }} roku.</b></p>
-
-
-    <p style="text-align: justify">W skali roku wyniesie ona
+    <li>w skali roku:
         {% set yearly = '{:,.2f}'.format(pay*12).replace(',', ' ').replace('.', ',') %}
         {% if yearly[-1] == '0' and yearly[-2] == '0' %}
         <b>{{ yearly[:-3] }}</b>
         {% else %}
         <b>{{ yearly }}</b>
         {% endif %}
-        <b>{{ currency }}</b>
+        <b>{{ currency }}</b>,
 
     {% if currency == 'EURO' %}
     {% set policz = pay*12 * cena %}
     {% else %}
     {% set policz = pay*12 / cena %}
-{% endif %}
+    {% endif %}
 
- -
+        czyli
             {% set yearlyp = '{:,.2f}'.format(policz).replace(',', ' ').replace('.', ',') %}
         {% if yearlyp[-1] == '0' and yearlyp[-2] == '0' %}
         {{ yearlyp[:-3] }}
         {% else %}
         {{ yearlyp }}
         {% endif %}
-        {% if currency == 'EURO' %}PLN{% else %}EURO{% endif %}
+        {% if currency == 'EURO' %}PLN{% else %}EURO{% endif %}</li>
 
 
-    </p>
 
-    <p> Przez cały okres ważności decyzji
+    <li>przez cały okres ważności decyzji
 
      {% set all = '{:,.2f}'.format(pay*12*time).replace(',', ' ').replace('.', ',') %}
         {% if all[-1] == '0' and all[-2] == '0' %}
@@ -119,15 +118,39 @@
         {% else %}
         <b>{{ all }}</b>
         {% endif %}
-<b>{{ currency }}</b>, co daje odpowiednio
-    </p>
+<b>{{ currency }}</b>,
 
+       {% if currency == 'EURO' %}
+    {% set policz = pay*12*time * cena %}
+    {% else %}
+    {% set policz = pay*12*time / cena %}
+    {% endif %}
 
+        czyli
+            {% set allp = '{:,.2f}'.format(policz).replace(',', ' ').replace('.', ',') %}
+        {% if allp[-1] == '0' and yearlyp[-2] == '0' %}
+        {{ allp[:-3] }}
+        {% else %}
+        {{ allp }}
+        {% endif %}
+        {% if currency == 'EURO' %}PLN{% else %}EURO{% endif %}
+    </li>
+    <br/>
+
+    <p style="text-align: justify">Powyższą opłatę policzono na podstawie
+       <a href="http://kssse.pl/upload/REGULAMIN_OPLAT.pdf" target="_blank">regulaminu świadczenia usług standardowych
+    na obszarze zarządzanym przez Kostrzyńsko-Słubciką Specjalną Strefę Ekonomiczną.</a> </p>
+
+<p style="text-align: justify">Regulamin został zatwierdzony przez Ministerstwo Rozwoju a opłata nie podlega negocjacjom
+przed podpisaniem umowy o świadczenie usług.</p>
+    <p style="text-align: justify">Przedsiębiorca zobowiązany jest do podpisania umowy niezwłocznie po uzyskaniu decyzji
+    o wsparciu według artykułu 10 punktu 1 <a href="http://kssse.pl/upload/pictures/Dz_U_2018_poz_1162.pdf">
+            ustawy o wspieraniu nowych inwestycji.</a></p>
 
     </div><!--end column2-->
   </div> <!--end row-->
     </div>  <!--end CONTAINER-->
 
-
+<hr />
 
 {% endblock %}
