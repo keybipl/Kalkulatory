@@ -139,13 +139,19 @@
 
     <p style="text-align: justify">Powyższą opłatę policzono na podstawie
        <a href="http://kssse.pl/upload/REGULAMIN_OPLAT.pdf" target="_blank">regulaminu świadczenia usług standardowych
-    na obszarze zarządzanym przez Kostrzyńsko-Słubciką Specjalną Strefę Ekonomiczną.</a> </p>
+    na obszarze zarządzanym przez Kostrzyńsko-Słubicką Specjalną Strefę Ekonomiczną.</a> </p>
 
 <p style="text-align: justify">Regulamin został zatwierdzony przez Ministerstwo Rozwoju a opłata nie podlega negocjacjom
 przed podpisaniem umowy o świadczenie usług.</p>
     <p style="text-align: justify">Przedsiębiorca zobowiązany jest do podpisania umowy niezwłocznie po uzyskaniu decyzji
     o wsparciu według artykułu 10 punktu 1 <a href="http://kssse.pl/upload/pictures/Dz_U_2018_poz_1162.pdf">
             ustawy o wspieraniu nowych inwestycji.</a></p>
+
+    {% if infrastructure == 'option1' %}
+        <p style="text-align: justify"><b>UWAGA!</b> Oprócz powyższego przedsiębiorca zobowiązany jest do podpisanie umowy
+        na korzystanie z infrastruktury technicznej należącej do zarządzającego strefą w wysokości 1,50 PLN za
+            m<sup>2</sup> nieruchomości rocznie.</p>
+    {% endif %}
 
     </div><!--end column2-->
   </div> <!--end row-->
