@@ -564,8 +564,7 @@ def fee():
         return render_template('indexopl.html', date=date, cena=cena, specialist=specialist)
     else:
         currency = request.form['currency']
-        expenditures = int(request.form['expenditures'])
-        expenditures *= 1000000
+        expenditures = float(request.form['expenditures'])
         if currency == 'EURO':
             expenditures *= cena
         else:

@@ -4,159 +4,168 @@
 
 {% block content %}
 
-        <!--JUMBO-->
-        <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-5" style="text-align: center" >Opłata za administrowanie</h1>
-    <p class="lead" style="text-align: center" >Policz jaką opłatę poniesiesz mając decyzję o wspraciu</p>
-      <div class="box">
-      <a class="btn btn-success btn-lg" href="/" role="button">Pokaż inne kalkulatory</a>
-          </div>
-  </div>
-</div>
+    <!--JUMBO-->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-5" style="text-align: center">Opłata za administrowanie</h1>
+            <p class="lead" style="text-align: center">Policz jaką opłatę poniesiesz mając decyzję o wspraciu</p>
+            <div class="box">
+                <a class="btn btn-success btn-lg" href="/" role="button">Pokaż inne kalkulatory</a>
+            </div>
+        </div>
+    </div>
     <!--ENDJUMBO-->
 
     <!--RESULT-->
     <div class="container">
-  <div class="row">
-    <div class="col-sm-4"> <!-- KOLUMNA1-->
+        <div class="row">
+            <div class="col-sm-4"> <!-- KOLUMNA1-->
 
-        <h5 style="text-align: center">Podane parametry:</h5>
-        <hr />
-        <h6 style="text-align: center">Koszty kwalifikowane</h6>
-        <p style="text-align: center">{{ '{:,}'.format(expenditures).replace(',', ' ') }} {{ currency }}</p>
-        <hr />
+                <h5 style="text-align: center">Podane parametry:</h5>
+                <hr/>
+                <h6 style="text-align: center">Koszty kwalifikowane</h6>
+                <p style="text-align: center">{{ '{:,}'.format(expenditures).replace(',', ' ') }} {{ currency }}</p>
+                <hr/>
 
-        <h6 style="text-align: center">Powierzchnia</h6>
-        <p style="text-align: center">{{ '{:,}'.format(area).replace(',', ' ') }} m<sup>2</sup></p>
-        <hr />
+                <h6 style="text-align: center">Powierzchnia</h6>
+                <p style="text-align: center">{{ '{:,}'.format(area).replace(',', ' ') }} m<sup>2</sup></p>
+                <hr/>
 
-        <h6 style="text-align: center">Nowe miejsca pracy</h6>
-        <p style="text-align: center">{{ jobs }}</p>
-        <hr />
+                <h6 style="text-align: center">Nowe miejsca pracy</h6>
+                <p style="text-align: center">{{ jobs }}</p>
+                <hr/>
 
-        <h6 style="text-align: center">Przedsiębiorca</h6>
-        <p style="text-align: center">{{ size }}</p>
-        <hr />
+                <h6 style="text-align: center">Przedsiębiorca</h6>
+                <p style="text-align: center">{{ size }}</p>
+                <hr/>
 
-        <h6 style="text-align: center">Infrastruktura techniczna</h6>
-        <p style="text-align: center">{% if infrastructure == 'option1' %}TAK{% else %}NIE{% endif %}</p>
-        <hr />
+                <h6 style="text-align: center">Infrastruktura techniczna</h6>
+                <p style="text-align: center">{% if infrastructure == 'option1' %}TAK{% else %}NIE{% endif %}</p>
+                <hr/>
 
-        <h6 style="text-align: center">Okres obowiązywanie decyzji</h6>
-        <p style="text-align: center">{{ '{:,}'.format(time).replace(',', ' ') }}</p>
-<div class="box">
-    <a href="/oplata"><button type="button" class="btn btn-ownb" input type="submit">Policz jeszcze raz</button></a>
-</div><!--end box-->
+                <h6 style="text-align: center">Okres obowiązywanie decyzji</h6>
+                <p style="text-align: center">{{ '{:,}'.format(time).replace(',', ' ') }}</p>
+                <div class="box">
+                    <a href="/oplata">
+                        <button type="button" class="btn btn-ownb" input type="submit">Policz jeszcze raz</button>
+                    </a>
+                </div><!--end box-->
 
-    </div><!--end column1-->
+            </div><!--end column1-->
 
-  <!--KOLUMNA2-->
-    <div class="col-sm-8">
+            <!--KOLUMNA2-->
+            <div class="col-sm-8">
 
-        <p style="text-align: center">Przy podanych parametrach <b>opłata miesięczna</b> dla zarządzającego specjalną strefą
-        ekonomiczną wyniesie:</p>
+                <p style="text-align: center">Przy podanych parametrach <b>opłata miesięczna</b> dla zarządzającego
+                    specjalną strefą
+                    ekonomiczną wyniesie:</p>
 
-    <p style="text-align: center; font-size: 36px"><i class='fas fa-handshake' style='font-size:48px;color:#577CBD'></i>
+                <p style="text-align: center; font-size: 36px"><i class='fas fa-handshake'
+                                                                  style='font-size:48px;color:#577CBD'></i>
 
-    <b>{% set monthly = '{:,.2f}'.format(pay).replace(',', ' ').replace('.', ',') %}
-        {% if monthly[-1] == '0' and monthly[-2] == '0' %}
-        {{ monthly[:-3] }}
-        {% else %}
-        {{ monthly }}
-        {% endif %}
+                    <b>{% set monthly = '{:,.2f}'.format(pay).replace(',', ' ').replace('.', ',') %}
+                        {% if monthly[-1] == '0' and monthly[-2] == '0' %}
+                            {{ monthly[:-3] }}
+                        {% else %}
+                            {{ monthly }}
+                        {% endif %}
 
-        {{ currency }}</b></p>
-
-
-    co daje:<br/> <br>
-        <li>
-        <b>{% set calc = '{:,.2f}'.format(przelicznik).replace(',', ' ').replace('.', ',') %}
-            {% if calc[-1] == '0' and calc[-2] == '0' %}
-        {{ calc[:-3] }}
-        {% else %}
-        {{ calc }}
-        {% endif %}
-
-     {% if currency == 'EURO' %}
-        PLN
-        {% else %}
-        EURO
-     {% endif %}</b></li>
-
-    <li>w skali roku:
-        {% set yearly = '{:,.2f}'.format(pay*12).replace(',', ' ').replace('.', ',') %}
-        {% if yearly[-1] == '0' and yearly[-2] == '0' %}
-        <b>{{ yearly[:-3] }}</b>
-        {% else %}
-        <b>{{ yearly }}</b>
-        {% endif %}
-        <b>{{ currency }}</b>,
-
-    {% if currency == 'EURO' %}
-    {% set policz = pay*12 * cena %}
-    {% else %}
-    {% set policz = pay*12 / cena %}
-    {% endif %}
-
-        czyli
-            {% set yearlyp = '{:,.2f}'.format(policz).replace(',', ' ').replace('.', ',') %}
-        {% if yearlyp[-1] == '0' and yearlyp[-2] == '0' %}
-        {{ yearlyp[:-3] }}
-        {% else %}
-        {{ yearlyp }}
-        {% endif %}
-        {% if currency == 'EURO' %}PLN{% else %}EURO{% endif %}</li>
+                        {{ currency }}</b></p>
 
 
+                co daje:<br/> <br>
+                <li>
+                    <b>{% set calc = '{:,.2f}'.format(przelicznik).replace(',', ' ').replace('.', ',') %}
+                        {% if calc[-1] == '0' and calc[-2] == '0' %}
+                            {{ calc[:-3] }}
+                        {% else %}
+                            {{ calc }}
+                        {% endif %}
 
-    <li>przez cały okres ważności decyzji
+                        {% if currency == 'EURO' %}
+                            PLN
+                        {% else %}
+                            EURO
+                        {% endif %}</b></li>
 
-     {% set all = '{:,.2f}'.format(pay*12*time).replace(',', ' ').replace('.', ',') %}
-        {% if all[-1] == '0' and all[-2] == '0' %}
-        <b>{{ all[:-3] }}</b>
-        {% else %}
-        <b>{{ all }}</b>
-        {% endif %}
-<b>{{ currency }}</b>,
+                <li>w skali roku:
+                    {% set yearly = '{:,.2f}'.format(pay*12).replace(',', ' ').replace('.', ',') %}
+                    {% if yearly[-1] == '0' and yearly[-2] == '0' %}
+                        <b>{{ yearly[:-3] }}</b>
+                    {% else %}
+                        <b>{{ yearly }}</b>
+                    {% endif %}
+                    <b>{{ currency }}</b>,
 
-       {% if currency == 'EURO' %}
-    {% set policz = pay*12*time * cena %}
-    {% else %}
-    {% set policz = pay*12*time / cena %}
-    {% endif %}
+                    {% if currency == 'EURO' %}
+                        {% set policz = pay*12 * cena %}
+                    {% else %}
+                        {% set policz = pay*12 / cena %}
+                    {% endif %}
 
-        czyli
-            {% set allp = '{:,.2f}'.format(policz).replace(',', ' ').replace('.', ',') %}
-        {% if allp[-1] == '0' and yearlyp[-2] == '0' %}
-        {{ allp[:-3] }}
-        {% else %}
-        {{ allp }}
-        {% endif %}
-        {% if currency == 'EURO' %}PLN{% else %}EURO{% endif %}
-    </li>
-    <br/>
+                    czyli
+                    {% set yearlyp = '{:,.2f}'.format(policz).replace(',', ' ').replace('.', ',') %}
+                    {% if yearlyp[-1] == '0' and yearlyp[-2] == '0' %}
+                        {{ yearlyp[:-3] }}
+                    {% else %}
+                        {{ yearlyp }}
+                    {% endif %}
+                    {% if currency == 'EURO' %}PLN{% else %}EURO{% endif %}</li>
 
-    <p style="text-align: justify">Powyższą opłatę policzono na podstawie
-       <a href="http://kssse.pl/upload/REGULAMIN_OPLAT.pdf" target="_blank">regulaminu świadczenia usług standardowych
-    na obszarze zarządzanym przez Kostrzyńsko-Słubicką Specjalną Strefę Ekonomiczną.</a> </p>
 
-<p style="text-align: justify">Regulamin został zatwierdzony przez Ministerstwo Rozwoju a opłata nie podlega negocjacjom
-przed podpisaniem umowy o świadczenie usług.</p>
-    <p style="text-align: justify">Przedsiębiorca zobowiązany jest do podpisania umowy niezwłocznie po uzyskaniu decyzji
-    o wsparciu według artykułu 10 punktu 1 <a href="http://kssse.pl/upload/pictures/Dz_U_2018_poz_1162.pdf">
-            ustawy o wspieraniu nowych inwestycji.</a></p>
+                <li>przez cały okres ważności decyzji
 
-    {% if infrastructure == 'option1' %}
-        <p style="text-align: justify"><b>UWAGA!</b> Oprócz powyższego przedsiębiorca zobowiązany jest do podpisanie umowy
-        na korzystanie z infrastruktury technicznej należącej do zarządzającego strefą w wysokości 1,50 PLN za
-            m<sup>2</sup> nieruchomości rocznie.</p>
-    {% endif %}
+                    {% set all = '{:,.2f}'.format(pay*12*time).replace(',', ' ').replace('.', ',') %}
+                    {% if all[-1] == '0' and all[-2] == '0' %}
+                        <b>{{ all[:-3] }}</b>
+                    {% else %}
+                        <b>{{ all }}</b>
+                    {% endif %}
+                    <b>{{ currency }}</b>,
 
-    </div><!--end column2-->
-  </div> <!--end row-->
+                    {% if currency == 'EURO' %}
+                        {% set policz = pay*12*time * cena %}
+                    {% else %}
+                        {% set policz = pay*12*time / cena %}
+                    {% endif %}
+
+                    czyli
+                    {% set allp = '{:,.2f}'.format(policz).replace(',', ' ').replace('.', ',') %}
+                    {% if allp[-1] == '0' and yearlyp[-2] == '0' %}
+                        {{ allp[:-3] }}
+                    {% else %}
+                        {{ allp }}
+                    {% endif %}
+                    {% if currency == 'EURO' %}PLN{% else %}EURO{% endif %}
+                </li>
+                <br/>
+
+                <p style="text-align: justify">Powyższą opłatę policzono na podstawie
+                    <a href="http://kssse.pl/upload/REGULAMIN_OPLAT.pdf" target="_blank">regulaminu świadczenia usług
+                        standardowych
+                        na obszarze zarządzanym przez Kostrzyńsko-Słubicką Specjalną Strefę Ekonomiczną.</a></p>
+
+                <p style="text-align: justify">Regulamin został zatwierdzony przez Ministerstwo Rozwoju a opłata nie
+                    podlega negocjacjom
+                    przed podpisaniem umowy o świadczenie usług.</p>
+                <p style="text-align: justify">Przedsiębiorca zobowiązany jest do podpisania umowy niezwłocznie po
+                    uzyskaniu decyzji
+                    o wsparciu według artykułu 10 punktu 1 <a
+                            href="http://kssse.pl/upload/pictures/Dz_U_2018_poz_1162.pdf">
+                        ustawy o wspieraniu nowych inwestycji.</a></p>
+
+                <p style="text-align: justify">Umowa zostanie podpisana w złotówkach. Dane w Euro mają tylko i wyłącznie
+                    charakter poglądowy.</p>
+
+                {% if infrastructure == 'option1' %}
+                    <p style="text-align: justify"><b>UWAGA!</b> Warunki korzystania z infrastruktury technicznej
+                        podlegają odrębnym uzgodnieniom.</p>
+                {% endif %}
+
+            </div><!--end column2-->
+        </div> <!--end row-->
     </div>  <!--end CONTAINER-->
 
-<hr />
+    <hr/>
 
 {% endblock %}
