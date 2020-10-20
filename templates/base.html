@@ -3,95 +3,56 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Polska Strefa Inwestycji – Kalkulatory</title>
+    <meta name="description"
+          content="Kalkulatory związane z pomocą publiczną w ramach Polskiej Strefy Inwestycji w Kostrzyńsko-Słubickiej
+          Specjalnej Strefie Ekonomicznej S.A. Pomagają obliczyć maksymalną możliwą pomoc publiczną, minimalne nakłady,
+          pokazują minimalne wymagane nakłady w poszczególnych gminach oraz wyliczają opłatę za administrowanie w ramach
+           specjalnej strefy ekonomicznej.">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-reboot.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-reboot.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.css') }}">
-    <style>
-        .box {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .box div {
-            width: 100px;
-            height: 100px;
-        }
-    </style>
-
-    <style>
-        .btn-own {
-            background-color: #577CBD;
-            color: #FFF;
-        }
-
-        .btn-own:hover {
-            background-color: #272D57;
-            color: #FFF;
-        }
-    </style>
-
-    <style>
-        .btn-ownb {
-            background-color: #9E2F29;
-            color: #FFF;
-        }
-
-        .btn-ownb:hover {
-            background-color: #4F181E;
-            color: #FFF;
-        }
-    </style>
+{#    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">#}
+{#    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-reboot.min.css') }}">#}
+{#    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-reboot.css') }}">#}
+{#    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.min.css') }}">#}
+{#    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-grid.css') }}">#}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}">
 
 </head>
 
 <body>
 <header>
-<!--TOP-->
-<br/>
-<div class="container">
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="box">
-                <img alt="Polska Strefa Inwestycji" height="75"
-                     src="{{ url_for('static', filename='images/psi.png') }}">
-            </div>
-        </div>
-
-        <div class="col-sm-4">
-            <div class="box">
-                <img alt="Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A."
-                     height="75" src="{{ url_for('static', filename='images/strefalogo.png') }}">
-            </div>
-        </div>
-        <div class="col-sm-4" style="text-align: center">
-            <div class="box">
-                <img alt="Invest in the West" height="75"
-                     src="{{ url_for('static', filename='images/Invest_in_the_west.png') }}">
-            </div>
-        </div>
+    <div class="hwrap clearfix">
+        <div class="logoup"><img src="static/images/psi.png" alt="Polska Strefa Inwestycji"></div>
+        <div class="logoup"><img src="static/images/strefalogo.png"
+                                 alt="Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A."></div>
+        <div class="logoup"><img src="static/images/Invest_in_the_west.png" alt="Invest in the West"></div>
     </div>
-</div>
-<br/>
+    <div class="jumbo">
+        <h1>Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A.</h1>
+        <p>Kalkulatory przydatne do uzyskania wsparcia w ramach Polskiej Strefy Inwestycji</p>
+    </div>
 </header>
 
 {% block content %}{% endblock %}
 
-<div class="container">
-    <p style="text-align: justify">
-        Zapraszamy do kontaktu z naszymi specjalistami, którzy pomogą w podjęciu decyzji oraz przedstawią mozliwości
-        uzyskania wsparcia na nową inwestycję.<br/><br/>
+<footer>
+    <section>
+        <div class="specialist">
+            <p>Zapraszamy do kontaktu z naszymi specjalistami, którzy pomogą w podjęciu decyzji oraz przedstawią
+                mozliwości uzyskania wsparcia.</p>
+            <div class="sbutton">
+                <button type="button" data-toggle="collapse" data-target="#collapseExample8" aria-expanded="false"
+                        aria-controls="collapseExample8">Kontakt ze specjalistą
+                </button>
+            </div>
+        </div>
 
-        <button class="btn btn-own" type="button" data-toggle="collapse" data-target="#collapseExample8"
-                aria-expanded="false" aria-controls="collapseExample8">
-            Kontakt ze specjalistą
-        </button>
-
-        {% if specialist == 1 %}
+                {% if specialist == 1 %}
             {% include 'babij.html' %}
 
         {% elif specialist == 2 %}
@@ -106,38 +67,22 @@
         {% else %}
             {% include 'babij.html' %}
         {% endif %}
-</div>
-<hr/>
-<!--STOPKA-->
-<div class="container">
-    <div class="row">
-        <div class="col-sm-6" style="text-align: left">
-            <img alt="Kostrzyńsko-Słubicka Specjalna Strefa Ekpnomiczna S.A." width="80%"
-                 src="{{ url_for('static', filename='images/strefalogo.png') }}">
-            <br/><br/><a href="http://kssse.pl" target="_blank">
-            <button type="button" class="btn btn-ownb">Zapraszamy na naszą stronę internetową</button>
-        </a>
 
+    </section>
+    <section>
+        <div class="footer">
+            <p><strong>&copy;</strong><a href="http://kssse.pl" target="_blank">Kostrzyńsko-Słubicka Specjalna Strefa
+                Ekonomiczna S.A.</a>
+            </p>
         </div>
-        <div class="col-sm-6" style="text-align: justify; background-color: #f5f3f3;">
-            <p style="text-align: left"><i class="fas fa-map-marker-alt"></i> <b>Kostrzyńsko - Słubicka Specjalna Strefa
-                Ekonomiczna S.A.</b><br/>
-                ul. Orła Białego 22<br/>
-                66-470 Kostrzyn nad Odrą<br/>
-                NIP: 598-13-16-916
-            <p><i class="fas fa-at"></i> info@kssse.pl<br/>
-                <i class='fas fa-phone'></i> +48 95 721 98 00<br/>
-                <i class="fab fa-facebook"></i><a href="https://fb.me/investpoland" target="_blank">
-                    @investpoland</a><br/>
-                <a href="http://kssse.pl" target="_blank">www.investinthewest.pl</a>
+    </section>
+    <aside>
+        <p class="create">created by: <a href="http://babij.eu">www.babij.eu</a></p>
+    </aside>
+</footer>
 
-            </p></div>
-    </div>
-</div>
-<div class="container">
 
-    <p style="text-align: right">created by: &copy; <a href="http://babij.eu" target="_blank">babij.eu</a></p>
-</div>
+
 
 <script src="{{ url_for('static', filename='js/separator.js') }}"></script>
 <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>

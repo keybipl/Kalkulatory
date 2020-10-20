@@ -6,80 +6,23 @@
 
 {% block content %}
 
-    <!--JUMBO-->
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-5" style="text-align: center">Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A.</h1>
-            <p class="lead" style="text-align: center">Kalkulatory przydatne do uzyskania wsparcia w ramach Polskiej
-                Strefy Inwestycji</p>
-        </div>
-    </div>
-
-    <!--GÓRNE DWIE KOLUMNY-->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="box"><br/><br/>
-                    <a href="pomoc">
-                        <button type="button" class="btn btn-own btn-lg">Wielkość pomocy</button>
-                    </a>
+    <main>
+        <section>
+            <div class="cwrap clearfix">
+                <div class="calc"><a href="pomoc"><button>wielkość pomocy</button></a>
+                    <p>Oblicza maksymalną wysokość wsparcia przy wybranych parametrach.</p>
                 </div>
-                <br/>
-                <p style="text-align: justify">Oblicza maksymalną wysokość wsparcia w ramach Polskiej Strefy Inwestycji
-                    przy
-                    wybranych parametrach.</p>
-                <hr/>
-
-            </div>
-            <div class="col-md-6">
-
-                <div class="box"><br/><br/>
-                    <a href="lokalizacje">
-                        <button type="button" class="btn btn-own btn-lg">Lokalizacje ze wsparciem</button>
-                    </a>
+                <div class="calc"><a href="lokalizacje"><button> lokalizacje ze wsparciem</button></a>
+                    <p>Po wpisaniu parametrów wyswietla wszystkie gminy, w których możliwe jest wsparcie.</p>
                 </div>
-                <br/>
-                <p style="text-align: justify">Pokazuje wszystkie gminy, w których możliwe jest wsparcie w ramach
-                    Polskiej
-                    Strefy inwestycji po wpisaniu odpowiednich parametrów. </p>
-                <hr/>
-
-            </div>
-        </div>
-        <br/><br/>
-
-
-        <!--DOLNE DWIE KOLUMNY-->
-        <div class="row">
-            <div class="col-md-6">
-                <div class="box"><br/><br/>
-                    <a href="naklady">
-                        <button type="button" class="btn btn-own btn-lg">Minimalne nakłady</button>
-                    </a>
+                <div class="calc"><a href="naklady"> <button>minimalne nakłady</button></a>
+                    <p>Pokazuje minimalne wymagane koszty kwalifikowane inwestycji w wybranych powiatach i gminach.</p>
                 </div>
-                <br/>
-                <p style="text-align: justify">Pokazuje minimalne wymagane koszty kwalifikowane inwestycji w wybranych
-                    powiatach i gminach. </p>
-                <br/>
-
-            </div>
-            <div class="col-md-6">
-
-                <div class="box"><br/><br/>
-                    <a href="oplata">
-                        <button type="button" class="btn btn-own btn-lg">Opłata za administrowanie</button>
-                    </a>
+                <div class="calc"><a href="oplata"><button>opłata za administrowanie</button></a>
+                    <p>Oblicza opłatę do zarządzającego obszarem po podaniu wymaganych parametrów.</p>
                 </div>
-                <br/>
-                <p style="text-align: justify">Każdy przedsiębiorca, który uzyska wsparcie (decyzję o wsparciu) od
-                    specjalnej
-                    strefy ekonomicznej, zobligowany jest do uiszczania opłaty dla zarządzającego przez cały okres
-                    ważności
-                    decyzji. Kalkulator obliczą tę opłatę po podaniu wymaganych parametrów. </p>
-
             </div>
-        </div>
-    </div>
-    <hr/>
+        </section>
+    </main>
 
 {% endblock %}

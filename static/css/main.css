@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+body {
+    font-family: 'Roboto', arial, sans-serif;
+}
+
+
+main {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 15px;
+}
+
+.calc {
+    text-align: center;
+    border-bottom: 1px solid grey;
+}
+
+.calc button {
+    margin: 15px 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    width: 290px;
+    background-color: #577CBD;
+    color: #eee;
+    padding: 10px 0;
+    border: 0;
+    border-radius: 20px;
+
+}
+
+.calc p {
+    font-size: 1.1rem;
+    margin: 0 15px 15px;
+}
+
+
+@media (min-width: 533px) {
+
+    .calc button {
+        width: 400px;
+        padding: 5px 0;
+        font-size: 26px;
+        margin-top: 30px;
+    }
+
+
+    .calc p {
+        font-size: 1.4rem;
+    }
+
+}
+
+
+@media (min-width: 768px) {
+
+    .calc {
+        width: 50%;
+        height: 230px;
+        float: left;
+    }
+
+    .cwrap .calc:nth-child(3) {
+        height: 220px;
+    }
+
+    .cwrap .calc:nth-child(4) {
+        height: 220px;
+    }
+
+
+    .calc button {
+        width: 340px;
+        padding: 12px 0;
+        font-size: 1.4rem;
+    }
+
+}
+
+@media (min-width: 1024px) {
+
+    .cwrap {
+        width: 100%;
+    }
+
+    .calc {
+        width: 46%;
+        margin: 0 20px;
+        height: 250px;
+    }
+
+    .cwrap .calc:nth-child(3) {
+        height: 230px;
+    }
+
+    .cwrap .calc:nth-child(4) {
+        height: 230px;
+    }
+
+    .cwrap p {
+        font-size: 22px;
+    }
+
+    .calc button {
+        width: 400px;
+        padding: 12px 0;
+        font-size: 1.5rem;
+    }
+}
+
+
+@media (min-width: 1366px) {
+
+    .calc {
+        width: 46%;
+        margin: 0 20px;
+        height: 200px;
+    }
+
+    .cwrap p {
+        font-size: 1.5rem;
+    }
+
+    .cwrap .calc:nth-child(3) {
+        height: 200px;
+    }
+
+    .cwrap .calc:nth-child(4) {
+        height: 200px;
+    }
+
+    .calc button {
+        transition: .55s;
+    }
+
+    .calc button:hover {
+        background-color: #272D57;
+        color: #FFF;
+    }
+
+}

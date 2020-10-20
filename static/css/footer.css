@@ -1,0 +1,319 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+section:nth-of-type(2) {
+    background-color: #F0E2E3;
+}
+
+aside {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.specialist {
+    text-align: center;
+}
+
+.specialist button {
+
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    width: 290px;
+    background-color: #B11F36;
+    color: #eee;
+    padding: 10px 0;
+    border: 0;
+    border-radius: 20px;
+    letter-spacing: 1px;
+}
+
+.specialist p {
+    font-size: 1.1rem;
+    margin-bottom: 15px
+}
+
+.collapse {
+    text-align: center;
+    margin: 15px auto;
+}
+
+.collapse img {
+    width: 50%
+}
+
+.contactname h1 {
+    font-size: 1.8rem;
+    margin: 4px 0;
+}
+
+.contactname p {
+    font-size: 1.25rem;
+    margin-bottom: 16px;
+}
+
+.icons p {
+    margin: 5px 0;
+    font-size: 1.2rem;
+}
+
+.icons strong {
+    margin-left: 18px;
+    font-weight: normal;
+}
+
+.icons a {
+    color: #B11F36;
+    font-weight: 600;
+}
+
+.footer {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.footer p {
+    font-size: 0.7rem;
+    line-height: 300%;
+}
+
+.footer strong {
+    padding-right: 10px;
+    font-size: 1rem;
+}
+
+.create {
+    text-align: right;
+}
+
+.footer a {
+    color: #B11F36;
+}
+
+.create {
+    padding-right: 10px;
+}
+
+@media (min-width: 533px) {
+
+    .specialist button {
+        width: 400px;
+        font-size: 22px;
+        margin-bottom: 10px;
+        border-radius: 20px;
+        letter-spacing: 1px;
+    }
+
+    .specialist p {
+        font-size: 1.4rem;
+    }
+
+    .img {
+        float: left;
+        width: 50%;
+        text-align: right;
+        padding-right: 40px;
+    }
+
+    .collapse img {
+        height: 190px;
+        width: auto;
+    }
+
+    .contactname {
+        text-align: left;
+    }
+
+    .icons {
+        text-align: left;
+    }
+
+    .contactname h1 {
+        font-size: 32px;
+        margin: 4px 0;
+    }
+
+    .contactname p {
+        font-size: 22px;
+        margin-bottom: 16px;
+    }
+
+
+    .footer p {
+        font-size: 1rem;
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    .footer strong {
+        padding-right: 5px;
+        font-size: 1.4rem;
+    }
+}
+
+@media (min-width: 731px) {
+
+    .img {
+        text-align: right;
+        padding-right: 40px;
+    }
+
+    .img img {
+        height: 220px;
+        width: auto;
+    }
+
+    .icons {
+        margin-top: 30px;
+    }
+
+    .icons strong {
+        font-size: 1.4rem;
+    }
+
+    .icons i {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+
+    .specialist p {
+        margin-top: 25px;
+        margin-bottom: 35px;
+    }
+
+    .specialist button {
+        width: 340px;
+        font-size: 1.4rem;
+        margin-bottom: 20px;
+    }
+
+
+    .contactname h1 {
+        font-size: 2rem;
+        margin: 4px 0;
+    }
+
+    .contactname p {
+        font-size: 1.5rem;
+        margin-bottom: 45px;
+    }
+
+    .icons p {
+        margin: 5px 0;
+        font-size: 1.6rem;
+    }
+
+    .icons strong {
+        margin-left: 18px;
+        font-weight: normal;
+    }
+
+    .img {
+        text-align: right;
+        padding-right: 50px
+    }
+
+    .img img {
+        height: 250px;
+        width: auto;
+    }
+
+    .footer p {
+        font-size: 1.2rem;
+        text-align: right;
+        padding-right: 10px;
+    }
+
+    .footer strong {
+        padding-right: 5px;
+        font-size: 1.4rem;
+    }
+}
+
+
+@media (min-width: 1024px) {
+
+    .specialist button {
+        width: 400px;
+        font-size: 1.5rem;
+    }
+
+    .specialist p {
+        font-size: 22px;
+        margin: 20px 20px;
+    }
+
+    .collapse img {
+        height: 250px;
+        width: auto;
+    }
+
+    .contactname h1 {
+        font-size: 2rem;
+    }
+
+    .contactname p {
+        font-size: 1.5rem;
+    }
+
+
+    .icons {
+        margin-top: 4px
+    }
+
+    .icons p {
+        margin: 8px 0;
+        font-size: 1.4rem;
+    }
+
+    .icons strong {
+        margin-left: 18px;
+        font-weight: normal;
+    }
+
+
+    .img {
+        text-align: right;
+        padding-right: 50px;
+    }
+}
+
+
+@media (min-width: 1366px) {
+
+    .specialist p {
+        font-size: 1.5rem;
+    }
+
+    .specialist button {
+        transition: .5s;
+    }
+
+    .specialist button:hover {
+        background-color: #4F181E;
+        color: #FFF;
+    }
+
+    .icons a:hover {
+        text-decoration: none;
+        color: #4F181E;
+    }
+
+    .footer a {
+        transition: .5s;
+    }
+
+    .footer a:hover {
+        color: #4F181E;
+        text-decoration: none;
+    }
+
+    aside a:hover {
+        text-decoration: none;
+        color: #272D57;
+    }
+}
