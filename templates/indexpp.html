@@ -3,185 +3,147 @@
 
 {% block content %}
 
+<div class="ppwrap">
+  <div class="pp">
 
-    <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-5" style="text-align: center" >Kalkulator pomocy publicznej</h1>
-    <p class="lead" style="text-align: center" >Policz ile zwrotu możesz dostać za realizację nowej inwestycji</p>
-      <div class="box">
-      <a class="btn btn-success btn-lg" href="/" role="button">Pokaż inne kalkulatory</a>
-          </div>
-  </div>
-</div>
+    <form method="POST" action="/pomoc">
 
-
-
-{# MIDDLE #}
-<div class="container">
-    <div class="row">
-  <div class="col-sm-4" align="center">
-
-      <form method="POST" action="/pomoc" >
-  <div class="form-group" style="width: 15rem;">
-
-      <label for="exampleFormControlSelect1"><b>Wybierz walutę</b></label>
-    <select class="form-control" id="exampleFormControlSelect1" name="waluta" required>
-        <option></option>
-      <option>PLN</option>
-        <option>EURO</option>
-    </select>
-
-<hr />
-
-       <div class="form-group">
-           <label for="formGroupExampleInput"><b>Koszty kwalifikowane (w mln)</b></label>
-    <input type="number" step="0.05" class="form-control" id="formGroupExampleInput" placeholder="proszę podać w mln" name="value" required>
-  </div>
-<hr />
-
-      <label for="exampleFormControlSelect2"><b>Wybierz województwo</b></label>
-    <select class="form-control" id="exampleFormControlSelect2" name="region" required>
-        <option></option>
-      <option>lubuskie</option>
-        <option>wielkopolskie</option>
-      <option>zachodniopomorskie</option>
-    </select>
-
-<hr />
-      <label for="exampleFormControlSelect3"><b>Wielkość przedsiębiorcy</b></label>
-    <select class="form-control" id="exampleFormControlSelect3" name="size" required>
-        <option></option>
-      <option>duży</option>
-        <option>średni</option>
-      <option>mały</option>
-      <option>mikro</option>
-    </select>
-      <br />
-
-<button type="submit" class="btn btn-ownb">Policz</button>
-
-
-  </div>
-
-      </form></div>
-  <div class="col-sm-8" style="text-align: justify" >
-
-            <p><b>1. Waluta:</b> Proszę wybrać w jakiej walucie zostanie policzona pomoc publiczna.
-          Kalkulator liczy po średnim kursie Narodowego Banku Polskiego <b>{{ cena }}</b> za PLN z dnia
-          <b>{{ date[8:10] }}.{{ date[5:7] }}.{{ date[0:4] }} roku.</b>
-</p><hr />
-      <p><b>2. Koszty kwalifikowane: </b>Proszę podać wartość planowanej inwestycji, czyli koszty kwalifikujące
-          się do objęcia pomocą. <br/>
-
-           <p style="text-align: center"> <button class="btn btn-own" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample1">
-    Definicja kosztów kwalifikowanych inwestycji
-</button></p>
-<div class="collapse" id="collapseExample1">
-  <div class="card card-body" style="text-align: center">
-    <p style="text-align: justify">Koszty kwalifikowane inwestycji zdefiniowane są w paragrafie 8 punkcie 1
-        Rozporządzenia Rady Ministrów z dnia 28 sierpnia 2018 r. w sprawie pomocy publicznej udzielanej niektórym
-        przedsiębiorcom na realizację nowych inwestycji (Dz.U. 2018 poz. 1713)
-        <a href="http://kssse.pl/upload/pictures/rozporzadzenie-ke-ue-nr-6512014-z-dnia-17-czerwca-2014.pdf"
-        target="_blank">
-            LINK
-        </a><br/><br/>
-        <b>Do kosztów kwalifikujących się do objęcia wsparciem na nowe inwestycje zalicza się koszty będące:</b><br/>
-1) kosztem związanym z nabyciem gruntów lub prawa ich użytkowania wieczystego,<br/>
-2) ceną nabycia albo kosztem wytworzenia we własnym zakresie środków trwałych, pod warunkiem zaliczenia ich,
-        zgodnie z odrębnymi przepisami, do składników majątku podatnika i zaliczenia ich do ewidencji środków
-        trwałych oraz wartości niematerialnych i prawnych,<br/>
-3) kosztem rozbudowy lub modernizacji istniejących środków trwałych,<br/>
-4) ceną nabycia wartości niematerialnych i prawnych związanych z transferem technologii przez nabycie praw patentowych,
-        licencji, know-how i nieopatentowanej wiedzy technicznej, z zastrzeżeniem ust. 2 i 3,<br/>
-5) kosztem związanym z najmem lub dzierżawą gruntów, budynków i budowli – pod warunkiem że okres najmu lub dzierżawy
-        trwa co najmniej 5 lat, a w przypadku mikroprzedsiębiorców, małych przedsiębiorców i średnich
-        przedsiębiorców – co najmniej 3 lata, licząc od przewidywanego terminu zakończenia nowej inwestycji,<br/>
-6) ceną nabycia aktywów innych niż grunty, budynki i budowle objęte najmem lub dzierżawą, w przypadku gdy najem
-        lub dzierżawa ma postać leasingu finansowego oraz obejmuje zobowiązanie do nabycia aktywów z dniem upływu
-        okresu najmu lub dzierżawy<br/><br/>
-– pomniejszone o naliczony podatek od towarów i usług oraz o podatek akcyzowy, jeżeli możliwość ich odliczeń wynika z odrębnych przepisów, poniesione w okresie ważności decyzji o wsparciu wydanej dla konkretnej lokalizacji.
-<br/><br/>
-        Według ustawy z dnia 10 maja 2018r. o wspieraniu nowych inwestycji (Dz.U.2018 poz 1162 -
-        <a href="http://kssse.pl/upload/pictures/Dz_U_2018_poz_1162.pdf" target="_blank">LINK</a>)  defincija kosztów kwalifikownaych
-        brzmi następująco:<br/><br/>
-
-        <b>koszty kwalifikowane nowej inwestycji</b> – koszty inwestycji kwalifikujące się do objęcia pomocą publiczną z tytułu
-nowej inwestycji pomniejszone o naliczony podatek od towarów i usług oraz o podatek akcyzowy, jeżeli możliwość
-ich odliczeń wynika z odrębnych przepisów, poniesione w okresie ważności decyzji o wsparciu lub <b>dwuletnie koszty
-            pracy</b>, jakie mogą być uwzględnione przy określaniu maksymalnej pomocy publicznej, ponoszone w okresie ważności
-decyzji o wsparciu.
-
-
-    </p>
-  </div>
-</div>
-      <hr/>
-
-      <p><b>3. Województwo:</b> Proszę pamiętać, że każde województwo ma ustaloną maksymalną możliwą pomoc publiczną
-          i może ona się różnić dla różnych lokalizacji. Poniższy przycisk wyświetla aktualną mapę pomocy
-          w Polsce. </p>
-
-       <p class="text-danger" style="text-align: justify">
-          UWAGA!: Dla przedsiębiorców z sektora MŚP intensywność powiększona jest o 10% dla średniego podmiotu
-          oraz o 20% dla małego i mikro.
-
-</p>
-
-      <p style="text-align: center"> <button class="btn btn-own" type="button" data-toggle="collapse"
-                                           data-target="#collapseExample" aria-expanded="false"
-                                           aria-controls="collapseExample">
-    Mapa pomocy publicznej
-</button></p>
-<div class="collapse" id="collapseExample">
-  <div class="card card-body" style="text-align: center">
-   <br/>
-      <div class="box">
-      <img width="80%" alt="Mapa pomocy publicznej" src="{{ url_for('static', filename='mapa.PNG') }}">
+      <div class="form-group">
+        <label for="waluta">Wybierz walutę</label>
+        <select class="form-control" id="waluta" name="waluta" required>
+          <option></option>
+          <option>PLN</option>
+          <option>EURO</option>
+        </select>
       </div>
 
-  </div>
-</div>
-      <hr />
-      <p><b>3. Wielkość przedsiębiorstwa: </b> Proszę określić wielkość przedsiębiorstwa według przepisów unijnych.</p>
+      <div class="form-group">
+        <label for="value">Koszty kwalifikowane (w mln)</label>
+        <input type="number" step="0.05" class="form-control" id="value" placeholder="proszę podać w mln" name="value"
+          required>
+      </div>
 
-                <p style="text-align: center"> <button class="btn btn-own" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
-    Jak określić wielkość przedsiębiorstwa
-</button></p>
-<div class="collapse" id="collapseExample3">
-  <div class="card card-body" style="text-align: center">
-    <p style="text-align: justify">Wielkość przedsiębiorstwa ubiegającego się o pomoc publiczną definiuje załącznik nr 1
-        do Rozporządzenia Komisji (UE) nr 651/2014 z dnia 17 czerwca 2014r. uznające niektóre rodzaje pomocy za zgodne z rynkiem
-        wewnętrznym w zastosowaniu art. 107 i 108 Traktatu (obowiązuje od 1 lipca 2014)
+      <div class="form-group">
+        <label for="region">Wybierz województwo</label>
+        <select class="form-control" id="region" name="region" required>
+          <option></option>
+          <option>lubuskie</option>
+          <option>wielkopolskie</option>
+          <option>zachodniopomorskie</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="size">Wielkość przedsiębiorcy</label>
+        <select class="form-control" id="size" name="size" required>
+          <option></option>
+          <option>duży</option>
+          <option>średni</option>
+          <option>mały</option>
+          <option>mikro</option>
+        </select>
+      </div>
+
+      <button type="submit" class="ppcount">Policz</button>
+
+    </form>
+  </div>
+
+  <div class="pp">
+    <p class="waluta">1. Waluta: Proszę wybrać w jakiej walucie zostanie policzona pomoc publiczna.
+      Kalkulator liczy po średnim kursie Narodowego Banku Polskiego {{ cena }} za PLN z dnia
+      {{ date[8:10] }}.{{ date[5:7] }}.{{ date[0:4] }} roku.
+    </p>
+
+    <p>2. Koszty kwalifikowane: Proszę podać wartość planowanej inwestycji, czyli koszty kwalifikujące się do objęcia
+      pomocą.</p>
+    </p><a data-toggle="collapse" data-target="#koszty" aria-expanded="false" aria-controls="koszty">
+      Definicja kosztów kwalifikowanych inwestycji
+    </a></p>
+
+    <div class="collapse" id="koszty">
+      <div class="defkoszty">
+        <p>Koszty kwalifikowane inwestycji zdefiniowane są w paragrafie 8 punkcie 1
+          Rozporządzenia Rady Ministrów z dnia 28 sierpnia 2018 r. w sprawie pomocy publicznej udzielanej niektórym
+          przedsiębiorcom na realizację nowych inwestycji (Dz.U. 2018 poz. 1713)
+          <a href="http://kssse.pl/upload/pictures/rozporzadzenie-ke-ue-nr-6512014-z-dnia-17-czerwca-2014.pdf"
+            target="_blank">LINK</a>
+          Do kosztów kwalifikujących się do objęcia wsparciem na nowe inwestycje zalicza się koszty
+          będące:</p>
+        <ol>
+          <li>kosztem związanym z nabyciem gruntów lub prawa ich użytkowania wieczystego,</li>
+          <li>ceną nabycia albo kosztem wytworzenia we własnym zakresie środków trwałych, pod warunkiem zaliczenia
+            ich, zgodnie z odrębnymi przepisami, do składników majątku podatnika i zaliczenia ich do ewidencji środków
+            trwałych oraz wartości niematerialnych i prawnych,</li>
+          <li>kosztem rozbudowy lub modernizacji istniejących środków trwałych,</li>
+          <li>ceną nabycia wartości niematerialnych i prawnych związanych z transferem technologii przez nabycie praw
+            patentowych,
+            licencji, know-how i nieopatentowanej wiedzy technicznej, z zastrzeżeniem ust. 2 i 3,</li>
+          <li>kosztem związanym z najmem lub dzierżawą gruntów, budynków i budowli – pod warunkiem że okres najmu lub
+            dzierżawy trwa co najmniej 5 lat, a w przypadku mikroprzedsiębiorców, małych przedsiębiorców i średnich
+            przedsiębiorców – co najmniej 3 lata, licząc od przewidywanego terminu zakończenia nowej inwestycji,</li>
+          <li>ceną nabycia aktywów innych niż grunty, budynki i budowle objęte najmem lub dzierżawą, w przypadku gdy
+            najem lub dzierżawa ma postać leasingu finansowego oraz obejmuje zobowiązanie do nabycia aktywów z dniem
+            upływu
+            okresu najmu lub dzierżawy – pomniejszone o naliczony podatek od towarów i usług oraz o podatek akcyzowy,
+            jeżeli możliwość ich
+            odliczeń wynika z odrębnych przepisów, poniesione w okresie ważności decyzji o wsparciu wydanej dla
+            konkretnej lokalizacji.</li>
+        </ol>
+
+        <p>Według ustawy z dnia 10 maja 2018r. o wspieraniu nowych inwestycji (Dz.U.2018 poz 1162 -
+          <a href="http://kssse.pl/upload/pictures/Dz_U_2018_poz_1162.pdf" target="_blank">LINK</a>) defincija
+          kosztów kwalifikownaych brzmi następująco:</p>
+        <p> koszty kwalifikowane nowej inwestycji – koszty inwestycji kwalifikujące się do objęcia pomocą
+          publiczną z tytułu nowej inwestycji pomniejszone o naliczony podatek od towarów i usług oraz o podatek
+          akcyzowy, jeżeli
+          możliwość ich odliczeń wynika z odrębnych przepisów, poniesione w okresie ważności decyzji o wsparciu lub
+          dwuletnie koszty pracy, jakie mogą być uwzględnione przy określaniu maksymalnej pomocy publicznej, ponoszone w
+          okresie ważności decyzji o wsparciu.</p>
+      </div>
+    </div>
+    <p class="region">3. Województwo: Proszę pamiętać, że każde województwo ma ustaloną maksymalną możliwą pomoc
+      publiczną i może ona się różnić dla różnych lokalizacji. Poniższy przycisk wyświetla aktualną mapę pomocy
+      w Polsce.
+      UWAGA!: Dla przedsiębiorców z sektora MŚP intensywność powiększona jest o 10% dla średniego podmiotu
+      oraz o 20% dla małego i mikro. </p>
+    <button class="btn-primary" type="button" data-toggle="collapse" data-target="#mapa">
+      Mapa pomocy publicznej
+    </button>
+    <div class="collapse" id="mapa">
+      <img alt="Mapa pomocy publicznej" src="{{ url_for('static', filename='mapa.PNG') }}">
+    </div>
+
+
+    <p>3. Wielkość przedsiębiorstwa: Proszę określić wielkość przedsiębiorstwa według przepisów
+      unijnych.</p>
+    <button class="btn-primary" type="button" data-toggle="collapse" data-target="#size">
+      Jak określić wielkość przedsiębiorstwa
+    </button>
+
+    <div class="collapse" id="size">
+      <p>Wielkość przedsiębiorstwa ubiegającego się o pomoc publiczną definiuje załącznik nr 1 do Rozporządzenia Komisji
+        (UE) nr 651/2014 z dnia 17 czerwca 2014r. uznające niektóre rodzaje pomocy za zgodne z rynkiem wewnętrznym w
+        zastosowaniu art. 107 i 108 Traktatu (obowiązuje od 1 lipca 2014)
         <a href="http://kssse.pl/upload/pictures/rozporzadzenie-ke-ue-nr-6512014-z-dnia-17-czerwca-2014.pdf"
-        target="_blank">
-            LINK
-        </a><br/><br/>
-        Do kategorii mikroprzedsiębiorstw oraz małych i średnich przedsiębiorstw („MŚP”) należą przedsiębiorstwa,
-        które zatrudniają mniej niż 250 pracowników i których roczny obrót nie przekracza 50 milionów EUR, lub roczna
-        suma bilansowa nie przekracza 43 milionów EUR. 2. W kategorii MŚP małe przedsiębiorstwo definiuje się jako
-        przedsiębiorstwo, które zatrudnia mniej niż 50 pracowników i którego roczny obrót lub roczna suma bilansowa
-        nie przekracza 10 milionów EUR. 3. W kategorii MŚP mikroprzedsiębiorstwo definiuje się jako przedsiębiorstwo,
-        które zatrudnia mniej niż 10 pracowników i którego roczny obrót lub roczna suma bilansowa nie przekracza
-        2 milionów EUR.
-        <p style="text-align: center"><img width="95%" alt="MSP" src="/static/msp.PNG">
-
-        </p>
+          target="_blank">LINK</a>
+        Do kategorii mikroprzedsiębiorstw oraz małych i średnich przedsiębiorstw („MŚP”) należą
+        przedsiębiorstwa, które zatrudniają mniej niż 250 pracowników i których roczny obrót nie przekracza 50 milionów
+        EUR, lub roczna suma bilansowa nie przekracza 43 milionów EUR. 2. W kategorii MŚP małe przedsiębiorstwo
+        definiuje się jako przedsiębiorstwo, które zatrudnia mniej niż 50 pracowników i którego roczny obrót lub roczna
+        suma bilansowa nie przekracza 10 milionów EUR. 3. W kategorii MŚP mikroprzedsiębiorstwo definiuje się jako
+        przedsiębiorstwo, które zatrudnia mniej niż 10 pracowników i którego roczny obrót lub roczna suma bilansowa nie
+        przekracza 2 milionów EUR.
+        <img width="95%" alt="MSP" src="/static/msp.PNG">
+      </p>
+    </div>
   </div>
 </div>
-
-
-</div>
-</div>
-</div>
-
-<hr />
-
 {% endblock %}
-
 {% block scripts %}
-    {{ super() }}
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src='https://kit.fontawesome.com/a076d05399.js'></script> -->
 {% endblock %}

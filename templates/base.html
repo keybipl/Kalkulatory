@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Polska Strefa Inwestycji – Kalkulatory</title>
-    <meta name="description"
-          content="Kalkulatory związane z pomocą publiczną w ramach Polskiej Strefy Inwestycji w Kostrzyńsko-Słubickiej
+    <meta name="description" content="Kalkulatory związane z pomocą publiczną w ramach Polskiej Strefy Inwestycji w Kostrzyńsko-Słubickiej
           Specjalnej Strefie Ekonomicznej S.A. Pomagają obliczyć maksymalną możliwą pomoc publiczną, minimalne nakłady,
           pokazują minimalne wymagane nakłady w poszczególnych gminach oraz wyliczają opłatę za administrowanie w ramach
            specjalnej strefy ekonomicznej.">
@@ -25,73 +24,75 @@
 </head>
 
 <body>
-<header>
-    <div class="hwrap clearfix">
-        <div class="logoup"><img src="static/images/psi.png" alt="Polska Strefa Inwestycji"></div>
-        <div class="logoup"><img src="static/images/strefalogo.png"
-                                 alt="Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A."></div>
-        <div class="logoup"><img src="static/images/Invest_in_the_west.png" alt="Invest in the West"></div>
-    </div>
-    <div class="jumbo">
-        <h1>Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A. </h1>
-        <p>Kalkulatory przydatne do uzyskania wsparcia w ramach Polskiej Strefy Inwestycji</p>
-    </div>
-</header>
-<main>
-    {% block content %}{% endblock %}
-</main>
-<footer>
-    <section>
-        <div class="specialist">
-            <p>Zapraszamy do kontaktu z naszymi specjalistami, którzy pomogą w podjęciu decyzji oraz przedstawią
-                mozliwości uzyskania wsparcia.</p>
-            <div class="sbutton">
-                <button type="button" data-toggle="collapse" data-target="#collapseExample8" aria-expanded="false"
-                        aria-controls="collapseExample8">Kontakt ze specjalistą
-                </button>
-            </div>
+    <header>
+        <div class="hwrap clearfix">
+            <div class="logoup"><img src="static/images/psi.png" alt="Polska Strefa Inwestycji"></div>
+            <div class="logoup"><img src="static/images/strefalogo.png"
+                    alt="Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A."></div>
+            <div class="logoup"><img src="static/images/Invest_in_the_west.png" alt="Invest in the West"></div>
         </div>
+        <div class="jumbo">
+            <h1>Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A. </h1>
+            <p>Kalkulatory przydatne do uzyskania wsparcia w ramach Polskiej Strefy Inwestycji</p>
+        </div>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <footer>
+        <section>
+            <div class="specialist">
+                <p>Zapraszamy do kontaktu z naszymi specjalistami, którzy pomogą w podjęciu decyzji oraz przedstawią
+                    mozliwości uzyskania wsparcia.</p>
+                <div class="sbutton">
+                    <button type="button" data-toggle="collapse" data-target="#collapseExample8" aria-expanded="false"
+                        aria-controls="collapseExample8">Kontakt ze specjalistą
+                    </button>
+                </div>
+            </div>
 
-        {% if specialist == 1 %}
+            {% if specialist == 1 %}
             {% include 'babij.html' %}
 
-        {% elif specialist == 2 %}
+            {% elif specialist == 2 %}
             {% include 'borowski.html' %}
 
-        {% elif specialist == 3 %}
+            {% elif specialist == 3 %}
             {% include 'matula.html' %}
 
-        {% elif specialist == 4 %}
+            {% elif specialist == 4 %}
             {% include 'kail.html' %}
 
-        {% else %}
+            {% else %}
             {% include 'babij.html' %}
-        {% endif %}
+            {% endif %}
 
-    </section>
-    <section>
-        <div class="footer">
-            <p><strong>&copy;</strong><a href="http://kssse.pl" target="_blank">Kostrzyńsko-Słubicka Specjalna Strefa
-                Ekonomiczna S.A.</a>
-            </p>
-        </div>
-    </section>
-    <aside>
-        <p class="create">created by: <a href="http://babij.eu">www.babij.eu</a></p>
-    </aside>
-</footer>
+        </section>
+        <section>
+            <div class="footer">
+                <p><strong>&copy;</strong><a href="http://kssse.pl" target="_blank">Kostrzyńsko-Słubicka Specjalna
+                        Strefa
+                        Ekonomiczna S.A.</a>
+                </p>
+            </div>
+        </section>
+        <aside>
+            <p class="create">created by: <a href="http://babij.eu">www.babij.eu</a></p>
+        </aside>
+    </footer>
 
 
-<script src="{{ url_for('static', filename='js/separator.js') }}"></script>
-<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-<script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src='https://kit.fontawesome.com/a076d05399.js'></script>
-{% block script %}{% endblock %}
+    <script src="{{ url_for('static', filename='js/separator.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    {% block script %}{% endblock %}
 
 </body>
+
 </html>
