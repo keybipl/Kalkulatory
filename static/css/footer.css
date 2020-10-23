@@ -13,11 +13,14 @@ aside {
     margin: 0 auto;
 }
 
-.specialist {
+footer div.specialist {
     text-align: center;
+    max-width: 1600px;
+    padding: 15px;
+    margin: 0 auto;
 }
 
-.specialist button {
+footer div.specialist button {
 
     text-transform: uppercase;
     font-size: 1.2rem;
@@ -28,9 +31,10 @@ aside {
     border: 0;
     border-radius: 20px;
     letter-spacing: 1px;
+    margin: 10px auto;
 }
 
-.specialist p {
+footer div.specialist p {
     font-size: 1.1rem;
     margin-bottom: 15px;
     text-align: justify;
@@ -99,7 +103,7 @@ aside {
 
 @media (min-width: 533px) {
 
-    .specialist button {
+    footer div.specialist button {
         width: 400px;
         font-size: 22px;
         margin-bottom: 10px;
@@ -107,7 +111,7 @@ aside {
         letter-spacing: 1px;
     }
 
-    .specialist p {
+    footer div.specialist p {
         font-size: 1.2rem;
     }
 
@@ -181,12 +185,12 @@ aside {
 
 @media (min-width: 768px) {
 
-    .specialist p {
+    footer div.specialist p {
         margin-top: 25px;
         margin-bottom: 35px;
     }
 
-    .specialist button {
+    footer div.specialist button {
         width: 340px;
         font-size: 1.4rem;
         margin-bottom: 20px;
@@ -243,7 +247,7 @@ aside {
         font-size: 1.5rem;
     }
 
-    .specialist p {
+    footer div.specialist p {
         font-size: 22px;
         margin: 20px 20px;
     }
@@ -286,15 +290,15 @@ aside {
 
 @media (min-width: 1366px) {
 
-    .specialist p {
+    footer div.specialist p {
         font-size: 1.5rem;
     }
 
-    .specialist button {
+    footer div.specialist button {
         transition: .5s;
     }
 
-    .specialist button:hover {
+    footer div.specialist button:hover {
         background-color: #4F181E;
         color: #FFF;
         outline: none;

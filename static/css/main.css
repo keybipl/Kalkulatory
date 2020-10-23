@@ -14,6 +14,9 @@
 
 :root {
     --bordo: #B11F36;
+    --blue: #577CBD;
+    --blueh: #272D57;
+    --bordoh: #4F181E;
 }
 
 body {
@@ -40,7 +43,7 @@ section {
     font-size: 1.2rem;
     text-transform: uppercase;
     width: 290px;
-    background-color: #577CBD;
+    background-color: var(--blue);
     color: #eee;
     padding: 10px 0;
     border: 0;
@@ -54,11 +57,6 @@ section {
 }
 
 /* indexpp.html */
-
-:root {
-    --formw: 80%;
-    --formh: 50px;
-}
 
 .pp .collapse {
     text-align: left;
@@ -76,20 +74,20 @@ section {
     display: block;
     text-align: center;
     font-weight: bold;
-    width: var(--formw);
+    width: 80%;
     margin: 0 auto;
-    height: var(--formh);
+    height: 50px;
 }
 
 .form-group input {
     display: block;
-    width: var(--formw);
+    width: 80%;
     margin: 0 auto;
-    height: var(--formh);
+    height: 50px;
 }
 
 .ppcount {
-    background-color: var(--bordo);
+    background-color: var(--blue);
     color: white;
     border: none;
     display: block;
@@ -144,6 +142,61 @@ section {
     display: none;
 }
 
+/* resultpp.html */
+
+.rpp {
+    font-size: 1.1rem;
+    padding: 10px;
+}
+
+.rpp ul {
+    list-style: none;
+}
+
+.rpp li {
+    margin-top: 5px;
+}
+
+.rpp p {
+    text-align: left;
+}
+
+p.ppvalue {
+    text-align: center;
+    font-size: 1.8rem;
+    color: var(--blue);
+    font-weight: bold;
+}
+
+p.ppvalue i {
+    margin-right: 12px;
+}
+
+p.nosupport {
+    color: var(--bordo);
+    font-weight: bold;
+}
+
+p.notification {
+    color: var(--bordo);
+    font-weight: bold;
+}
+
+.euro {
+    display: none;
+}
+
+.gmina {
+    width: 50%;
+}
+
+.pln {
+    width: 50%;
+}
+
+p.powiat {
+    margin-top: 30px;
+}
 
 @media (min-width: 533px) {
 
@@ -165,6 +218,32 @@ section {
         display: block;
         width: 100%;
         height: auto;
+    }
+
+    /* resultpp.html */
+
+    th {
+        text-align: center;
+    }
+
+    th:first-child {
+        text-align: left;
+    }
+
+    .euro {
+        display: table-cell;
+        width: 30%;
+        text-align: center;
+    }
+
+    .gmina {
+        width: 40%;
+
+    }
+
+    .pln {
+        width: 30%;
+        text-align: center;
     }
 
 }
@@ -219,6 +298,35 @@ section {
     .ppcount {
         margin-top: 30px;
     }
+
+    .pp p {
+        font-size: 1.2rem;
+    }
+
+    .pp label {
+        font-size: 1.2rem;
+    }
+
+    .form-group input {
+        font-size: 1.2rem;
+    }
+
+    .pp li {
+        font-size: 1.2rem;
+    }
+
+    .form-group select {
+        font-size: 1.2rem;
+    }
+
+    /* resultpp.html */
+
+    div.rpp {
+        font-size: 1.2rem;
+    }
+
+
+
 }
 
 @media (min-width: 1024px) {
@@ -251,6 +359,8 @@ section {
         font-size: 1.5rem;
     }
 
+    /* indexpp.html */
+
     .pp {
         margin-top: 20px;
     }
@@ -263,6 +373,36 @@ section {
         font-size: 1.3rem;
     }
 
+    .form-group input {
+        font-size: 1.3rem;
+    }
+
+    .form-group select {
+        font-size: 1.3rem;
+    }
+
+    .pp li {
+        font-size: 1.3rem;
+    }
+
+    /* resultpp.html */
+
+    div.rpp {
+        font-size: 1.4rem;
+    }
+
+    p.ppvalue {
+        font-size: 2rem;
+    }
+
+    .table {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    p.powiat {
+        text-align: center;
+    }
 }
 
 
@@ -293,6 +433,74 @@ section {
     .calc button:hover {
         background-color: #272D57;
         color: #FFF;
+    }
+
+    /* indexpp.html */
+
+    .pp {
+        margin-top: 20px;
+    }
+
+    .pp p {
+        font-size: 1.5rem;
+    }
+
+    .pp label {
+        font-size: 1.5rem;
+    }
+
+    .form-group input {
+        font-size: 1.5rem;
+    }
+
+    .form-group select {
+        width: 60%;
+        margin: 0 auto;
+        height: 50px;
+        font-size: 1.5rem;
+    }
+
+    .form-group input {
+        width: 60%;
+        height: 50px;
+        margin: 0 auto;
+    }
+
+    .pp li {
+        font-size: 1.5rem;
+    }
+
+    .ppcount {
+        width: 230px;
+        font-size: 1.3rem;
+        letter-spacing: 3px;
+        font-weight: bold;
+        margin-bottom: 25px;
+    }
+
+    .ppcount:hover {
+        background-color: var(--blueh);
+    }
+
+    .ppwrap a:hover {
+        text-decoration: none;
+        color: var(--bordoh);
+    }
+
+    /* resultpp.html */
+
+    p.ppvalue {
+        transition: .3s;
+    }
+
+    p.ppvalue:hover {
+        font-size: 4rem;
+    }
+
+    .table {
+        width: 65%;
+        margin: 0 auto;
+        max-width: 824px;
     }
 
 }

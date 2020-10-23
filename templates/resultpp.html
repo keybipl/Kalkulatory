@@ -2,146 +2,71 @@
 
 {% block content %}
 
-    <div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-5" style="text-align: center" >Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A.</h1>
-    <p class="lead" style="text-align: center" >Kalkulatory przydatne do uzyskania wsparcia w ramach Polskiej Strefy Inwestycji</p>
-      <div class="box">
-      <a class="btn btn-success btn-lg" href="/" role="button">Pokaż inne kalkulatory</a>
-          </div>
-  </div>
-</div>
+<div class="rpp">
 
-{# MIDDLE #}
-<div class="container">
-    <div class="row">
-  <div class="col-sm-4" align="center">
+  <p>Przy podanych parametrach:</p>
+  <ul>
+    <li>Wartość inwestycji: <strong>{{ wynik.value }} {{ wynik.waluta }}{{ pp }} </strong></li>
+    <li>Województwo: <strong>{{ wynik.region }}</strong>}</li>
+    <li>Wielkość przedsiębiorstwa: <strong>{{ wynik.size }}</strong></li>
+  </ul>
 
-      <h5>Podane parametry:</h5>
-      <hr />
-      <p><h6><b>Wartość inwestycji</b></h6></p>
-      <p>{{ wynik.value }} {{ wynik.waluta }}{{ pp }}</p>
-      <hr />
+  <p>Przedsiębiorca, na terenie województwa {{ wynik.region }}go, w
+    Kostrzyńsko-Słubickiej Specjalnej Strefy Ekonomicznej S.A. może uzyskać maksymalną pomoc w wysokości:</p>
 
-            <p><h6><b>Województwo</b></h6></p>
-      <p>{{ wynik.region }}</p>
-      <hr />
+  <p class="ppvalue"><i class='fas fa-thumbs-up'></i> {{ wynik.pp }} {{ wynik.waluta }}</p>
 
-                 <p><h6><b>Wielkość przedsiębiorstwa</b></h6></p>
-      <p>{{ wynik.size }}</p>
-      <a href="/pomoc"><button type="button" class="btn btn-ownb" input type="submit">Policz jeszcze raz</button></a>
+  <p>co daje <strong>{{ przelicznik }} {{ currency }}</strong> według kursu EURO Narodowego Banku Polskiego
+    <strong>{{ cena }}</strong> zł z dnia <strong>{{ date[8:10] }}.{{ date[5:7] }}.{{ date[0:4] }}</strong> roku.</p>
 
-  </div>
+  {% if notification %}
 
-  <div class="col-sm-8" align="justify">
+  <p class="notification">UWAGA! Przy podanej wartośći inwestycji projekt wymaga
+    notyfikacji Komisji Europejskiej.</p>
 
-{#      style="font-family: Geneva, sans-serif; font-size: 24px; font-style: normal"#}
-
-  <p style="text-align: justify">
-
-      Przy zakładanej inwestycji na poziomie <b>{{ wynik.value }} {{ wynik.waluta }}</b>
-      {{ wynik.size }} przedsiębiorca, na terenie województwa {{ wynik.region }}go, w
-      Kostrzyńsko-Słubickiej Specjalnej Strefy Ekonomicznej S.A. może uzyskać maksymalną pomoc w wysokości: </p>
-      <br/>
-
-      <p style="text-align: center; font-size: 36px"><b><i class='fas fa-thumbs-up' style='font-size:48px;color:#577CBD'></i> {{ wynik.pp }} {{ wynik.waluta }}
-      </b> </p><br>
-      <p>co daje <b>{{ przelicznik }} {{ currency }} </b>według kursu EURO Narodowego Banku Polskiego <b>{{ cena }} zł</b> z dnia <b>{{ date[8:10] }}.{{ date[5:7] }}.{{ date[0:4] }} roku.</b></p>
-{% if notification %}
-    <p class="text-danger" style="text-align: center" ><b>UWAGA! Przy podanej wartośći inwestycji projekt wymaga
-        notyfikacji Komisji Europejskiej.</b></p>
-      {% endif %}
-<hr />
-
-    {% if not result %}
-                        <p class="text-danger" style="text-align: center" ><b>Niestety przy podanych parametrach wsparcie nie jest możliwe w żadnej
-                      z gmin na terenie województwa {{ wynik.region }}go. </b></p><br/>
-{% else %}
+  {% endif %}
 
 
-  <p style="text-align: justify">Przy zakładanym poziomie inwestycji uzyskanie wsparcia w ramach <b>Polskiej Strefy
-      Inwestycji</b> na terenie województwa {{ wynik.region }}go mozliwe jest w następujących lokalizacjach:<br/><br/>
+
+  {% if not result %}
+
+  <p class="nosupport">Niestety przy podanych parametrach wsparcie nie jest możliwe
+    w żadnej z gmin na terenie województwa {{ wynik.region }}go.</p>
+  {% else %}
 
 
-          <button class="btn btn-own" type="button" data-toggle="collapse" data-target="#collapseExample1"
-                  aria-expanded="false" aria-controls="collapseExample1">
-    Pokaż lokalizacje
-  </button>
 
-<div class="collapse" id="collapseExample1">
-  <div class="card card-body">
-<br/>
+  <p>Przy zakładanym poziomie inwestycji uzyskanie wsparcia w ramach Polskiej Strefy
+    Inwestycji na terenie województwa {{ wynik.region }}go mozliwe jest w następujących
+    lokalizacjach:</p>
 
-  {% if result %}
-                      <p>Poniżej lokalizacje spełniające kryteria ilościowe przy podanych parametrach oraz
-                       minimalne nakłady w poszczególnych gminach:</p>
+  {% for k,v in result.items() %}
 
-                {% for k,v in result.items() %}
+  <p class="powiat">Powiat <strong>{{ k }}</strong> w gminach:</p>
 
-                    <br/>
-          <p>Powiat <b>{{ k }}</b> w gminach:</p>
-<br/>
-<table class="table" >
-                        <tr>
+  <table class="table">
 
-      <th style="width: 40%" scope="col">Gmina</th>
-      <th style="width: 30%; text-align: center"scope="col">PLN</th>
-                            <th style="width: 30%; text-align: center"scope="col">EURO</th>
-
+    <tr>
+      <th class="gmina" scope="col">Gmina</th>
+      <th class="pln" scope="col">PLN</th>
+      <th class="euro" scope="col">EURO</th>
     </tr>
 
-</table>
-
-
+  </table>
 
   {% for i in v %}
   <table class="table">
-
-  <thead>
-
-
-
-  </thead>
-
-
-<tbody>
-
     <tr>
-
-      <td style="width:40%; text-align: left">{{ i }}</td>
-        <td style="width:30%; text-align: center" >{{ '{:,}'.format(dicn[i]).replace(',', ' ') }} zł</td>
-
-        <td style="width: 30%; text-align: center" >
-            {% set test = dicn[i]/cena | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} &euro;
-
-    </td>
+      <td class="gmina">{{ i }}</td>
+      <td class="pln">{{ '{:,}'.format(dicn[i]).replace(',', ' ') }} zł</td>
+      <td class="euro">
+        {% set test = dicn[i]/cena | float %}
+        {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} &euro;
+      </td>
     </tr>
-</tbody>
+  </table>
+  {% endfor %}
+  {% endfor %}
+  {% endif %}
 
-</table>
- {% endfor %}<br/>
-          {% endfor %}
-      {% else %}
-
-                      <p class="text-danger" style="text-align: center" ><b>Niestety przy podanych parametrach wsparcie nie jest możliwe w żadnej
-                      z gmin na terenie województwa {{ wynik.region }}go. </b></p>
-{% endif %}
-{% endif %}
-
-</div>
-
-  </div>
-
-
-  </div>
-</div>
-</div>
-<hr/>
-
-{% endblock %}
-
-{% block scripts %}
-
-
-{% endblock %}
+  {% endblock %}
