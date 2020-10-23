@@ -23,7 +23,6 @@ body {
 
 /* do 359 px */
 
-
 .hwrap {
     text-align: center;
     width: 100%;
@@ -40,7 +39,6 @@ body {
     border-bottom: 1px solid white;
     padding: 10px 0;
 }
-
 
 
 .jumbo {
@@ -65,6 +63,38 @@ body {
     text-align: center;
 }
 
+.back {
+    width: 100%;
+    text-align: center;
+}
+
+.back button {
+    background-color: rgba(177, 31, 54);
+    margin: 0 auto;
+    border: none;
+    margin-top: 12px;
+    width: 260px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    padding: 5px;
+    font-size: 0.8rem;
+}
+
+.fa-angle-double-right {
+    padding-right: 20px;
+}
+
+.fa-angle-double-left {
+    padding-left: 20px;
+}
+
+.back button a {
+    color: white;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+
 
 @media (min-width: 533px) {
     .logoup {
@@ -78,7 +108,6 @@ body {
         margin-top: 5px;
     }
 
-
     .jumbo h1 {
         font-size: 2rem;
     }
@@ -87,10 +116,16 @@ body {
         font-size: 1.4rem;
 
     }
-}
 
-.colapse {
-    margin: 20px 10px 10px 30px;
+    .back button {
+        width: 320px;
+        font-size: 1rem;
+    }
+
+    .colapse {
+        margin: 20px 10px 10px 30px;
+    }
+
 }
 
 @media (min-width: 768px) {
@@ -108,12 +143,17 @@ body {
     }
 
     .jumbo h1 {
-        font-size: 2.4rem;
+        font-size: 1.7rem;
     }
 
     .jumbo p {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
 
+    }
+
+    .back button {
+        width: 360px;
+        font-size: 1.1rem;
     }
 
 }
@@ -165,6 +205,15 @@ body {
         font-size: 28px;
 
     }
+
+    .back button {
+        transition: .5s;
+    }
+
+    .back button:hover {
+        background-color: #4F181E;
+    }
+
 }
 
 /**/

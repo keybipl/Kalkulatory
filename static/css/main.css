@@ -12,6 +12,10 @@
     clear: both;
 }
 
+:root {
+    --bordo: #B11F36;
+}
+
 body {
     font-family: 'Roboto', arial, sans-serif;
 }
@@ -49,6 +53,97 @@ section {
     margin: 0 15px 15px;
 }
 
+/* indexpp.html */
+
+:root {
+    --formw: 80%;
+    --formh: 50px;
+}
+
+.pp .collapse {
+    text-align: left;
+}
+
+
+.form-group label {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.form-group select {
+    display: block;
+    text-align: center;
+    font-weight: bold;
+    width: var(--formw);
+    margin: 0 auto;
+    height: var(--formh);
+}
+
+.form-group input {
+    display: block;
+    width: var(--formw);
+    margin: 0 auto;
+    height: var(--formh);
+}
+
+.ppcount {
+    background-color: var(--bordo);
+    color: white;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    width: 100px;
+    padding: 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.pp p {
+    text-align: justify;
+    padding: 0 10px;
+    font-size: 1.1rem;
+}
+
+.pp a {
+    color: var(--bordo);
+    outline: none;
+}
+
+.defkoszty ul {
+    text-decoration: none;
+    text-transform: none;
+    list-style: none;
+    text-align: justify;
+    font-size: 1.1rem;
+}
+
+.defkoszty li {
+    margin: 10px 0;
+}
+
+.defkoszty li i {
+    padding-right: 15px;
+}
+
+.region .card-body {
+    text-align: center;
+    width: 100%;
+}
+
+.region .card-body img {
+    width: 90%;
+    height: auto;
+}
+
+.size .card-body img {
+    display: none;
+}
+
 
 @media (min-width: 533px) {
 
@@ -62,6 +157,14 @@ section {
 
     .calc p {
         font-size: 1.4rem;
+    }
+
+    /* indexpp.html */
+
+    .size .card-body img {
+        display: block;
+        width: 100%;
+        height: auto;
     }
 
 }
@@ -90,6 +193,32 @@ section {
         font-size: 1.4rem;
     }
 
+    /* indexpp.html */
+
+    .pp {
+        float: left;
+    }
+
+    .pp:first-child {
+        width: 35%;
+    }
+
+    .pp:last-child {
+        width: 65%;
+        padding: 0 20px;
+    }
+
+    .form-group label {
+        margin-top: 0;
+    }
+
+    .form-group {
+        margin-bottom: 30px;
+    }
+
+    .ppcount {
+        margin-top: 30px;
+    }
 }
 
 @media (min-width: 1024px) {
@@ -121,6 +250,19 @@ section {
         padding: 12px 0;
         font-size: 1.5rem;
     }
+
+    .pp {
+        margin-top: 20px;
+    }
+
+    .pp p {
+        font-size: 1.3rem;
+    }
+
+    .pp label {
+        font-size: 1.3rem;
+    }
+
 }
 
 

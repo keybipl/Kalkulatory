@@ -32,25 +32,26 @@ aside {
 
 .specialist p {
     font-size: 1.1rem;
-    margin-bottom: 15px
+    margin-bottom: 15px;
+    text-align: justify;
 }
 
-.sbutton .collapse {
+.collapse {
     text-align: center;
     margin: 15px auto;
 }
 
-s button .collapse img {
+.collapse img {
     width: 50%
 }
 
 .contactname h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     margin: 4px 0;
 }
 
 .contactname p {
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     margin-bottom: 16px;
 }
 
@@ -107,7 +108,7 @@ s button .collapse img {
     }
 
     .specialist p {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
 
     .img {
@@ -296,6 +297,7 @@ s button .collapse img {
     .specialist button:hover {
         background-color: #4F181E;
         color: #FFF;
+        outline: none;
     }
 
     .icons a:hover {
@@ -316,5 +318,4 @@ s button .collapse img {
         text-decoration: none;
         color: #272D57;
     }
-
 }

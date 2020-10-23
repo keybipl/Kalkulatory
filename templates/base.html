@@ -34,7 +34,13 @@
         <div class="jumbo">
             <h1>Kostrzyńsko-Słubicka Specjalna Strefa Ekonomiczna S.A. </h1>
             <p>Kalkulatory przydatne do uzyskania wsparcia w ramach Polskiej Strefy Inwestycji</p>
+            {% if not back %}
+
+            <div class="back"><button><a href="/"><i class="fas fa-angle-double-right"></i>wszystkie kalkulatory<i
+                            class="fas fa-angle-double-left"></i></a></button></div>
+            {% endif %}
         </div>
+
     </header>
     <main>
         {% block content %}{% endblock %}
