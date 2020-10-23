@@ -198,6 +198,30 @@ p.powiat {
     margin-top: 30px;
 }
 
+/* indexlok.html */
+
+.radiowrap {
+    text-align: center;
+    margin-left: 30px;
+}
+
+label.form-check-label {
+    margin: 0 10px;
+}
+
+input[type="radio"] {
+    -ms-transform: scale(1.5);
+    /* IE 9 */
+    -webkit-transform: scale(1.5);
+    /* Chrome, Safari, Opera */
+    transform: scale(2);
+}
+
+p.br {
+    text-align: center;
+    margin-top: 25px;
+}
+
 @media (min-width: 533px) {
 
     .calc button {
