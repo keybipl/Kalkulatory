@@ -200,6 +200,11 @@ p.powiat {
 
 /* indexlok.html */
 
+div.lwrap {
+    padding: 10px;
+    font-size: 1.1rem;
+}
+
 .radiowrap {
     text-align: center;
     margin-left: 30px;
@@ -217,10 +222,95 @@ input[type="radio"] {
     transform: scale(2);
 }
 
-p.br {
-    text-align: center;
-    margin-top: 25px;
+div.lok label {
+    margin-top: 10px;
 }
+
+div.lok form {
+    text-align: center;
+}
+
+.radiowrap {
+    margin-bottom: 20px;
+}
+
+div.lwrap .card-body {
+    text-align: justify;
+}
+
+div.lwrap .card-body img {
+    display: none;
+}
+
+div.lwrap .card-body ul {
+    list-style: none;
+    text-align: left;
+}
+
+div.lwrap .card-body li {
+    margin-top: 10px;
+}
+
+div.lwrap i {
+    margin-right: 12px;
+}
+
+div.frd {
+    width: 100%;
+}
+
+/* resultslok.html */
+
+div.rlok {
+    font-size: 1.1rem;
+}
+
+div.rlok p {
+    text-align: center;
+}
+
+div.rlok p.par {
+    margin-bottom: 0;
+}
+
+div.parlok button {
+    background-color: var(--blue);
+    color: white;
+    border: none;
+    display: block;
+    margin: 0 auto;
+    width: 220px;
+    padding: 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+    margin-bottom: 25px;
+    font-size: 1rem;
+}
+
+div.rlok p.fulfill {
+    text-align: justify;
+    padding: 8px;
+}
+
+div.rlok h1 {
+    font-size: 1.6rem;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--bordo);
+    margin-top: 30px;
+}
+
+div.rlok p.powiaty {
+    margin-top: 30px;
+}
+
+div.lubuskie {
+    margin-top: -20px;
+}
+
 
 @media (min-width: 533px) {
 
@@ -270,6 +360,29 @@ p.br {
         text-align: center;
     }
 
+    /* indexlok.html */
+
+    div.lok {
+        width: 100%;
+    }
+
+    div.lok .form-group {
+        display: block;
+        float: left;
+        width: 50%;
+        text-align: center;
+    }
+
+    div.lwrap .card-body img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    div.frd {
+        width: 50%;
+        float: left;
+    }
 }
 
 
@@ -349,7 +462,25 @@ p.br {
         font-size: 1.2rem;
     }
 
+    /* indexlok.html */
 
+    div.lwrap {
+        font-size: 1.2rem;
+        text-align: justify;
+    }
+
+    div.lwrap button {
+        display: block;
+        margin-top: 0;
+    }
+
+    div.lbutton {
+        clear: both;
+    }
+
+    div.radiowrap {
+        margin-top: 10px;
+    }
 
 }
 
@@ -419,13 +550,20 @@ p.br {
         font-size: 2rem;
     }
 
-    .table {
+    div.rpp table.table {
         width: 80%;
         margin: 0 auto;
     }
 
     p.powiat {
         text-align: center;
+    }
+
+    /* indexlok.html */
+
+    div.lwrap {
+        font-size: 1.3rem;
+        text-align: justify;
     }
 }
 
@@ -527,4 +665,38 @@ p.br {
         max-width: 824px;
     }
 
+    /* indexlok.html */
+
+    div.lwrap .card-body img {
+        margin: 0 auto;
+        width: 70%;
+    }
+
+    div.lwrap {
+        font-size: 1.5rem;
+        text-align: justify;
+    }
+
+    div.lok h1 {
+        margin: 50px 0 20px 0;
+    }
+
+    div.lok p.title {
+        font-size: 1.6rem;
+        text-align: center;
+        margin: 0 0 30px 0;
+    }
+
+    div.lok label {
+        margin-top: 0;
+    }
+
+    div.lwrap a {
+        text-decoration: none;
+        color: var(--bordo);
+    }
+
+    div.lwrap a:hover {
+        color: var(--bordoh);
+    }
 }

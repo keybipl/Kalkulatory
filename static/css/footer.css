@@ -186,8 +186,8 @@ footer div.specialist p {
 @media (min-width: 768px) {
 
     footer div.specialist p {
-        margin-top: 25px;
         margin-bottom: 35px;
+        font-size: 1.2rem;
     }
 
     footer div.specialist button {

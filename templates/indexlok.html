@@ -3,11 +3,11 @@
 {% block content %}
 
 <div class="lwrap">
-  <div class="lok">
-    <p>Zobacz gdzie możesz uzyskać wsparcie w Kostrzyńsko-Słubickiej Specjalnej
+  <div class="lok clearfix">
+    <p class="title">Lokalizacje, w których można uzyskać <strong>wsparcie</strong> w Kostrzyńsko-Słubickiej Specjalnej
       Strefie Ekonomicznej:</p>
 
-    <form action="post" action="/lokalizacje">
+    <form method="post" action="/lokalizacje">
 
       <div class="form-group">
         <label for="waluta">Wybierz walutę</label>
@@ -19,300 +19,232 @@
       </div>
 
       <div class="form-group">
-        <div class="form-group">
-          <label for="value">Koszty kwalifikowane (w mln)</label>
-          <input type="number" step="0.05" class="form-control" id="value" placeholder="proszę podać w mln" name="value"
-            required>
-        </div>
+        <label for="value">Koszty kwalifikowane (w mln)</label>
+        <input type="number" step="0.05" class="form-control" id="value" placeholder="proszę podać w mln" name="value"
+          required>
       </div>
 
       <div class="form-group">
-        <div class="form-group">
-          <label for="psize">Wielkość przedsiębiorcy</label>
-          <select class="form-control" id="psize" name="size" required>
-            <option></option>
-            <option>duży</option>
-            <option>średni</option>
-            <option>mały</option>
-            <option>mikro</option>
-          </select>
-        </div>
+        <label for="psize">Wielkość przedsiębiorcy</label>
+        <select class="form-control" id="psize" name="size" required>
+          <option></option>
+          <option>duży</option>
+          <option>średni</option>
+          <option>mały</option>
+          <option>mikro</option>
+        </select>
       </div>
 
+      <div class="frd">
+        <label><strong>TYLKO </strong>działalność B+R i/lub BPO?</label>
 
-
-      <p class="br"><strong>TYLKO </strong>działalność B+R i/lub BPO?</p>
-
-      <div class="radiowrap">
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="options" id="inlineRadio1" value="option1">
-          <label class="form-check-label" for="inlineRadio1">TAK</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="options" id="inlineRadio2" value="option2" checked>
-          <label class="form-check-label" for="inlineRadio2">NIE</label>
+        <div class="radiowrap">
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="options" id="inlineRadio1" value="option1">
+            <label class="form-check-label" for="inlineRadio1">TAK</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="options" id="inlineRadio2" value="option2" checked>
+            <label class="form-check-label" for="inlineRadio2">NIE</label>
+          </div>
         </div>
       </div>
-
+      <div class="lbutton"></div>
+      <button type="submit" class="ppcount">Pokaż</button>
     </form>
+
   </div>
 
-  <div class="lok"></div>
-</div>
+  <div class="lok">
+    <h1>Legenda:</h1>
+    <p>Kalkulator liczy po średnim kursie Narodowego Banku Polskiego <strong>{{ cena }} zł</strong>
+      za EURO z dnia <strong>{{ date[8:10] }}.{{ date[5:7] }}.{{ date[0:4] }}</strong> roku. </p>
 
+    <p><strong>Koszty kwalifikowane:</strong> Proszę podać wartość planowanej inwestycji, czyli koszty kwalifikujące
+      się do objęcia
+      pomocą --> <a href="#koszty" data-toggle="collapse">
+        definicja kosztów kwalifikowanych inwestycji </a></p>
 
+    <div class="collapse" id="koszty">
 
-
-
-
-
-
-
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-5" style="text-align: center">Kryterium ilościowe</h1>
-    <p class="lead" style="text-align: center">Zobacz gdzie możesz uzyskać wsparcie w Kostrzyńsko-Słubickiej Specjalnej
-      Strefie Ekonomicznej</p>
-    <div class="box">
-      <a class="btn btn-success btn-lg" href="/" role="button">Pokaż inne kalkulatory</a>
-    </div>
-  </div>
-</div>
-
-
-<form method="POST" action="/lokalizacje">
-  <!-- POLA FORMULARZY -->
-  <div class="container">
-    <div class="row row-cols-4">
-
-      <!-- KOLUMNA 1 -->
-      <div class="col" align="center">
-
-
-        <div class="form-group" style="width: 8rem; text-align: center">
-
-
-          <label for="exampleFormControlSelect1">Wybierz walutę</label>
-          <select class="form-control" id="exampleFormControlSelect1" name="currency" required>
-            <option></option>
-            <option>PLN</option>
-            <option>EURO</option>
-          </select>
+      <div class="card">
+        <div class="card-body">
+          <div class="defkoszty">
+            <p>Koszty kwalifikowane inwestycji zdefiniowane są w paragrafie 8 punkcie 1
+              Rozporządzenia Rady Ministrów z dnia 28 sierpnia 2018 r. w sprawie pomocy publicznej udzielanej niektórym
+              przedsiębiorcom na realizację nowych inwestycji (Dz.U. 2018 poz. 1713)
+              <a href="http://kssse.pl/upload/pictures/rozporzadzenie-ke-ue-nr-6512014-z-dnia-17-czerwca-2014.pdf"
+                target="_blank">LINK</a>
+              Do kosztów kwalifikujących się do objęcia wsparciem na nowe inwestycje zalicza się koszty
+              będące:</p>
+            <ul>
+              <li><i class="fas fa-check"></i>kosztem związanym z nabyciem gruntów lub prawa ich użytkowania
+                wieczystego,</li>
+              <li><i class="fas fa-check"></i>ceną nabycia albo kosztem wytworzenia we własnym zakresie środków
+                trwałych, pod warunkiem zaliczenia
+                ich, zgodnie z odrębnymi przepisami, do składników majątku podatnika i zaliczenia ich do ewidencji
+                środków
+                trwałych oraz wartości niematerialnych i prawnych,</li>
+              <li><i class="fas fa-check"></i>kosztem rozbudowy lub modernizacji istniejących środków trwałych,</li>
+              <li><i class="fas fa-check"></i>ceną nabycia wartości niematerialnych i prawnych związanych z transferem
+                technologii przez nabycie
+                praw
+                patentowych,
+                licencji, know-how i nieopatentowanej wiedzy technicznej, z zastrzeżeniem ust. 2 i 3,</li>
+              <li><i class="fas fa-check"></i>kosztem związanym z najmem lub dzierżawą gruntów, budynków i budowli – pod
+                warunkiem że okres najmu
+                lub
+                dzierżawy trwa co najmniej 5 lat, a w przypadku mikroprzedsiębiorców, małych przedsiębiorców i średnich
+                przedsiębiorców – co najmniej 3 lata, licząc od przewidywanego terminu zakończenia nowej inwestycji,
+              </li>
+              <li><i class="fas fa-check"></i>ceną nabycia aktywów innych niż grunty, budynki i budowle objęte najmem
+                lub dzierżawą, w przypadku gdy
+                najem lub dzierżawa ma postać leasingu finansowego oraz obejmuje zobowiązanie do nabycia aktywów z dniem
+                upływu
+                okresu najmu lub dzierżawy – pomniejszone o naliczony podatek od towarów i usług oraz o podatek
+                akcyzowy,
+                jeżeli możliwość ich
+                odliczeń wynika z odrębnych przepisów, poniesione w okresie ważności decyzji o wsparciu wydanej dla
+                konkretnej lokalizacji.</li>
+            </ul>
+            <p>Według ustawy z dnia 10 maja 2018r. o wspieraniu nowych inwestycji (Dz.U.2018 poz 1162 -
+              <a href="http://kssse.pl/upload/pictures/Dz_U_2018_poz_1162.pdf" target="_blank">LINK</a>) defincija
+              kosztów kwalifikownaych brzmi następująco:</p>
+            <p> koszty kwalifikowane nowej inwestycji – koszty inwestycji kwalifikujące się do objęcia pomocą
+              publiczną z tytułu nowej inwestycji pomniejszone o naliczony podatek od towarów i usług oraz o podatek
+              akcyzowy, jeżeli
+              możliwość ich odliczeń wynika z odrębnych przepisów, poniesione w okresie ważności decyzji o wsparciu lub
+              dwuletnie koszty pracy, jakie mogą być uwzględnione przy określaniu maksymalnej pomocy publicznej,
+              ponoszone w
+              okresie ważności decyzji o wsparciu.</p>
+          </div>
         </div>
-
-        <p>
-          <button class="btn btn-own" type="button" data-toggle="collapse" data-target="#collapseExample"
-            aria-expanded="false" aria-controls="collapseExample">
-            Kurs NBP
-          </button>
-        </p>
       </div>
+    </div>
 
-      <!-- KOLUMNA 2 -->
-      <div class="col" align="center">
+    <p><strong>Wielkość przedsiębiorstwa:</strong> Proszę określić wielkość przedsiębiorstwa według przepisów
+      unijnych -<a href="#esize" data-toggle="collapse"> jak określić wielkość przedsiębiorstwa?</a></p>
 
+    <div class="collapse" id="esize">
+      <div class="card">
+        <div class="card-body">
+          <p>Wielkość przedsiębiorstwa ubiegającego się o pomoc publiczną definiuje załącznik nr 1 do Rozporządzenia
+            Komisji (UE) nr 651/2014 z dnia 17 czerwca 2014r. uznające niektóre rodzaje pomocy za zgodne z rynkiem
+            wewnętrznym w zastosowaniu art. 107 i 108 Traktatu (obowiązuje od 1 lipca 2014)
+            <a href="http://kssse.pl/upload/pictures/rozporzadzenie-ke-ue-nr-6512014-z-dnia-17-czerwca-2014.pdf"
+              target="_blank">LINK</a></p>
+          <p>Do kategorii mikroprzedsiębiorstw oraz małych i średnich przedsiębiorstw („MŚP”) należą
+            przedsiębiorstwa, które zatrudniają mniej niż 250 pracowników i których roczny obrót nie przekracza 50
+            milionów EUR, lub roczna suma bilansowa nie przekracza 43 milionów EUR.</p>
+          <p>2. W kategorii MŚP małe przedsiębiorstwo definiuje się jako przedsiębiorstwo, które zatrudnia mniej niż
+            50 pracowników i którego roczny obrót lub roczna suma bilansowa nie przekracza 10 milionów EUR. </p>
+          <p>3. W kategorii MŚP mikroprzedsiębiorstwo definiuje się jako przedsiębiorstwo, które zatrudnia mniej niż
+            10 pracowników i którego roczny obrót lub roczna suma bilansowa nie przekracza 2 milionów EUR.</p>
+          <img src="{{ url_for('static', filename='images/msp.PNG') }}">
 
-
-        <div class="form-group">
-          <label for="formGroupExampleInput">Koszty kwalifikowane (w mln)</label>
-          <input type="number" step="0.05" class="form-control" style="width: 12rem; text-align: center"
-            id="formGroupExampleInput" placeholder="mln" name="value" required>
         </div>
-
-        <p>
-          <button class="btn btn-own" type="button" data-toggle="collapse" data-target="#collapseExample2"
-            aria-expanded="false" aria-controls="collapseExample">
-            Definicja
-          </button>
-        </p>
-
       </div>
+    </div>
 
-      <!-- KOLUMNA 3 -->
-      <div class="col" align="center">
 
-        <div class="form-group" style="width: 8rem; text-align: center">
+    <p>Dla działalności <strong>badawczo-rozwojowej</strong> i/lub <strong>nowoczesnych usług dla
+        biznesu</strong> ustawodawca wprowadził obniżenie wymaganych kryteriów ilosciowych o 95%. Prosze zaznaczyć
+      jeżeli działalność będzie prowadzona <strong>TYLKO</strong> w tym zakresie -
+      <a href="#rd" data-toggle="collapse">co to jest działalność B+R i BPO? </a></p>
 
-          <label for="psize">Przedsiębiorca</label>
-          <select class="form-control" id="psize" name="size" required>
-            <option></option>
-            <option>duży</option>
-            <option>średni</option>
-            <option>mały</option>
-            <option>mikro</option>
-          </select>
-        </div>
-        <p>
-          <button class="btn btn-own" type="button" data-toggle="collapse" data-target="#collapseExample3"
-            aria-expanded="false" aria-controls="collapseExample3">
-            Definicja
-          </button>
-        </p>
+    <div class="collapse" id="rd">
+      <div class="card card-body">
+        <p>W paragrafie 4 punkcie 4 podpunkcie 1 Rozporządzenia Rady Ministrów z dnia 28
+          sierpnia 2018 r. w sprawie pomocy publicznej udzielanej niektórym przedsiębiorcom
+          na realizację nowych inwestycji (Dz.U. 2018 poz. 1713)
+          <a href="http://kssse.pl/upload/pictures/rozporzadzenie-ke-ue-nr-6512014-z-dnia-17-czerwca-2014.pdf"
+            target="_blank">LINK</a> ustawodawca, dla działalnośći B+R i/lub BPO, obniżył wymagane kryterium
+          ilościowe o 95%:</p>
+        <p>Koszty kwalifikowane nowej inwestycji, które jest obowiązany ponieść przedsiębiorca, obniża się
+          o 95% w przypadku nowej inwestycji z zakresu następujących usług:</p>
+
+        <ul>
+          <li><i class="fas fa-check"></i>związanych z wydawaniem pozostałego oprogramowania określonych w klasie 58.29
+            PKWiU, z wyłączeniem
+            usług licencyjnych związanych z nabywaniem praw do korzystania z programów komputerowych określonych
+            w kategorii 58.29.5 PKWiU,</li>
+          <li><i class="fas fa-check"></i>związanych z oprogramowaniem i doradztwem w zakresie informatyki i usług
+            powiązanych, określonych
+            w dziale 62 PKWiU, z wyłączeniem oryginałów oprogramowania komputerowego określonych w kategorii
+            62.01.2 PKWiU,</li>
+          <li><i class="fas fa-check"></i>przetwarzania danych, zarządzania stronami internetowymi (hosting) oraz
+            pozostałych usług związanych z
+            zapewnieniem infrastruktury dla technologii informatycznych i komputerowych, określonych w kategorii
+            63.11.1 PKWiU,</li>
+          <li><i class="fas fa-check"></i>w zakresie audytu finansowego określonych w kategorii 69.20.1 PKWiU,</li>
+          <li><i class="fas fa-check"></i>rachunkowo-księgowych określonych w kategorii 69.20.2 PKWiU,</li>
+          <li><i class="fas fa-check"></i>w zakresie firm centralnych (head offices) i doradztwa związanych z
+            zarządzaniem, określonych w dziale 70
+            PKWiU,</li>
+          <li><i class="fas fa-check"></i>architektonicznych i inżynierskich oraz w zakresie badań i analiz
+            technicznych, określonych w dziale 71
+            PKWiU,</li>
+          <li><i class="fas fa-check"></i>w zakresie badań naukowych i prac rozwojowych, określonych w dziale 72 PKWiU,
+          </li>
+          <li><i class="fas fa-check"></i>w zakresie specjalistycznego projektowania określonych w grupie 74.1 PKWiU,
+          </li>
+          <li><i class="fas fa-check"></i>doradztwa w sprawach środowiska określonych w podkategorii 74.90.13 PKWiU,
+          </li>
+          <li><i class="fas fa-check"></i>centrów telefonicznych (call center) określonych w grupie 82.2 PKWiU lub
+            naprawy i konserwacji komputerów i sprzętu komunikacyjnego, określonych w grupie 95.1 PKWiU</li>
+          <li><i class="fas fa-check"></i>działalności badawczo-rozwojowej odpowiednio w rozumieniu art. 5a pkt 38
+            ustawy z dnia 26
+            lipca 1991 r. o podatku dochodowym od osób fizycznych (Dz. U. z 2018 r. poz. 1509, 1540, 1552, 1629, 1669 i
+            1693) oraz art. 4a pkt 26 ustawy z dnia 15 lutego 1992 r. o podatku dochodowym od osób prawnych (Dz. U. z
+            2018 r. poz. 1036, 1162, 1291, 1629, 1669 i 1693);</li>
+        </ul>
       </div>
-
-
-      <!-- KOLUMNA 4 -->
-      <div class="col" align="center">
-
-        <p style="text-align: center"><b>TYLKO</b> działalność B+R i/lub BPO?</p>
-
-
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="options" id="inlineRadio1" value="option1">
-          <label class="form-check-label" for="inlineRadio1">TAK</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="options" id="inlineRadio2" value="option2" checked>
-          <label class="form-check-label" for="inlineRadio2">NIE</label>
-        </div>
-        <br /><br />
-        <p>
-          <button class="btn btn-own" type="button" data-toggle="collapse" data-target="#collapseExample4"
-            aria-expanded="false" aria-controls="collapseExample4">
-            Dlaczego to jest ważne?
-          </button>
-        </p>
-      </div>
-
-    </div>
-  </div>
-  </div>
-
-  <p style="text-align: center"> <button type="submit" style="text-align: center" class="btn btn-ownb btn-lg">
-      Pokaż lokalizacje</button>
-  </p>
-
-</form>
-
-
-<div class="container">
-  <div class="collapse" id="collapseExample">
-    <div class="card card-body">
-      <p> Kalkulator liczy po średnim kursie Narodowego Banku Polskiego <b>{{ cena }}</b> za PLN z dnia
-        <b>{{ date[8:10] }}.{{ date[5:7] }}.{{ date[0:4] }} roku.</b>
-      </p>
-    </div>
-  </div>
-
-  <div class="collapse" id="collapseExample2">
-    <div class="card card-body">
-      <p style="text-align: justify">Koszty kwalifikowane inwestycji zdefiniowane są w paragrafie 8 punkcie 1
-        Rozporządzenia Rady Ministrów z dnia 28 sierpnia 2018 r. w sprawie pomocy publicznej udzielanej niektórym
-        przedsiębiorcom na realizację nowych inwestycji (Dz.U. 2018 poz. 1713)
-        <a href="http://kssse.pl/upload/pictures/rozporzadzenie-ke-ue-nr-6512014-z-dnia-17-czerwca-2014.pdf"
-          target="_blank">
-          LINK
-        </a><br /><br />
-        <b>Do kosztów kwalifikujących się do objęcia wsparciem na nowe inwestycje zalicza się koszty będące:</b><br />
-        1) kosztem związanym z nabyciem gruntów lub prawa ich użytkowania wieczystego,<br />
-        2) ceną nabycia albo kosztem wytworzenia we własnym zakresie środków trwałych, pod warunkiem zaliczenia ich,
-        zgodnie z odrębnymi przepisami, do składników majątku podatnika i zaliczenia ich do ewidencji środków
-        trwałych oraz wartości niematerialnych i prawnych,<br />
-        3) kosztem rozbudowy lub modernizacji istniejących środków trwałych,<br />
-        4) ceną nabycia wartości niematerialnych i prawnych związanych z transferem technologii przez nabycie praw
-        patentowych,
-        licencji, know-how i nieopatentowanej wiedzy technicznej, z zastrzeżeniem ust. 2 i 3,<br />
-        5) kosztem związanym z najmem lub dzierżawą gruntów, budynków i budowli – pod warunkiem że okres najmu lub
-        dzierżawy
-        trwa co najmniej 5 lat, a w przypadku mikroprzedsiębiorców, małych przedsiębiorców i średnich
-        przedsiębiorców – co najmniej 3 lata, licząc od przewidywanego terminu zakończenia nowej inwestycji,<br />
-        6) ceną nabycia aktywów innych niż grunty, budynki i budowle objęte najmem lub dzierżawą, w przypadku gdy najem
-        lub dzierżawa ma postać leasingu finansowego oraz obejmuje zobowiązanie do nabycia aktywów z dniem upływu
-        okresu najmu lub dzierżawy<br /><br />
-        – pomniejszone o naliczony podatek od towarów i usług oraz o podatek akcyzowy, jeżeli możliwość ich odliczeń
-        wynika z
-        odrębnych przepisów, poniesione w okresie ważności decyzji o wsparciu wydanej dla konkretnej lokalizacji.
-        <br /><br />
-        Według ustawy z dnia 10 maja 2018r. o wspieraniu nowych inwestycji (Dz.U.2018 poz 1162 -
-        <a href="http://kssse.pl/upload/pictures/Dz_U_2018_poz_1162.pdf" target="_blank">LINK</a>) defincija kosztów
-        kwalifikownaych
-        brzmi następująco:<br /><br />
-
-        <b>koszty kwalifikowane nowej inwestycji</b> – koszty inwestycji kwalifikujące się do objęcia pomocą publiczną
-        z tytułu
-        nowej inwestycji pomniejszone o naliczony podatek od towarów i usług oraz o podatek akcyzowy, jeżeli możliwość
-        ich odliczeń wynika z odrębnych przepisów, poniesione w okresie ważności decyzji o wsparciu lub <b>dwuletnie
-          koszty
-          pracy</b>, jakie mogą być uwzględnione przy określaniu maksymalnej pomocy publicznej, ponoszone w okresie
-        ważności
-        decyzji o wsparciu.
-
-
-      </p>
-    </div>
-  </div>
-
-  <div class="collapse" id="collapseExample3">
-    <div class="card card-body">
-      <p style="text-align: justify">Wielkość przedsiębiorstwa ubiegającego się o pomoc publiczną definiuje załącznik nr
-        1
-        do Rozporządzenia Komisji (UE) nr 651/2014 z dnia 17 czerwca 2014r. uznające niektóre rodzaje pomocy za zgodne z
-        rynkiem
-        wewnętrznym w zastosowaniu art. 107 i 108 Traktatu (obowiązuje od 1 lipca 2014)
-        <a href="http://kssse.pl/upload/pictures/rozporzadzenie-ke-ue-nr-6512014-z-dnia-17-czerwca-2014.pdf"
-          target="_blank">
-          LINK
-        </a><br /><br />
-        Do kategorii mikroprzedsiębiorstw oraz małych i średnich przedsiębiorstw („MŚP”) należą przedsiębiorstwa,
-        które zatrudniają mniej niż 250 pracowników i których roczny obrót nie przekracza 50 milionów EUR, lub roczna
-        suma bilansowa nie przekracza 43 milionów EUR. 2. W kategorii MŚP małe przedsiębiorstwo definiuje się jako
-        przedsiębiorstwo, które zatrudnia mniej niż 50 pracowników i którego roczny obrót lub roczna suma bilansowa
-        nie przekracza 10 milionów EUR. 3. W kategorii MŚP mikroprzedsiębiorstwo definiuje się jako przedsiębiorstwo,
-        które zatrudnia mniej niż 10 pracowników i którego roczny obrót lub roczna suma bilansowa nie przekracza
-        2 milionów EUR.
-        <p style="text-align: center"><img width="95%" alt="MSP" src="/static/msp.PNG">
-
-        </p>
-    </div>
-  </div>
-
-  <div class="collapse" id="collapseExample4">
-    <div class="card card-body">
-      <p style="text-align: justify">W paragrafie 4 punkcie 4 podpunkcie 1 Rozporządzenia Rady Ministrów z dnia 28
-        sierpnia 2018 r. w sprawie pomocy publicznej udzielanej niektórym
-        przedsiębiorcom na realizację nowych inwestycji (Dz.U. 2018 poz. 1713)
-        <a href="http://kssse.pl/upload/pictures/rozporzadzenie-ke-ue-nr-6512014-z-dnia-17-czerwca-2014.pdf"
-          target="_blank">
-          LINK
-        </a> ustawodawca, dla działalnośći B+R i/lub BPO, obniżył wymagane kryterium ilościowe o 95%:<br /><br />
-
-        4. Koszty kwalifikowane nowej inwestycji, które jest obowiązany ponieść przedsiębiorca, obniża się
-        o:<br /><br />
-        1) 95%:<br />
-        <ol type="a">a) w przypadku nowej inwestycji z zakresu następujących usług:</ol>
-        <li>związanych z wydawaniem pozostałego oprogramowania określonych w klasie 58.29 PKWiU, z wyłączeniem
-          usług licencyjnych związanych z nabywaniem praw do korzystania z programów komputerowych określonych
-          w kategorii 58.29.5 PKWiU,</li>
-        <li>związanych z oprogramowaniem i doradztwem w zakresie informatyki i usług powiązanych, określonych
-          w dziale 62 PKWiU, z wyłączeniem oryginałów oprogramowania komputerowego określonych w kategorii
-          62.01.2 PKWiU,</li>
-        <li>przetwarzania danych, zarządzania stronami internetowymi (hosting) oraz pozostałych usług związanych z
-          zapewnieniem infrastruktury dla technologii informatycznych i komputerowych, określonych w kategorii
-          63.11.1 PKWiU,</li>
-        <li>w zakresie audytu finansowego określonych w kategorii 69.20.1 PKWiU,</li>
-        <li>rachunkowo-księgowych określonych w kategorii 69.20.2 PKWiU,</li>
-        <li>w zakresie firm centralnych (head offices) i doradztwa związanych z zarządzaniem, określonych w dziale 70
-          PKWiU,</li>
-        <li>architektonicznych i inżynierskich oraz w zakresie badań i analiz technicznych, określonych w dziale 71
-          PKWiU,</li>
-        <li>w zakresie badań naukowych i prac rozwojowych, określonych w dziale 72 PKWiU,</li>
-        <li>w zakresie specjalistycznego projektowania określonych w grupie 74.1 PKWiU,</li>
-        <li>doradztwa w sprawach środowiska określonych w podkategorii 74.90.13 PKWiU,</li>
-        <li>centrów telefonicznych (call center) określonych w grupie 82.2 PKWiU lub
-          naprawy i konserwacji komputerów i sprzętu komunikacyjnego, określonych w grupie 95.1 PKWiU</li><br />
-        zwanych dalej „nowoczesnymi usługami dla biznesu”,<br /><br />
-        <ol type="b">b) działalności badawczo-rozwojowej odpowiednio w rozumieniu art. 5a pkt 38 ustawy z dnia 26 lipca
-          1991 r. o podatku dochodowym od osób fizycznych (Dz. U. z 2018 r. poz. 1509, 1540, 1552, 1629, 1669 i 1693)
-          oraz art. 4a
-          pkt 26 ustawy z dnia 15 lutego 1992 r. o podatku dochodowym od osób prawnych (Dz. U. z 2018 r. poz. 1036,
-          1162, 1291, 1629, 1669 i 1693), zwanej dalej „działalnością badawczo-rozwojową”;</ol>
-
-
-      </p>
     </div>
   </div>
 </div>
-<hr />
+
+<div class="collapse" id="collapseExample4">
+  <div class="card card-body">
+    <p style="text-align: justify">W paragrafie 4 punkcie 4 podpunkcie 1 Rozporządzenia Rady Ministrów z dnia 28
+      sierpnia 2018 r. w sprawie pomocy publicznej udzielanej niektórym
+      przedsiębiorcom na realizację nowych inwestycji (Dz.U. 2018 poz. 1713)
+      <a href="http://kssse.pl/upload/pictures/rozporzadzenie-ke-ue-nr-6512014-z-dnia-17-czerwca-2014.pdf"
+        target="_blank">
+        LINK
+      </a> ustawodawca, dla działalnośći B+R i/lub BPO, obniżył wymagane kryterium ilościowe o 95%:<br /><br />
+
+      4. Koszty kwalifikowane nowej inwestycji, które jest obowiązany ponieść przedsiębiorca, obniża się
+      o:<br /><br />
+      1) 95%:<br />
+      <ol type="a">a) w przypadku nowej inwestycji z zakresu następujących usług:</ol>
+      <li>związanych z wydawaniem pozostałego oprogramowania określonych w klasie 58.29 PKWiU, z wyłączeniem
+        usług licencyjnych związanych z nabywaniem praw do korzystania z programów komputerowych określonych
+        w kategorii 58.29.5 PKWiU,</li>
+      <li>związanych z oprogramowaniem i doradztwem w zakresie informatyki i usług powiązanych, określonych
+        w dziale 62 PKWiU, z wyłączeniem oryginałów oprogramowania komputerowego określonych w kategorii
+        62.01.2 PKWiU,</li>
+      <li>przetwarzania danych, zarządzania stronami internetowymi (hosting) oraz pozostałych usług związanych z
+        zapewnieniem infrastruktury dla technologii informatycznych i komputerowych, określonych w kategorii
+        63.11.1 PKWiU,</li>
+      <li>w zakresie audytu finansowego określonych w kategorii 69.20.1 PKWiU,</li>
+      <li>rachunkowo-księgowych określonych w kategorii 69.20.2 PKWiU,</li>
+      <li>w zakresie firm centralnych (head offices) i doradztwa związanych z zarządzaniem, określonych w dziale 70
+        PKWiU,</li>
+      <li>architektonicznych i inżynierskich oraz w zakresie badań i analiz technicznych, określonych w dziale 71
+        PKWiU,</li>
+      <li>w zakresie badań naukowych i prac rozwojowych, określonych w dziale 72 PKWiU,</li>
+      <li>w zakresie specjalistycznego projektowania określonych w grupie 74.1 PKWiU,</li>
+      <li>doradztwa w sprawach środowiska określonych w podkategorii 74.90.13 PKWiU,</li>
+      <li>centrów telefonicznych (call center) określonych w grupie 82.2 PKWiU lub
+        naprawy i konserwacji komputerów i sprzętu komunikacyjnego, określonych w grupie 95.1 PKWiU</li><br />
+      zwanych dalej „nowoczesnymi usługami dla biznesu”,<br /><br />
+      <ol type="b">b) działalności badawczo-rozwojowej odpowiednio w rozumieniu art. 5a pkt 38 ustawy z dnia 26 lipca
+        1991 r. o podatku dochodowym od osób fizycznych (Dz. U. z 2018 r. poz. 1509, 1540, 1552, 1629, 1669 i 1693)
+        oraz art. 4a
+        pkt 26 ustawy z dnia 15 lutego 1992 r. o podatku dochodowym od osób prawnych (Dz. U. z 2018 r. poz. 1036,
+        1162, 1291, 1629, 1669 i 1693), zwanej dalej „działalnością badawczo-rozwojową”;</ol>
+  </div>
+</div>
 {% if request.method == 'POST' %}
 {% include 'resultslok.html' %}
 {% endif %}
