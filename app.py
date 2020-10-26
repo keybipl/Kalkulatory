@@ -98,7 +98,8 @@ class Kalkulator:
             pass
 
         if self.size == 'średni':
-            mycursor = db.execute(f'SELECT * FROM gminy WHERE wojewodztwo="{self.region}" and nakladys <= {self.value}')
+            mycursor = db.execute(
+                f'SELECT * FROM gminy WHERE wojewodztwo="{self.region}" and nakladys <= {self.value}')
             powiat = mycursor.fetchall()
             gminy = []
             for i in powiat:
@@ -113,7 +114,8 @@ class Kalkulator:
                 self.value /= cena
 
         elif self.size == 'mały':
-            mycursor = db.execute(f'SELECT * FROM gminy WHERE wojewodztwo="{self.region}" and nakladyma <= {self.value}')
+            mycursor = db.execute(
+                f'SELECT * FROM gminy WHERE wojewodztwo="{self.region}" and nakladyma <= {self.value}')
             powiat = mycursor.fetchall()
             gminy = []
             for i in powiat:
@@ -128,7 +130,8 @@ class Kalkulator:
                 self.value /= cena
 
         elif self.size == 'mikro':
-            mycursor = db.execute(f'SELECT * FROM gminy WHERE wojewodztwo="{self.region}" and nakladym <= {self.value}')
+            mycursor = db.execute(
+                f'SELECT * FROM gminy WHERE wojewodztwo="{self.region}" and nakladym <= {self.value}')
             powiat = mycursor.fetchall()
             gminy = []
             for i in powiat:
@@ -143,7 +146,8 @@ class Kalkulator:
                 self.value /= cena
 
         else:
-            mycursor = db.execute(f'SELECT * FROM gminy WHERE wojewodztwo="{self.region}" and naklady <= {self.value}')
+            mycursor = db.execute(
+                f'SELECT * FROM gminy WHERE wojewodztwo="{self.region}" and naklady <= {self.value}')
             powiat = mycursor.fetchall()
             gminy = []
             for i in powiat:
@@ -161,7 +165,8 @@ class Kalkulator:
 
     def gn(self):
         db = get_db()
-        mycursor = db.execute(f'SELECT * FROM gminy WHERE wojewodztwo="{self.region}"')
+        mycursor = db.execute(
+            f'SELECT * FROM gminy WHERE wojewodztwo="{self.region}"')
         dane = mycursor.fetchall()
 
         gminy = []
@@ -200,7 +205,6 @@ class Where:
         self.size = size
         self.rd = rd
 
-
     def lubuskie(self):
         if self.rd == 'option1' and self.size != 'mikro':
             naklady = 'nakladybr'
@@ -215,7 +219,8 @@ class Where:
         if self.currency == 'EURO':
             self.value *= cena
         db = get_db()
-        cur = db.execute('select * from gminy where {} <= {} and wojewodztwo = "{}"'.format(naklady, self.value, 'lubuskie'))
+        cur = db.execute(
+            'select * from gminy where {} <= {} and wojewodztwo = "{}"'.format(naklady, self.value, 'lubuskie'))
         results = cur.fetchall()
         lubuskie = {}
         for i in range(len(results)):
@@ -238,7 +243,8 @@ class Where:
         if self.currency == 'EURO':
             self.value *= cena
         db = get_db()
-        cur = db.execute('select * from gminy where {} <= {} and wojewodztwo = "{}"'.format(naklady, self.value, 'wielkopolskie'))
+        cur = db.execute('select * from gminy where {} <= {} and wojewodztwo = "{}"'.format(
+            naklady, self.value, 'wielkopolskie'))
         results = cur.fetchall()
         wielkopolskie = {}
         for i in range(len(results)):
@@ -261,7 +267,8 @@ class Where:
         if self.currency == 'EURO':
             self.value *= cena
         db = get_db()
-        cur = db.execute('select * from gminy where {} <= {} and wojewodztwo = "{}"'.format(naklady, self.value, 'zachodniopomorskie'))
+        cur = db.execute('select * from gminy where {} <= {} and wojewodztwo = "{}"'.format(
+            naklady, self.value, 'zachodniopomorskie'))
         results = cur.fetchall()
         zachodniopomorskie = {}
         for i in range(len(results)):
@@ -271,73 +278,73 @@ class Where:
         return zachodniopomorskie
 
     def gnl(self):
-            db = get_db()
-            cur = db.execute(
-                'select * from gminy where wojewodztwo = "{}"'.format('lubuskie'))
-            results = cur.fetchall()
-            gminyl = {}
-            if self.rd == 'option1' and self.size != 'mikro':
-                for i in range(len(results)):
-                    gminyl[results[i]['gmina']] = results[i]['nakladybr']
-            elif self.size == 'duży' and self.rd != 'option1':
-                for i in range(len(results)):
-                    gminyl[results[i]['gmina']] = results[i]['naklady']
-            elif self.size == 'średni' and self.rd != 'option1':
-                for i in range(len(results)):
-                    gminyl[results[i]['gmina']] = results[i]['nakladys']
-            elif self.size == 'mały':
-                for i in range(len(results)):
-                    gminyl[results[i]['gmina']] = results[i]['nakladyma']
-            else:
-                for i in range(len(results)):
-                    gminyl[results[i]['gmina']] = results[i]['nakladym']
-            return gminyl
+        db = get_db()
+        cur = db.execute(
+            'select * from gminy where wojewodztwo = "{}"'.format('lubuskie'))
+        results = cur.fetchall()
+        gminyl = {}
+        if self.rd == 'option1' and self.size != 'mikro':
+            for i in range(len(results)):
+                gminyl[results[i]['gmina']] = results[i]['nakladybr']
+        elif self.size == 'duży' and self.rd != 'option1':
+            for i in range(len(results)):
+                gminyl[results[i]['gmina']] = results[i]['naklady']
+        elif self.size == 'średni' and self.rd != 'option1':
+            for i in range(len(results)):
+                gminyl[results[i]['gmina']] = results[i]['nakladys']
+        elif self.size == 'mały':
+            for i in range(len(results)):
+                gminyl[results[i]['gmina']] = results[i]['nakladyma']
+        else:
+            for i in range(len(results)):
+                gminyl[results[i]['gmina']] = results[i]['nakladym']
+        return gminyl
 
     def gnw(self):
-            db = get_db()
-            cur = db.execute(
-                'select * from gminy where wojewodztwo = "{}"'.format('wielkopolskie'))
-            results = cur.fetchall()
-            gminyw = {}
-            if self.rd == 'option1' and self.size != 'mikro':
-                for i in range(len(results)):
-                    gminyw[results[i]['gmina']] = results[i]['nakladybr']
-            elif self.size == 'duży' and self.rd != 'option1':
-                for i in range(len(results)):
-                    gminyw[results[i]['gmina']] = results[i]['naklady']
-            elif self.size == 'średni' and self.rd != 'option1':
-                for i in range(len(results)):
-                    gminyw[results[i]['gmina']] = results[i]['nakladys']
-            elif self.size == 'mały':
-                for i in range(len(results)):
-                    gminyw[results[i]['gmina']] = results[i]['nakladyma']
-            else:
-                for i in range(len(results)):
-                    gminyw[results[i]['gmina']] = results[i]['nakladym']
-            return gminyw
+        db = get_db()
+        cur = db.execute(
+            'select * from gminy where wojewodztwo = "{}"'.format('wielkopolskie'))
+        results = cur.fetchall()
+        gminyw = {}
+        if self.rd == 'option1' and self.size != 'mikro':
+            for i in range(len(results)):
+                gminyw[results[i]['gmina']] = results[i]['nakladybr']
+        elif self.size == 'duży' and self.rd != 'option1':
+            for i in range(len(results)):
+                gminyw[results[i]['gmina']] = results[i]['naklady']
+        elif self.size == 'średni' and self.rd != 'option1':
+            for i in range(len(results)):
+                gminyw[results[i]['gmina']] = results[i]['nakladys']
+        elif self.size == 'mały':
+            for i in range(len(results)):
+                gminyw[results[i]['gmina']] = results[i]['nakladyma']
+        else:
+            for i in range(len(results)):
+                gminyw[results[i]['gmina']] = results[i]['nakladym']
+        return gminyw
 
     def gnz(self):
-            db = get_db()
-            cur = db.execute(
-                'select * from gminy where wojewodztwo = "{}"'.format('zachodniopomorskie'))
-            results = cur.fetchall()
-            gminyz = {}
-            if self.rd == 'option1' and self.size != 'mikro':
-                for i in range(len(results)):
-                    gminyz[results[i]['gmina']] = results[i]['nakladybr']
-            elif self.size == 'duży' and self.rd != 'option1':
-                for i in range(len(results)):
-                    gminyz[results[i]['gmina']] = results[i]['naklady']
-            elif self.size == 'średni' and self.rd != 'option1':
-                for i in range(len(results)):
-                    gminyz[results[i]['gmina']] = results[i]['nakladys']
-            elif self.size == 'mały':
-                for i in range(len(results)):
-                    gminyz[results[i]['gmina']] = results[i]['nakladyma']
-            else:
-                for i in range(len(results)):
-                    gminyz[results[i]['gmina']] = results[i]['nakladym']
-            return gminyz
+        db = get_db()
+        cur = db.execute(
+            'select * from gminy where wojewodztwo = "{}"'.format('zachodniopomorskie'))
+        results = cur.fetchall()
+        gminyz = {}
+        if self.rd == 'option1' and self.size != 'mikro':
+            for i in range(len(results)):
+                gminyz[results[i]['gmina']] = results[i]['nakladybr']
+        elif self.size == 'duży' and self.rd != 'option1':
+            for i in range(len(results)):
+                gminyz[results[i]['gmina']] = results[i]['naklady']
+        elif self.size == 'średni' and self.rd != 'option1':
+            for i in range(len(results)):
+                gminyz[results[i]['gmina']] = results[i]['nakladys']
+        elif self.size == 'mały':
+            for i in range(len(results)):
+                gminyz[results[i]['gmina']] = results[i]['nakladyma']
+        else:
+            for i in range(len(results)):
+                gminyz[results[i]['gmina']] = results[i]['nakladym']
+        return gminyz
 
 
 class Fee:
@@ -370,7 +377,6 @@ class Fee:
         else:
             xp = 0
         return xp
-
 
     def xz(self):
         if 50 > self.jobs > 0:
@@ -407,6 +413,7 @@ cena = float(cena)
 cena = float(round(cena, 2))
 date = data()
 
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     specialist = randint(1, 4)
@@ -427,7 +434,8 @@ def pomoc():
         value = value * 1000000
         intensity = 0
         pp = 0
-        wynik = Kalkulator(waluta=waluta, value=value, size=size, region=region, intensity=intensity, pp=pp)
+        wynik = Kalkulator(waluta=waluta, value=value, size=size,
+                           region=region, intensity=intensity, pp=pp)
         dic = wynik.criteria()
         dicn = wynik.gn()
         result = defaultdict(list)
@@ -455,7 +463,8 @@ def pomoc():
             currency = 'EURO'
         value = '{:,}'.format(int(round(wynik.value, 2))).replace(',', ' ')
         pp = '{:,}'.format(int(round(pp, 2))).replace(',', ' ')
-        przelicznik = '{:,}'.format(int(round(przelicznik, 2))).replace(',', ' ')
+        przelicznik = '{:,}'.format(
+            int(round(przelicznik, 2))).replace(',', ' ')
         wynik.value = value
         wynik.pp = pp
         specialist = randint(1, 4)
@@ -516,13 +525,16 @@ def naklady():
     specialist = randint(1, 4)
     if request.method == 'GET':
         db = get_db()
-        lubuskie_cur = db.execute("SELECT DISTINCT powiat FROM gminy where wojewodztwo = 'lubuskie'")
+        lubuskie_cur = db.execute(
+            "SELECT DISTINCT powiat FROM gminy where wojewodztwo = 'lubuskie'")
         lubuskie_powiaty = lubuskie_cur.fetchall()
 
-        wielkopolskie_cur = db.execute("SELECT DISTINCT powiat FROM gminy where wojewodztwo = 'wielkopolskie'")
+        wielkopolskie_cur = db.execute(
+            "SELECT DISTINCT powiat FROM gminy where wojewodztwo = 'wielkopolskie'")
         wielkopolskie_powiaty = wielkopolskie_cur.fetchall()
 
-        zachodniopomorskie_cur = db.execute("SELECT DISTINCT powiat FROM gminy where wojewodztwo = 'zachodniopomorskie'")
+        zachodniopomorskie_cur = db.execute(
+            "SELECT DISTINCT powiat FROM gminy where wojewodztwo = 'zachodniopomorskie'")
         zachodniopomorskie_powiaty = zachodniopomorskie_cur.fetchall()
 
         return render_template('indexnak.html', lubuskie_powiaty=lubuskie_powiaty, wielkopolskie_powiaty=wielkopolskie_powiaty,
@@ -534,22 +546,28 @@ def naklady():
         powiatw = request.form['powiatw']
         powiatz = request.form['powiatz']
 
-        gminyl_cur = db.execute('select * from gminy where powiat = ?', [powiatl])
+        gminyl_cur = db.execute(
+            'select * from gminy where powiat = ?', [powiatl])
         gminyl = gminyl_cur.fetchall()
 
-        gminyw_cur = db.execute('select * from gminy where powiat = ?', [powiatw])
+        gminyw_cur = db.execute(
+            'select * from gminy where powiat = ?', [powiatw])
         gminyw = gminyw_cur.fetchall()
 
-        gminyz_cur = db.execute('select * from gminy where powiat = ?', [powiatz])
+        gminyz_cur = db.execute(
+            'select * from gminy where powiat = ?', [powiatz])
         gminyz = gminyz_cur.fetchall()
 
-        lubuskie_cur = db.execute("SELECT DISTINCT powiat FROM gminy where wojewodztwo = 'lubuskie'")
+        lubuskie_cur = db.execute(
+            "SELECT DISTINCT powiat FROM gminy where wojewodztwo = 'lubuskie'")
         lubuskie_powiaty = lubuskie_cur.fetchall()
 
-        wielkopolskie_cur = db.execute("SELECT DISTINCT powiat FROM gminy where wojewodztwo = 'wielkopolskie'")
+        wielkopolskie_cur = db.execute(
+            "SELECT DISTINCT powiat FROM gminy where wojewodztwo = 'wielkopolskie'")
         wielkopolskie_powiaty = wielkopolskie_cur.fetchall()
 
-        zachodniopomorskie_cur = db.execute("SELECT DISTINCT powiat FROM gminy where wojewodztwo = 'zachodniopomorskie'")
+        zachodniopomorskie_cur = db.execute(
+            "SELECT DISTINCT powiat FROM gminy where wojewodztwo = 'zachodniopomorskie'")
         zachodniopomorskie_powiaty = zachodniopomorskie_cur.fetchall()
 
         return render_template('indexnak.html', powiatl=powiatl, powiatw=powiatw, powiatz=powiatz, gminyl=gminyl,
@@ -575,7 +593,8 @@ def fee():
         area = int(request.form['area'])
         time = int(request.form['time'])
         infrastructure = request.form['options']
-        payment = Fee(expenditures=expenditures, jobs=jobs, size=size, area=area, infrastructure=infrastructure)
+        payment = Fee(expenditures=expenditures, jobs=jobs,
+                      size=size, area=area, infrastructure=infrastructure)
         xw = payment.xw()
         xp = payment.xp()
         xz = payment.xz()

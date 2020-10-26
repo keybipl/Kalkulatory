@@ -40,15 +40,20 @@
 
     <table class="table">
       <tr>
-        <th scope="col">Gmina</th>
-        <th scope="col">PLN</th>
+        <th class="gmina" scope="col">Gmina</th>
+        <th class="pln" scope="col">PLN</th>
+        <th class="euro">EURO</th>
       </tr>
     </table>
     {% for i in v %}
     <table class="table">
       <tr>
-        <td>{{ i }}</td>
-        <td>{{ '{:,}'.format(lub[i]).replace(',', ' ') }} zł</td>
+        <td class="gmina">{{ i }}</td>
+        <td class="pln">{{ '{:,}'.format(lub[i]).replace(',', ' ') }} zł</td>
+        <td class="euro">
+          {% set test = lub[i]/cena | float %}
+          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} &euro;
+        </td>
       </tr>
     </table>
     {% endfor %}
@@ -61,15 +66,20 @@
     <p class="powiaty">Powiat <strong>{{ k }}</strong> w gminach:</p>
     <table class="table">
       <tr>
-        <th scope="col">Gmina</th>
-        <th scope="col">PLN</th>
+        <th class="gmina" scope="col">Gmina</th>
+        <th class="pln" scope="col">PLN</th>
+        <th class="euro">EURO</th>
       </tr>
     </table>
     {% for i in v %}
     <table class="table">
       <tr>
-        <td>{{ i }}</td>
-        <td>{{ '{:,}'.format(wlkp[i]).replace(',', ' ') }} zł</td>
+        <td class="gmina">{{ i }}</td>
+        <td class="pln">{{ '{:,}'.format(wlkp[i]).replace(',', ' ') }} zł</td>
+        <td class="euro">
+          {% set test = wlkp[i]/cena | float %}
+          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} &euro;
+        </td>
       </tr>
     </table>
     {% endfor %}
@@ -80,23 +90,26 @@
 
     <h1>Zachodniopomorskie</h1>
     {% for k,v in resultz.items() %}
-    <p class="powiaty">Powiat {{ k }} w gminach:</p>
+    <p class="powiaty">Powiat <strong>{{ k }}</strong> w gminach:</p>
     <table class="table">
       <tr>
-        <th scope="col">Gmina</th>
-        <th scope="col">PLN</th>
+        <th class="gmina" scope="col">Gmina</th>
+        <th class="pln" scope="col">PLN</th>
+        <th class="euro">EURO</th>
       </tr>
     </table>
-
     {% for i in v %}
     <table class="table">
       <tr>
-        <td>{{ i }}</td>
-        <td>{{ '{:,}'.format(zach[i]).replace(',', ' ') }} zł</td>
+        <td class="gmina">{{ i }}</td>
+        <td class="pln">{{ '{:,}'.format(zach[i]).replace(',', ' ') }} zł</td>
+        <td class="euro">
+          {% set test = zach[i]/cena | float %}
+          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} &euro;
+        </td>
       </tr>
     </table>
     {% endfor %}
-    <br /><br />
     {% endfor %}
   </div>
 </div>

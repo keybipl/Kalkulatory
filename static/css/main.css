@@ -6,6 +6,7 @@
     box-sizing: border-box;
 }
 
+
 .clearfix::after {
     content: "";
     display: block;
@@ -182,19 +183,19 @@ p.notification {
     font-weight: bold;
 }
 
-.euro {
+div.rpp .euro {
     display: none;
 }
 
-.gmina {
+div.rpp .gmina {
     width: 50%;
 }
 
-.pln {
+div.rpp .pln {
     width: 50%;
 }
 
-p.powiat {
+div.rpp p.powiat {
     margin-top: 30px;
 }
 
@@ -263,6 +264,7 @@ div.frd {
 
 div.rlok {
     font-size: 1.1rem;
+    margin-bottom: 0;
 }
 
 div.rlok p {
@@ -311,6 +313,25 @@ div.lubuskie {
     margin-top: -20px;
 }
 
+div.rlok th.gmina,
+div.rlok td.gmina {
+    width: 33%;
+}
+
+div.rlok th.pln,
+div.rlok td.pln {
+    width: 33%;
+}
+
+div.rlok th.pln,
+div.rlok td.pln {
+    width: 33%;
+}
+
+div.rlok .euro {
+    display: none;
+}
+
 
 @media (min-width: 533px) {
 
@@ -344,18 +365,18 @@ div.lubuskie {
         text-align: left;
     }
 
-    .euro {
+    div.rpp .euro {
         display: table-cell;
         width: 30%;
         text-align: center;
     }
 
-    .gmina {
+    div.rpp .gmina {
         width: 40%;
 
     }
 
-    .pln {
+    div.rpp .pln {
         width: 30%;
         text-align: center;
     }
@@ -382,6 +403,12 @@ div.lubuskie {
     div.frd {
         width: 50%;
         float: left;
+    }
+
+    /* resulrslok.html */
+
+    div.rlok .euro {
+        display: block;
     }
 }
 
@@ -482,6 +509,26 @@ div.lubuskie {
         margin-top: 10px;
     }
 
+    /* resultslok.html */
+
+    div.rlok {
+        font-size: 1.2rem;
+        margin-bottom: 0;
+        text-align: center;
+    }
+
+    div.rlok table {
+        width: 90%;
+        margin: 0 auto;
+    }
+
+    div.rlok th:nth-child(1),
+    div.rlok td:nth-child(1) {
+        text-align: left;
+    }
+
+
+
 }
 
 @media (min-width: 1024px) {
@@ -564,6 +611,22 @@ div.lubuskie {
     div.lwrap {
         font-size: 1.3rem;
         text-align: justify;
+    }
+
+    /* resultslok.html */
+
+    div.rlok table.table {
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    div.rlok {
+        font-size: 1.3rem;
+    }
+
+    div.rlok p.fulfill {
+        text-align: center;
+        padding: 15px;
     }
 }
 
@@ -659,7 +722,7 @@ div.lubuskie {
         font-size: 4rem;
     }
 
-    .table {
+    div.rpp .table {
         width: 65%;
         margin: 0 auto;
         max-width: 824px;
@@ -684,7 +747,7 @@ div.lubuskie {
     div.lok p.title {
         font-size: 1.6rem;
         text-align: center;
-        margin: 0 0 30px 0;
+        margin: 0 0 40px 0;
     }
 
     div.lok label {
@@ -698,5 +761,34 @@ div.lubuskie {
 
     div.lwrap a:hover {
         color: var(--bordoh);
+    }
+
+    div.lwrap .lok form .frd {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    div.lok .form-group {
+        display: block;
+        float: left;
+        width: calc(100%/3);
+        text-align: center;
+    }
+
+    .defkoszty ul {
+        font-size: 1.5rem;
+    }
+
+    /* resultslok.html */
+
+    div.rlok {
+        font-size: 1.5rem;
+    }
+
+    div.rlok table.table {
+        width: 80%;
+        max-width: 1024px;
+        margin: 0 auto;
     }
 }
