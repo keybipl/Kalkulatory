@@ -208,16 +208,16 @@ div.lwrap {
     font-size: 1.1rem;
 }
 
-div.lwrap .radiowrap {
+.radiowrap {
     text-align: center;
     margin-left: 30px;
 }
 
-div.lwrap label.form-check-label {
+label.form-check-label {
     margin: 0 10px;
 }
 
-div.lwrap input[type="radio"] {
+input[type="radio"] {
     -ms-transform: scale(1.5);
     /* IE 9 */
     -webkit-transform: scale(1.5);
@@ -233,7 +233,7 @@ div.lok form {
     text-align: center;
 }
 
-div.lwrap .radiowrap {
+.radiowrap {
     margin-bottom: 20px;
 }
 
@@ -417,6 +417,27 @@ div.nakwrap div.nakres th:nth-child(1),
 div.nakwrap div.nakres td:nth-child(1) {
     text-align: left;
 }
+
+/* indexopl.html */
+
+div.opl label {
+    font-weight: bold;
+    display: block;
+}
+
+div.opl .form-check-label {
+    font-weight: normal;
+    margin-left: 0 auto;
+}
+
+div.opl .radiowrap {
+    margin-left: 0;
+}
+
+div.opl p {
+    margin-bottom: 40px;
+}
+
 
 @media (min-width: 533px) {
 

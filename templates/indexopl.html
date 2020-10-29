@@ -1,250 +1,224 @@
 {% extends 'base.html' %}
 
-{% block title %}Opłata za administrowanie{% endblock %}
-
 {% block content %}
 
-    <!--JUMBO-->
-    <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-            <h1 class="display-5" style="text-align: center">Opłata za administrowanie</h1>
-            <p class="lead" style="text-align: center">Policz jaką opłatę poniesiesz mając decyzję o wspraciu</p>
-            <div class="box">
-                <a class="btn btn-success btn-lg" href="/" role="button">Pokaż inne kalkulatory</a>
+
+<div class="ppwrap opl clearfix">
+    <div class="pp">
+
+        <form method="POST" action="/oplata">
+
+            <div class="form-group">
+                <label for="waluta">Wybierz walutę</label>
+                <select class="form-control" id="waluta" name="currency" required>
+                    <option></option>
+                    <option>PLN</option>
+                    <option>EURO</option>
+                </select>
             </div>
-        </div>
+
+            <div class="form-group">
+                <label for="value">Koszty kwalifikowane</label>
+                <input type="number" step="0.05" class="form-control" id="value" placeholder="pełna kwota"
+                    name="expenditures" required>
+            </div>
+
+            <div class="form-group">
+                <label for="powierzchnia">Powierzchnia</label>
+                <input type="number" step="1" class="form-control" id="powierzchnia" placeholder="proszę podać w m2"
+                    name="area" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nowe"><b>Nowe miejsca pracy</b></label>
+                <input type="number" step="1" class="form-control" id="nowe" name="jobs" required>
+            </div>
+
+            <div class="form-group">
+                <label for="size">Wielkość przedsiębiorcy</label>
+                <select class="form-control" id="size" name="size" required>
+                    <option></option>
+                    <option>duży</option>
+                    <option>średni</option>
+                    <option>mały</option>
+                    <option>mikro</option>
+                </select>
+            </div>
+
+            <div class="radiowrap">
+                <label>Infrastruktura techniczna</label>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="options" id="inlineRadio1" value="option1">
+                    <label class="form-check-label" for="inlineRadio1">TAK</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="options" id="inlineRadio2" value="option2"
+                        checked>
+                    <label class="form-check-label" for="inlineRadio2">NIE</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="obowiazywanie">Okres obowiązywania decyzji</label>
+                <select class="form-control" id="obowiazywanie" name="time" required>
+                    <option></option>
+                    <option>10</option>
+                    <option>12</option>
+                    <option>15</option>
+                </select>
+            </div>
+
+            <button type="submit" class="ppcount">Policz</button>
+
+        </form>
     </div>
-    <!--ENDJUMBO-->
 
-    <!--DWIE KOLUMNY-->
-    <div class="container">
-        <div class="row">
+    <div class="pp">
+        <p class="waluta"> <strong>1. Waluta:</strong> Proszę wybrać w jakiej walucie zostanie policzona pomoc
+            publiczna.
+            Kalkulator liczy po średnim kursie Narodowego Banku Polskiego <strong>{{ cena }} zł</strong> za EURO z dnia
+            <strong>{{ date[8:10] }}.{{ date[5:7] }}.{{ date[0:4] }}</strong> roku.
+        </p>
 
-            <!--KOLUMNA 1 formularze -->
-            <div class="col-sm-4" align="center">
+        <p><strong>2. Koszty kwalifikowane:</strong> Proszę podać wartość planowanej inwestycji, czyli koszty
+            kwalifikujące
+            się do objęcia
+            pomocą --> <a href="#koszty" data-toggle="collapse">
+                definicja kosztów kwalifikowanych inwestycji </a></p>
 
-                <form method="POST" action="/oplata">
+        <div class="collapse" id="koszty">
 
-                    <div class="form-group" style="width: 15rem;">
-                        <label for="exampleFormControlSelect1"><b>Wybierz walutę</b></label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="currency" required>
-                            <option></option>
-                            <option>PLN</option>
-                            <option>EURO</option>
-                        </select>
-                        <hr/>
-
-
-                        <div class="form-group" style="width: 15rem;">
-                            <label for="formGroupExampleInput"><b>Koszty kwalifikowane</b></label>
-                            <input type="number" step="0.05" class="form-control" id="formGroupExampleInput"
-
-                                   name="expenditures" required>
-                            <hr/>
-                        </div>
-
-                        <div class="form-group" style="width: 15rem;">
-                            <label for="formGroupExampleInput"><b>Powierzchnia</b></label>
-                            <input type="number" step="1" class="form-control" id="formGroupExampleInput"
-                                   placeholder="proszę podać w m2"
-                                   name="area" required>
-                            <hr/>
-                        </div>
-
-                        <div class="form-group" style="width: 15rem;">
-                            <label for="formGroupExampleInput"><b>Nowe miejsca pracy</b></label>
-                            <input type="number" step="1" class="form-control" id="formGroupExampleInput" name="jobs"
-                                   required>
-                            <hr/>
-                        </div>
-
-                        <div class="form-group" style="width: 15rem; text-align: center">
-                            <label for="exampleFormControlSelect1"><b>Przedsiębiorca</b></label>
-                            <select class="form-control" id="exampleFormControlSelect1" name="size" required>
-                                <option></option>
-                                <option>duży</option>
-                                <option>średni</option>
-                                <option>mały</option>
-                                <option>mikro</option>
-                            </select>
-                            <hr/>
-                        </div>
-
-
-                        <p style="text-align: center"><b>Infrastruktura techniczna</b></p>
-
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="options" id="inlineRadio1"
-                                   value="option1">
-                            <label class="form-check-label" for="inlineRadio1">TAK</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="options" id="inlineRadio2"
-                                   value="option2" checked>
-                            <label class="form-check-label" for="inlineRadio2">NIE</label>
-                        </div>
-                        <hr/>
-
-                    </div>
-
-                    <div class="form-group" style="width: 15rem; text-align: center">
-                        <label for="exampleFormControlSelect1"><b>Okres obowiązywania decyzji</b></label>
-                        <select class="form-control" id="exampleFormControlSelect1" name="time" required>
-                            <option></option>
-                            <option>10</option>
-                            <option>12</option>
-                            <option>15</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-ownb">Policz</button>
-
-                </form>
-
-
-            </div>
-
-            <!--KOLUMNA2-->
-            <div class="col-sm-8">
-
-                <p><b>1. Waluta:</b> Proszę wybrać w jakiej walucie zostanie policzona opłata za administrowanie.
-                    Kalkulator liczy po średnim kursie Narodowego Banku Polskiego <b>{{ cena }}</b> za PLN z dnia
-                    <b>{{ date[8:10] }}.{{ date[5:7] }}.{{ date[0:4] }} roku.</b>
-                </p>
-                <hr/>
-                <p><b>2. Koszty kwalifikowane - </b>proszę podać wartość planowanej inwestycji, czyli koszty
-                    kwalifikujące
-                    się do objęcia pomocą. <br/>
-
-                <p style="text-align: center">
-                    <button class="btn btn-own" type="button" data-toggle="collapse" data-target="#collapseExample1"
-                            aria-expanded="false" aria-controls="collapseExample1">
-                        Definicja kosztów kwalifikowanych inwestycji
-                    </button>
-                </p>
-                <div class="collapse" id="collapseExample1">
-                    <div class="card card-body" style="text-align: center">
-                        <p style="text-align: justify">Koszty kwalifikowane inwestycji zdefiniowane są w paragrafie 8
-                            punkcie 1
+            <div class="card">
+                <div class="card-body">
+                    <div class="defkoszty">
+                        <p>Koszty kwalifikowane inwestycji zdefiniowane są w paragrafie 8 punkcie 1
                             Rozporządzenia Rady Ministrów z dnia 28 sierpnia 2018 r. w sprawie pomocy publicznej
                             udzielanej niektórym
                             przedsiębiorcom na realizację nowych inwestycji (Dz.U. 2018 poz. 1713)
                             <a href="http://kssse.pl/upload/pictures/rozporzadzenie-ke-ue-nr-6512014-z-dnia-17-czerwca-2014.pdf"
-                               target="_blank">
-                                LINK
-                            </a><br/><br/>
-                            <b>Do kosztów kwalifikujących się do objęcia wsparciem na nowe inwestycje zalicza się koszty
-                                będące:</b><br/>
-                            1) kosztem związanym z nabyciem gruntów lub prawa ich użytkowania wieczystego,<br/>
-                            2) ceną nabycia albo kosztem wytworzenia we własnym zakresie środków trwałych, pod warunkiem
-                            zaliczenia ich,
-                            zgodnie z odrębnymi przepisami, do składników majątku podatnika i zaliczenia ich do
-                            ewidencji środków
-                            trwałych oraz wartości niematerialnych i prawnych,<br/>
-                            3) kosztem rozbudowy lub modernizacji istniejących środków trwałych,<br/>
-                            4) ceną nabycia wartości niematerialnych i prawnych związanych z transferem technologii
-                            przez nabycie praw patentowych,
-                            licencji, know-how i nieopatentowanej wiedzy technicznej, z zastrzeżeniem ust. 2 i 3,<br/>
-                            5) kosztem związanym z najmem lub dzierżawą gruntów, budynków i budowli – pod warunkiem że
-                            okres najmu lub dzierżawy
-                            trwa co najmniej 5 lat, a w przypadku mikroprzedsiębiorców, małych przedsiębiorców i
-                            średnich
-                            przedsiębiorców – co najmniej 3 lata, licząc od przewidywanego terminu zakończenia nowej
-                            inwestycji,<br/>
-                            6) ceną nabycia aktywów innych niż grunty, budynki i budowle objęte najmem lub dzierżawą, w
-                            przypadku gdy najem
-                            lub dzierżawa ma postać leasingu finansowego oraz obejmuje zobowiązanie do nabycia aktywów z
-                            dniem upływu
-                            okresu najmu lub dzierżawy<br/><br/>
-                            – pomniejszone o naliczony podatek od towarów i usług oraz o podatek akcyzowy, jeżeli
-                            możliwość ich odliczeń wynika z odrębnych przepisów, poniesione w okresie ważności decyzji o
-                            wsparciu wydanej dla konkretnej lokalizacji.
-                            <br/><br/>
-                            Według ustawy z dnia 10 maja 2018r. o wspieraniu nowych inwestycji (Dz.U.2018 poz 1162 -
+                                target="_blank">LINK</a>
+                            Do kosztów kwalifikujących się do objęcia wsparciem na nowe inwestycje zalicza się koszty
+                            będące:</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i>kosztem związanym z nabyciem gruntów lub prawa ich
+                                użytkowania
+                                wieczystego,</li>
+                            <li><i class="fas fa-check"></i>ceną nabycia albo kosztem wytworzenia we własnym zakresie
+                                środków
+                                trwałych, pod warunkiem zaliczenia
+                                ich, zgodnie z odrębnymi przepisami, do składników majątku podatnika i zaliczenia ich do
+                                ewidencji
+                                środków
+                                trwałych oraz wartości niematerialnych i prawnych,</li>
+                            <li><i class="fas fa-check"></i>kosztem rozbudowy lub modernizacji istniejących środków
+                                trwałych,</li>
+                            <li><i class="fas fa-check"></i>ceną nabycia wartości niematerialnych i prawnych związanych
+                                z transferem
+                                technologii przez nabycie
+                                praw
+                                patentowych,
+                                licencji, know-how i nieopatentowanej wiedzy technicznej, z zastrzeżeniem ust. 2 i 3,
+                            </li>
+                            <li><i class="fas fa-check"></i>kosztem związanym z najmem lub dzierżawą gruntów, budynków i
+                                budowli – pod
+                                warunkiem że okres najmu
+                                lub
+                                dzierżawy trwa co najmniej 5 lat, a w przypadku mikroprzedsiębiorców, małych
+                                przedsiębiorców i średnich
+                                przedsiębiorców – co najmniej 3 lata, licząc od przewidywanego terminu zakończenia nowej
+                                inwestycji,
+                            </li>
+                            <li><i class="fas fa-check"></i>ceną nabycia aktywów innych niż grunty, budynki i budowle
+                                objęte najmem
+                                lub dzierżawą, w przypadku gdy
+                                najem lub dzierżawa ma postać leasingu finansowego oraz obejmuje zobowiązanie do nabycia
+                                aktywów z dniem
+                                upływu
+                                okresu najmu lub dzierżawy – pomniejszone o naliczony podatek od towarów i usług oraz o
+                                podatek
+                                akcyzowy,
+                                jeżeli możliwość ich
+                                odliczeń wynika z odrębnych przepisów, poniesione w okresie ważności decyzji o wsparciu
+                                wydanej dla
+                                konkretnej lokalizacji.</li>
+                        </ul>
+                        <p>Według ustawy z dnia 10 maja 2018r. o wspieraniu nowych inwestycji (Dz.U.2018 poz 1162 -
                             <a href="http://kssse.pl/upload/pictures/Dz_U_2018_poz_1162.pdf" target="_blank">LINK</a>)
-                            defincija kosztów kwalifikownaych
-                            brzmi następująco:<br/><br/>
-
-                            <b>koszty kwalifikowane nowej inwestycji</b> – koszty inwestycji kwalifikujące się do
-                            objęcia pomocą publiczną z tytułu
-                            nowej inwestycji pomniejszone o naliczony podatek od towarów i usług oraz o podatek
-                            akcyzowy, jeżeli możliwość
-                            ich odliczeń wynika z odrębnych przepisów, poniesione w okresie ważności decyzji o wsparciu
-                            lub <b>dwuletnie koszty
-                                pracy</b>, jakie mogą być uwzględnione przy określaniu maksymalnej pomocy publicznej,
-                            ponoszone w okresie ważności
-                            decyzji o wsparciu.
-                        </p>
+                            defincija
+                            kosztów kwalifikownaych brzmi następująco:</p>
+                        <p> koszty kwalifikowane nowej inwestycji – koszty inwestycji kwalifikujące się do objęcia
+                            pomocą
+                            publiczną z tytułu nowej inwestycji pomniejszone o naliczony podatek od towarów i usług oraz
+                            o podatek
+                            akcyzowy, jeżeli
+                            możliwość ich odliczeń wynika z odrębnych przepisów, poniesione w okresie ważności decyzji o
+                            wsparciu lub
+                            dwuletnie koszty pracy, jakie mogą być uwzględnione przy określaniu maksymalnej pomocy
+                            publicznej,
+                            ponoszone w
+                            okresie ważności decyzji o wsparciu.</p>
                     </div>
                 </div>
-                <hr/>
-                <p style="text-align: justify"><b>3. Powierzchnia - </b>proszę w m2 podać powierzchnię działki/działek,
-                    na których prowadzona będzie
-                    działalność w ramach nowej inwestycji. </p>
-                <hr/>
-                <p style="text-align: justify"><b>4. Nowe miejsca pracy - </b>proszę podać ilość nowych miejsc pracy
-                    utworzonych
-                    w ramach nowej inwestycji.</p>
-                <hr/>
-
-                <p><b>5. Wielkość przedsiębiorstwa - </b> proszę określić wielkość przedsiębiorstwa według przepisów
-                    unijnych.</p>
-
-                <p style="text-align: center">
-                    <button class="btn btn-own" type="button" data-toggle="collapse"
-                            data-target="#collapseExample3" aria-expanded="false"
-                            aria-controls="collapseExample">
-                        Jak określić wielkość przedsiębiorstwa
-                    </button>
-                </p>
-                <div class="collapse" id="collapseExample3">
-                    <div class="card card-body" style="text-align: center">
-                        <p style="text-align: justify">Wielkość przedsiębiorstwa ubiegającego się o pomoc publiczną
-                            definiuje załącznik nr 1
-                            do Rozporządzenia Komisji (UE) nr 651/2014 z dnia 17 czerwca 2014r. uznające niektóre
-                            rodzaje pomocy za zgodne
-                            z rynkiem wewnętrznym w zastosowaniu art. 107 i 108 Traktatu (obowiązuje od 1 lipca 2014)
-                            <a href="http://kssse.pl/upload/pictures/rozporzadzenie-ke-ue-nr-6512014-z-dnia-17-czerwca-2014.pdf"
-                               target="_blank">
-                                LINK
-                            </a><br/><br/>
-                            Do kategorii mikroprzedsiębiorstw oraz małych i średnich przedsiębiorstw („MŚP”) należą
-                            przedsiębiorstwa,
-                            które zatrudniają mniej niż 250 pracowników i których roczny obrót nie przekracza 50
-                            milionów EUR, lub roczna
-                            suma bilansowa nie przekracza 43 milionów EUR. 2. W kategorii MŚP małe przedsiębiorstwo
-                            definiuje się jako
-                            przedsiębiorstwo, które zatrudnia mniej niż 50 pracowników i którego roczny obrót lub roczna
-                            suma bilansowa
-                            nie przekracza 10 milionów EUR. 3. W kategorii MŚP mikroprzedsiębiorstwo definiuje się jako
-                            przedsiębiorstwo,
-                            które zatrudnia mniej niż 10 pracowników i którego roczny obrót lub roczna suma bilansowa
-                            nie przekracza
-                            2 milionów EUR.
-                        <p style="text-align: center"><img width="95%" alt="MSP" src="/static/msp.PNG">
-
-                        </p>
-                    </div>
-                </div>
-                <hr/>
-                <p style="text-align: justify"><b>6. Infrastruktura techniczna:</b> proszę zaznaczyć „TAK” tylko w
-                    przypadku
-                    korzystania z infrastruktury technicznej należącej do Kostrzyńsko-Słubickiej Specjalnej Strefy
-                    Ekonomicznej S.A.</p>
-                <hr/>
-                <b>7. Okres obowiązywania decyzji: </b>proszę podać w latach na jaki okres została/zostanie wydana
-                decyzja o wsparciu.
-                Decyzja wydawana jest na okres:<br/><br/>
-                <li><b>10 lat</b> na terenie województwa <b>wielkopolskiego</b></li>
-                <li><b>12 lat</b> na terenie województwa <b>lubuskiego lub zachodniopomorskiego</b></li>
-                <li><b>15 lat</b> na terenach objętych statusem specjalnej strefy ekonomicznej.</li>
-
-
             </div>
         </div>
-    </div><
-    <hr/>
-    <script src="{{ url_for('static', filename='js/separator.js') }}"></script>
 
 
+
+        <div class="region">
+
+            <p><strong>3. Powierzchnia:</strong> proszę w m2 podać powierzchnię całkowitą działki/działek,
+                na których prowadzona będzie działalność w ramach nowej inwestycji. </p>
+            <p><strong>4. Nowe miejsca pracy:</strong> proszę podać ilość nowych miejsc pracy utworzonych w ramach nowej
+                inwestycji.</p>
+
+        </div>
+
+        <div class="size">
+
+            <p><strong>5. Wielkość przedsiębiorstwa:</strong> Proszę określić wielkość przedsiębiorstwa według przepisów
+                unijnych -<a href="#esize" data-toggle="collapse"> jak określić wielkość przedsiębiorstwa?</a></p>
+
+            <div class="collapse" id="esize">
+                <div class="card">
+                    <div class="card-body">
+                        <p>Wielkość przedsiębiorstwa ubiegającego się o pomoc publiczną definiuje załącznik nr 1 do
+                            Rozporządzenia
+                            Komisji (UE) nr 651/2014 z dnia 17 czerwca 2014r. uznające niektóre rodzaje pomocy za zgodne
+                            z rynkiem
+                            wewnętrznym w zastosowaniu art. 107 i 108 Traktatu (obowiązuje od 1 lipca 2014)
+                            <a href="http://kssse.pl/upload/pictures/rozporzadzenie-ke-ue-nr-6512014-z-dnia-17-czerwca-2014.pdf"
+                                target="_blank">LINK</a></p>
+                        <p>Do kategorii mikroprzedsiębiorstw oraz małych i średnich przedsiębiorstw („MŚP”) należą
+                            przedsiębiorstwa, które zatrudniają mniej niż 250 pracowników i których roczny obrót nie
+                            przekracza 50
+                            milionów EUR, lub roczna suma bilansowa nie przekracza 43 milionów EUR.</p>
+                        <p>2. W kategorii MŚP małe przedsiębiorstwo definiuje się jako przedsiębiorstwo, które zatrudnia
+                            mniej niż
+                            50 pracowników i którego roczny obrót lub roczna suma bilansowa nie przekracza 10 milionów
+                            EUR. </p>
+                        <p>3. W kategorii MŚP mikroprzedsiębiorstwo definiuje się jako przedsiębiorstwo, które zatrudnia
+                            mniej niż
+                            10 pracowników i którego roczny obrót lub roczna suma bilansowa nie przekracza 2 milionów
+                            EUR.</p>
+                        <img src="{{ url_for('static', filename='images/msp.PNG') }}">
+
+                    </div>
+                </div>
+            </div>
+
+            <p><strong>6. Infrastruktura techniczna:</strong> proszę zaznaczyć „TAK” tylko w przypadku korzystania z
+                infrastruktury technicznej należącej do Kostrzyńsko-Słubickiej Specjalnej Strefy Ekonomicznej S.A.
+            </p>
+            <p><strong>7. Okres obowiązywania decyzji:</strong> proszę podać w latach na jaki okres została/zostanie
+                wydana decyzja o wsparciu. Decyzja wydawana jest na okres:
+                <li><strong>10 lat</strong> na terenie województwa <strong>wielkopolskiego</strong></li>
+                <li><strong>12 lat</strong> na terenie województwa <strong>lubuskiego lub zachodniopomorskiego</strong>
+                </li>
+                <li><strong>15 lat</strong> na terenach objętych statusem specjalnej strefy ekonomicznej.</li>
+            </p>
+        </div>
+    </div>
+
+</div>
 
 {% endblock %}
