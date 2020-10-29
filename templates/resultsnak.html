@@ -1,183 +1,139 @@
-<hr />
-
 {% if powiatl %}
-<h3 style="text-align: center">Powiat: {{ powiatl }}</h3><br/>
+<p>Powiat: <strong>{{ powiatl }}</strong></p>
 
-<table class="table" >
-
-                        <tr>
-
-      <th style="width: 25%" scope="col">Gmina</th>
-      <th style="width: 15%; text-align: center"scope="col">Duży</th>
-                            <th style="width: 15%; text-align: center"scope="col">Średni</th>
-                                  <th style="width: 15%; text-align: center" scope="col">Mały</th>
-      <th style="width: 15%; text-align: center"scope="col">Mikro</th>
-                            <th style="width: 15%; text-align: center"scope="col">B+R i lub BPO</th>
-
+<table class="table">
+    <tr>
+        <th scope="col">Gmina</th>
+        <th scope="col">Duży</th>
+        <th scope="col">Średni</th>
+        <th scope="col">Mały</th>
+        <th scope="col">Mikro</th>
+        <th scope="col">B+R i lub BPO</th>
     </tr>
-
 </table>
 
 {% for gmina in gminyl %}
 <table class="table">
 
-
-     <tr>
-
-      <td style="width:25%; text-align: left">{{ gmina.gmina }}</td>
-{#        <td style="width:30%; text-align: center" >{{ '{:,}'.format(dicn[i]).replace(',', ' ') }} zł</td>#}
-        <td style="width: 15%; text-align: center" >
+    <tr>
+        <td>{{ gmina.gmina }}</td>
+        <td>
             {% set test = gmina.naklady | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+            {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
 
-    </td>
-         <td style="width: 15%; text-align: center">
+        </td>
+        <td>
+            {% set test = gmina.nakladys | float %}
+            {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+        </td>
+        <td>
+            {% set test = gmina.nakladyma | float %}
+            {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+        </td>
+        <td>
+            {% set test = gmina.nakladym | float %}
+            {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
 
-                         {% set test = gmina.nakladys | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+        </td>
+        <td>
+            {% set test = gmina.nakladybr | float %}
+            {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+        </td>
+    </tr>
+</table>
 
-         </td>
-         <td style="width: 15%; text-align: center">
+{% endfor %}
+{% endif %}
 
-                                    {% set test = gmina.nakladyma | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+{% if powiatw %}
+<p>Powiat: <strong>{{ powiatw }}</strong></p>
 
-         </td>
-         <td style="width: 15%; text-align: center">
+<table class="table">
 
-                                      {% set test = gmina.nakladym | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+    <tr>
+        <th scope="col">Gmina</th>
+        <th scope="col">Duży</th>
+        <th scope="col">Średni</th>
+        <th scope="col">Mały</th>
+        <th scope="col">Mikro</th>
+        <th scope="col">B+R i lub BPO</th>
+    </tr>
 
-         </td>
-         <td style="width: 15%; text-align: center">
+</table>
+{% for gmina in gminyw %}
+<table class="table">
+    <tr>
+        <td> {{ gmina.gmina }}</td>
+        <td>
+            {% set test = gmina.naklady | float %}
+            {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+        </td>
+        <td>
 
-                                      {% set test = gmina.nakladybr | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+            {% set test = gmina.nakladys | float %}
+            {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
 
-         </td>
+        </td>
+        <td>
+
+            {% set test = gmina.nakladyma | float %}
+            {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+
+        </td>
+        <td>
+            {% set test = gmina.nakladym | float %}
+            {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+        </td>
+        <td>
+
+            {% set test = gmina.nakladybr | float %}
+            {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+
+        </td>
     </tr>
 </table>
 {% endfor %}
 {% endif %}
 
-{% if powiatw %}
-<br/>
-<h3 style="text-align: center">Powiat: {{ powiatw }}</h3><br/>
-
-<table class="table" >
-
-                        <tr>
-
-      <th style="width: 25%" scope="col">Gmina</th>
-      <th style="width: 15%; text-align: center"scope="col">Duży</th>
-                            <th style="width: 15%; text-align: center"scope="col">Średni</th>
-                                  <th style="width: 15%; text-align: center" scope="col">Mały</th>
-      <th style="width: 15%; text-align: center"scope="col">Mikro</th>
-                            <th style="width: 15%; text-align: center"scope="col">B+R i lub BPO</th>
-
-    </tr>
-
-</table>
-
-{% for gmina in gminyw %}
-<table class="table">
-
-
-     <tr>
-
-      <td style="width:25%; text-align: left">{{ gmina.gmina }}</td>
-{#        <td style="width:30%; text-align: center" >{{ '{:,}'.format(dicn[i]).replace(',', ' ') }} zł</td>#}
-        <td style="width: 15%; text-align: center" >
-            {% set test = gmina.naklady | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
-
-    </td>
-         <td style="width: 15%; text-align: center">
-
-                         {% set test = gmina.nakladys | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
-
-         </td>
-         <td style="width: 15%; text-align: center">
-
-                                    {% set test = gmina.nakladyma | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
-
-         </td>
-         <td style="width: 15%; text-align: center">
-
-                                      {% set test = gmina.nakladym | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
-
-         </td>
-         <td style="width: 15%; text-align: center">
-
-                                      {% set test = gmina.nakladybr | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
-
-         </td>
-    </tr>
-</table>
-{% endfor %}
-    {% endif %}
-
 {% if powiatz %}
 
-<br/>
-<h3 style="text-align: center">Powiat: {{ powiatz }}</h3><br/>
-
-<table class="table" >
-
-                        <tr>
-
-      <th style="width: 25%" scope="col">Gmina</th>
-      <th style="width: 15%; text-align: center"scope="col">Duży</th>
-                            <th style="width: 15%; text-align: center"scope="col">Średni</th>
-                                  <th style="width: 15%; text-align: center" scope="col">Mały</th>
-      <th style="width: 15%; text-align: center"scope="col">Mikro</th>
-                            <th style="width: 15%; text-align: center"scope="col">B+R i lub BPO</th>
-
+<p>Powiat: <strong>{{ powiatz }}</strong> </p>
+<table class="table">
+    <tr>
+        <th scope="col">Gmina</th>
+        <th scope="col">Duży</th>
+        <th scope="col">Średni</th>
+        <th scope="col">Mały</th>
+        <th scope="col">Mikro</th>
+        <th scope="col">B+R i lub BPO</th>
     </tr>
-
 </table>
 
 {% for gmina in gminyz %}
 <table class="table">
-
-
-     <tr>
-
-      <td style="width:25%; text-align: left">{{ gmina.gmina }}</td>
-{#        <td style="width:30%; text-align: center" >{{ '{:,}'.format(dicn[i]).replace(',', ' ') }} zł</td>#}
-        <td style="width: 15%; text-align: center" >
+    <tr>
+        <td>{{ gmina.gmina }}</td>
+        <td>
             {% set test = gmina.naklady | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+            {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+        </td>
+        <td>
+            {% set test = gmina.nakladys | float %}
+            {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
 
-    </td>
-         <td style="width: 15%; text-align: center">
-
-                         {% set test = gmina.nakladys | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
-
-         </td>
-         <td style="width: 15%; text-align: center">
-
-                                    {% set test = gmina.nakladyma | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
-
-         </td>
-         <td style="width: 15%; text-align: center">
-
-                                      {% set test = gmina.nakladym | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
-
-         </td>
-         <td style="width: 15%; text-align: center">
-
-                                      {% set test = gmina.nakladybr | float %}
-          {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
-
-         </td>
+        </td>
+        <td>
+            {% set test = gmina.nakladyma | float %}
+            {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+        </td>
+        <td>
+            {% set test = gmina.nakladym | float %}
+            {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+        </td>
+        <td>
+            {% set test = gmina.nakladybr | float %}
+            {% set test2 = (test | string) [:-2] %} {{ '{0:,}'.format(test2|int).replace(',', ' ') }} zł
+        </td>
     </tr>
 </table>
 {% endfor %}

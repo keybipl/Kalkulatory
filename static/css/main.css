@@ -14,10 +14,11 @@
 }
 
 :root {
-    --bordo: #B11F36;
+    --bordo: #218838;
     --blue: #577CBD;
     --blueh: #272D57;
-    --bordoh: #4F181E;
+    --bordoh: rgb(6, 75, 4);
+    --alert: #B11F36;
 }
 
 body {
@@ -48,7 +49,7 @@ section {
     color: #eee;
     padding: 10px 0;
     border: 0;
-    border-radius: 20px;
+    border-radius: 10px;
 
 }
 
@@ -64,14 +65,14 @@ section {
 }
 
 
-.form-group label {
+div.pp .form-group label {
     display: block;
     text-align: center;
     font-weight: bold;
     margin-top: 30px;
 }
 
-.form-group select {
+div.pp .form-group select {
     display: block;
     text-align: center;
     font-weight: bold;
@@ -80,7 +81,7 @@ section {
     height: 50px;
 }
 
-.form-group input {
+div.pp .form-group input {
     display: block;
     width: 80%;
     margin: 0 auto;
@@ -100,6 +101,7 @@ section {
     letter-spacing: 2px;
     font-weight: bold;
     margin-bottom: 25px;
+    transition: .55s;
 }
 
 .pp p {
@@ -109,7 +111,7 @@ section {
 }
 
 .pp a {
-    color: var(--bordo);
+    color: var(--blue);
     outline: none;
 }
 
@@ -174,12 +176,12 @@ p.ppvalue i {
 }
 
 p.nosupport {
-    color: var(--bordo);
+    color: var(--alert);
     font-weight: bold;
 }
 
 p.notification {
-    color: var(--bordo);
+    color: var(--alert);
     font-weight: bold;
 }
 
@@ -206,16 +208,16 @@ div.lwrap {
     font-size: 1.1rem;
 }
 
-.radiowrap {
+div.lwrap .radiowrap {
     text-align: center;
     margin-left: 30px;
 }
 
-label.form-check-label {
+div.lwrap label.form-check-label {
     margin: 0 10px;
 }
 
-input[type="radio"] {
+div.lwrap input[type="radio"] {
     -ms-transform: scale(1.5);
     /* IE 9 */
     -webkit-transform: scale(1.5);
@@ -231,8 +233,22 @@ div.lok form {
     text-align: center;
 }
 
-.radiowrap {
+div.lwrap .radiowrap {
     margin-bottom: 20px;
+}
+
+div.lwrap .form-group input {
+    margin: 0 auto;
+    width: 80%;
+}
+
+div.lwrap .form-group select {
+    margin: 0 auto;
+    width: 80%;
+}
+
+div.lwrap .form-group label {
+    font-weight: bold;
 }
 
 div.lwrap .card-body {
@@ -258,6 +274,15 @@ div.lwrap i {
 
 div.frd {
     width: 100%;
+}
+
+div.lwrap div.lok h1 {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+div.lwrap div.lok h1 {
+    font-size: 1.6rem;
 }
 
 /* resultslok.html */
@@ -289,6 +314,11 @@ div.parlok button {
     font-weight: bold;
     margin-bottom: 25px;
     font-size: 1rem;
+    transition: .55s;
+}
+
+div.parlok a {
+    text-decoration: none;
 }
 
 div.rlok p.fulfill {
@@ -301,7 +331,7 @@ div.rlok h1 {
     text-align: center;
     font-weight: bold;
     text-transform: uppercase;
-    color: var(--bordo);
+    color: var(--alert);
     margin-top: 30px;
 }
 
@@ -332,6 +362,61 @@ div.rlok .euro {
     display: none;
 }
 
+/* indexnak.html */
+
+div.nakwrap {
+    font-size: 1.1rem;
+    padding: 8px;
+    text-align: justify;
+}
+
+div.nakwrap p:nth-of-type(1) {
+    text-align: center;
+}
+
+div.nakwrap label {
+    display: block;
+    text-transform: uppercase;
+}
+
+div.nakwrap form {
+    margin: 40px 0;
+}
+
+div.nakwrap .form-group {
+    text-align: center;
+}
+
+div.nakwrap .form-group label {
+    font-weight: bold;
+}
+
+div.nakwrap .form-group input,
+div.nakwrap .form-group select {
+    width: 60%;
+    height: 35px;
+}
+
+div.nakwrap .ppcount {
+    margin-top: 30px;
+}
+
+div.nakwrap .nakres {
+    font-size: 0.8rem;
+}
+
+/* resultsnak.html */
+
+div.nakwrap div.nakres th,
+div.nakwrap div.nakres td {
+    width: 16.66%;
+    text-align: center;
+}
+
+div.nakwrap div.nakres th:nth-child(1),
+div.nakwrap div.nakres td:nth-child(1) {
+    text-align: left;
+}
 
 @media (min-width: 533px) {
 
@@ -410,6 +495,44 @@ div.rlok .euro {
     div.rlok .euro {
         display: block;
     }
+
+    /* indexnak.html */
+
+    div.nakwrap {
+        font-size: 1.2rem;
+    }
+
+    div.nakwrap .form-group {
+        float: left;
+        width: calc(100%/2);
+        text-align: center;
+    }
+
+    div.nakwrap .form-group:nth-of-type(3) {
+        float: left;
+        width: 100%;
+        text-align: center;
+    }
+
+    div.nakwrap label {
+        display: block;
+        font-weight: bold;
+    }
+
+    div.nakwrap select {
+        width: 60%;
+        height: 33px;
+    }
+
+    div.nakwrap .form-group:nth-of-type(3) select {
+        width: 30%;
+        margin-bottom: 10px;
+        height: 33px;
+    }
+
+    /* resultsnak.html */
+
+
 }
 
 
@@ -451,11 +574,11 @@ div.rlok .euro {
         padding: 0 20px;
     }
 
-    .form-group label {
+    div.pp .form-group label {
         margin-top: 0;
     }
 
-    .form-group {
+    div.pp .form-group {
         margin-bottom: 30px;
     }
 
@@ -471,7 +594,7 @@ div.rlok .euro {
         font-size: 1.2rem;
     }
 
-    .form-group input {
+    div.pp .form-group input {
         font-size: 1.2rem;
     }
 
@@ -479,7 +602,7 @@ div.rlok .euro {
         font-size: 1.2rem;
     }
 
-    .form-group select {
+    div.pp .form-group select {
         font-size: 1.2rem;
     }
 
@@ -527,7 +650,47 @@ div.rlok .euro {
         text-align: left;
     }
 
+    /* indexnak.html */
 
+    div.nakwrap {
+        font-size: 1.2rem;
+        padding: 15px;
+        text-align: justify;
+    }
+
+    /* resultsnak.html */
+
+    div.nakwrap .nakres {
+        font-size: 1rem;
+    }
+
+    div.nakwrap .form-group {
+        float: left;
+        width: calc(100%/3);
+        text-align: center;
+    }
+
+    div.nakwrap form button.ppcount {
+        float: none;
+    }
+
+    div.nakwrap .form-group:nth-of-type(3) {
+        width: calc(100%/3);
+        margin-bottom: 10px;
+        height: 33px;
+    }
+
+    div.nakwrap .form-group select {
+        width: 80%;
+        margin-bottom: 10px;
+        height: 33px;
+    }
+
+    div.nakwrap .form-group:nth-of-type(3) select {
+        width: 80%;
+        margin-bottom: 10px;
+        height: 33px;
+    }
 
 }
 
@@ -575,11 +738,11 @@ div.rlok .euro {
         font-size: 1.3rem;
     }
 
-    .form-group input {
+    div.pp .form-group input {
         font-size: 1.3rem;
     }
 
-    .form-group select {
+    div.pp .form-group select {
         font-size: 1.3rem;
     }
 
@@ -613,6 +776,12 @@ div.rlok .euro {
         text-align: justify;
     }
 
+    div.lwrap .form-group input,
+    div.lwrap .form-group select {
+        height: 50px;
+        font-size: 1.3rem;
+    }
+
     /* resultslok.html */
 
     div.rlok table.table {
@@ -628,167 +797,193 @@ div.rlok .euro {
         text-align: center;
         padding: 15px;
     }
-}
 
+    /* indexnak.html */
 
-@media (min-width: 1366px) {
-
-    .calc {
-        width: 46%;
-        margin: 0 20px;
-        height: 200px;
-    }
-
-    .cwrap p {
-        font-size: 1.5rem;
-    }
-
-    .cwrap .calc:nth-child(3) {
-        height: 200px;
-    }
-
-    .cwrap .calc:nth-child(4) {
-        height: 200px;
-    }
-
-    .calc button {
-        transition: .55s;
-    }
-
-    .calc button:hover {
-        background-color: #272D57;
-        color: #FFF;
-    }
-
-    /* indexpp.html */
-
-    .pp {
-        margin-top: 20px;
-    }
-
-    .pp p {
-        font-size: 1.5rem;
-    }
-
-    .pp label {
-        font-size: 1.5rem;
-    }
-
-    .form-group input {
-        font-size: 1.5rem;
-    }
-
-    .form-group select {
-        width: 60%;
-        margin: 0 auto;
-        height: 50px;
-        font-size: 1.5rem;
-    }
-
-    .form-group input {
-        width: 60%;
-        height: 50px;
-        margin: 0 auto;
-    }
-
-    .pp li {
-        font-size: 1.5rem;
-    }
-
-    .ppcount {
-        width: 230px;
+    div.nakwrap {
         font-size: 1.3rem;
-        letter-spacing: 3px;
-        font-weight: bold;
-        margin-bottom: 25px;
     }
 
-    .ppcount:hover {
-        background-color: var(--blueh);
+    /* resultsnak.html */
+
+    div.nakwrap .nakres {
+        font-size: 1.2rem;
     }
 
-    .ppwrap a:hover {
-        text-decoration: none;
-        color: var(--bordoh);
+    div.nakwrap .form-group select,
+    div.nakwrap .form-group select {
+        height: 40px;
     }
 
-    /* resultpp.html */
-
-    p.ppvalue {
-        transition: .3s;
+    div.nakwrap .form-group:nth-of-type(3) select {
+        height: 40px;
     }
 
-    p.ppvalue:hover {
-        font-size: 4rem;
-    }
 
-    div.rpp .table {
-        width: 65%;
-        margin: 0 auto;
-        max-width: 824px;
-    }
+    @media (min-width: 1366px) {
 
-    /* indexlok.html */
+        .calc {
+            width: 46%;
+            margin: 0 20px;
+            height: 200px;
+        }
 
-    div.lwrap .card-body img {
-        margin: 0 auto;
-        width: 70%;
-    }
+        .cwrap p {
+            font-size: 1.5rem;
+        }
 
-    div.lwrap {
-        font-size: 1.5rem;
-        text-align: justify;
-    }
+        .cwrap .calc:nth-child(3) {
+            height: 200px;
+        }
 
-    div.lok h1 {
-        margin: 50px 0 20px 0;
-    }
+        .cwrap .calc:nth-child(4) {
+            height: 200px;
+        }
 
-    div.lok p.title {
-        font-size: 1.6rem;
-        text-align: center;
-        margin: 0 0 40px 0;
-    }
+        .calc button {
+            transition: .55s;
+        }
 
-    div.lok label {
-        margin-top: 0;
-    }
+        .calc button:hover {
+            background-color: #272D57;
+            color: #FFF;
+        }
 
-    div.lwrap a {
-        text-decoration: none;
-        color: var(--bordo);
-    }
+        /* indexpp.html */
 
-    div.lwrap a:hover {
-        color: var(--bordoh);
-    }
+        .pp {
+            margin-top: 20px;
+        }
 
-    div.lwrap .lok form .frd {
-        width: 100%;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
+        .pp p {
+            font-size: 1.5rem;
+        }
 
-    div.lok .form-group {
-        display: block;
-        float: left;
-        width: calc(100%/3);
-        text-align: center;
-    }
+        .pp label {
+            font-size: 1.5rem;
+        }
 
-    .defkoszty ul {
-        font-size: 1.5rem;
-    }
+        div.pp .form-group input {
+            font-size: 1.5rem;
+        }
 
-    /* resultslok.html */
+        div.pp .form-group select {
+            width: 60%;
+            margin: 0 auto;
+            height: 50px;
+            font-size: 1.5rem;
+        }
 
-    div.rlok {
-        font-size: 1.5rem;
-    }
+        div.pp .form-group input {
+            width: 60%;
+            height: 50px;
+            margin: 0 auto;
+        }
 
-    div.rlok table.table {
-        width: 80%;
-        max-width: 1024px;
-        margin: 0 auto;
+        .pp li {
+            font-size: 1.5rem;
+        }
+
+        .ppcount {
+            width: 230px;
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            font-weight: bold;
+            margin-bottom: 25px;
+        }
+
+        .ppcount:hover {
+            background-color: var(--blueh);
+        }
+
+        .ppwrap a:hover {
+            text-decoration: none;
+            color: var(--blueh);
+        }
+
+        /* resultpp.html */
+
+        p.ppvalue {
+            transition: .3s;
+        }
+
+        p.ppvalue:hover {
+            font-size: 4rem;
+        }
+
+        div.rpp .table {
+            width: 65%;
+            margin: 0 auto;
+            max-width: 824px;
+        }
+
+        /* indexlok.html */
+
+        div.lwrap .card-body img {
+            margin: 0 auto;
+            width: 70%;
+        }
+
+        div.lwrap {
+            font-size: 1.5rem;
+            text-align: justify;
+        }
+
+        div.lok h1 {
+            margin: 50px 0 20px 0;
+        }
+
+        div.lok p.title {
+            font-size: 1.6rem;
+            text-align: center;
+            margin: 0 0 40px 0;
+        }
+
+        div.lok label {
+            margin-top: 0;
+        }
+
+        div.lwrap a {
+            text-decoration: none;
+            color: var(--blue);
+        }
+
+        div.lwrap a:hover {
+            color: var(--blueh);
+        }
+
+        div.lwrap .lok form .frd {
+            width: 100%;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        div.lok .form-group {
+            display: block;
+            float: left;
+            width: calc(100%/3);
+            text-align: center;
+        }
+
+        .defkoszty ul {
+            font-size: 1.5rem;
+        }
+
+        /* resultslok.html */
+
+        div.rlok {
+            font-size: 1.5rem;
+        }
+
+        div.rlok table.table {
+            width: 80%;
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        div.parlok button:hover {
+            background-color: var(--blueh);
+            outline: none;
+        }
     }
 }

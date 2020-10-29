@@ -5,7 +5,7 @@
 }
 
 section:nth-of-type(2) {
-    background-color: #F0E2E3;
+    background-color: #eee;
 }
 
 aside {
@@ -25,13 +25,13 @@ footer div.specialist button {
     text-transform: uppercase;
     font-size: 1.2rem;
     width: 290px;
-    background-color: #B11F36;
+    background-color: var(--blue);
     color: #eee;
     padding: 10px 0;
     border: 0;
     border-radius: 20px;
     letter-spacing: 1px;
-    margin: 10px auto;
+    margin: 25px auto;
 }
 
 footer div.specialist p {
@@ -299,7 +299,7 @@ footer div.specialist p {
     }
 
     footer div.specialist button:hover {
-        background-color: #4F181E;
+        background-color: var(--blueh);
         color: #FFF;
         outline: none;
     }

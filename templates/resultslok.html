@@ -33,7 +33,7 @@
       w poszczególnych gminach przy podanych parametrach:</p>
   </div>
 
-  <div class="lubuskie">
+  <div id="lubuskie" class="lubuskie">
     <h1>Lubuskie</h1>
     {% for k,v in result.items() %}
     <p class="powiaty">Powiat <strong>{{ k }}</strong> w gminach:</p>
@@ -61,7 +61,7 @@
   </div>
 
   <div class="wielkopolskie">
-    <h1>Wielkopolskie</h1>
+    <h1 id="wielkopolskie">Wielkopolskie</h1>
     {% for k,v in resultw.items() %}
     <p class="powiaty">Powiat <strong>{{ k }}</strong> w gminach:</p>
     <table class="table">
@@ -86,7 +86,7 @@
     {% endfor %}
   </div>
 
-  <div class="zachodniopomorskie">
+  <div id="zachodniopomorskie" class="zachodniopomorskie">
 
     <h1>Zachodniopomorskie</h1>
     {% for k,v in resultz.items() %}
