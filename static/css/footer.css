@@ -32,6 +32,7 @@ footer div.specialist button {
     border-radius: 20px;
     letter-spacing: 1px;
     margin: 25px auto;
+    box-shadow: 2px 8px 8px 0px rgba(0, 0, 0, 0.5);
 }
 
 footer div.specialist p {
@@ -240,55 +241,10 @@ footer div.specialist p {
 }
 
 
-@media (min-width: 1024px) {
-
-    .specialist button {
-        width: 400px;
-        font-size: 1.5rem;
-    }
-
-    footer div.specialist p {
-        font-size: 22px;
-        margin: 0 20px;
-    }
-
-    .collapse img {
-        height: 250px;
-        width: auto;
-    }
-
-    .contactname h1 {
-        font-size: 2rem;
-    }
-
-    .contactname p {
-        font-size: 1.5rem;
-    }
 
 
-    .icons {
-        margin-top: 4px
-    }
 
-    .icons p {
-        margin: 8px 0;
-        font-size: 1.4rem;
-    }
-
-    .icons strong {
-        margin-left: 18px;
-        font-weight: normal;
-    }
-
-
-    .img {
-        text-align: right;
-        padding-right: 50px;
-    }
-}
-
-
-@media (min-width: 1366px) {
+@media (min-width: 1025px) {
 
     footer div.specialist p {
         font-size: 1.5rem;
@@ -299,9 +255,10 @@ footer div.specialist p {
     }
 
     footer div.specialist button:hover {
-        background-color: var(--blueh);
+        /* background-color: var(--blueh); */
         color: #FFF;
         outline: none;
+        box-shadow: none;
     }
 
     .icons a:hover {

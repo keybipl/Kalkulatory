@@ -15,8 +15,8 @@
 
 :root {
     --bordo: #218838;
-    --blue: #577CBD;
-    --blueh: #272D57;
+    --blue: #00315D;
+    --blueh: #577CBD;
     --bordoh: rgb(6, 75, 4);
     --alert: #B11F36;
 }
@@ -50,6 +50,8 @@ section {
     padding: 10px 0;
     border: 0;
     border-radius: 10px;
+    background-color: #00315D;
+    box-shadow: 2px 8px 8px 0px rgba(0, 0, 0, 0.5);
 
 }
 
@@ -446,6 +448,75 @@ div.ppwrap div.pp div.size li {
     padding: 10px;
 }
 
+/* resultopl.html */
+
+.roplwrap {
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.roplwrap h1 {
+    font-size: 2rem;
+}
+
+.roplwrap .parameters p:nth-of-type(odd) {
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-weight: bold;
+}
+
+.roplwrap button {
+    margin: 15px 0 30px 0;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    width: 290px;
+    background-color: var(--blue);
+    color: #eee;
+    padding: 10px 0;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 2px 8px 8px 0px rgba(0, 0, 0, 0.5);
+}
+
+.roplwrap button a {
+    color: #eee;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.roplwrap .parameters {
+    border-bottom: 1px solid grey;
+}
+
+.resultsopl {
+    padding: 20px;
+}
+
+.resultsopl .fee {
+    font-size: 2rem;
+    color: var(--blue);
+    font-weight: bold;
+    text-align: center;
+}
+
+.resultsopl ul {
+    text-align: left;
+    padding: 5px;
+}
+
+.resultsopl ul li {
+    margin: 5px;
+}
+
+.resultsopl p {
+    text-align: justify;
+}
+
+
 
 @media (min-width: 533px) {
 
@@ -725,141 +796,20 @@ div.ppwrap div.pp div.size li {
         padding: 10px;
     }
 
+    /* resultopl.html */
+
+    .roplwrap .parameters {
+        flex-grow: 1;
+        width: 80%;
+    }
+
+    .resultsopl .fee {
+        font-size: 2.5rem;
+    }
+
 }
 
-@media (min-width: 1024px) {
-
-    .cwrap {
-        width: 100%;
-    }
-
-    .calc {
-        width: 46%;
-        margin: 0 20px;
-        height: 250px;
-    }
-
-    .cwrap .calc:nth-child(3) {
-        height: 230px;
-    }
-
-    .cwrap .calc:nth-child(4) {
-        height: 230px;
-    }
-
-    .cwrap p {
-        font-size: 22px;
-    }
-
-    .calc button {
-        width: 400px;
-        padding: 12px 0;
-        font-size: 1.5rem;
-    }
-
-    /* indexpp.html */
-
-    .pp {
-        margin-top: 20px;
-    }
-
-    .pp p {
-        font-size: 1.3rem;
-    }
-
-    .pp label {
-        font-size: 1.3rem;
-    }
-
-    div.pp .form-group input {
-        font-size: 1.3rem;
-    }
-
-    div.pp .form-group select {
-        font-size: 1.3rem;
-    }
-
-    .pp li {
-        font-size: 1.3rem;
-    }
-
-    /* resultpp.html */
-
-    div.rpp {
-        font-size: 1.4rem;
-    }
-
-    p.ppvalue {
-        font-size: 2rem;
-    }
-
-    div.rpp table.table {
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    p.powiat {
-        text-align: center;
-    }
-
-    /* indexlok.html */
-
-    div.lwrap {
-        font-size: 1.3rem;
-        text-align: justify;
-    }
-
-    div.lwrap .form-group input,
-    div.lwrap .form-group select {
-        height: 50px;
-        font-size: 1.3rem;
-    }
-
-    /* resultslok.html */
-
-    div.rlok table.table {
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    div.rlok {
-        font-size: 1.3rem;
-    }
-
-    div.rlok p.fulfill {
-        text-align: center;
-        padding: 15px;
-    }
-
-    /* indexnak.html */
-
-    div.nakwrap {
-        font-size: 1.3rem;
-    }
-
-    /* resultsnak.html */
-
-    div.nakwrap .nakres {
-        font-size: 1.2rem;
-    }
-
-    div.nakwrap .form-group select,
-    div.nakwrap .form-group select {
-        height: 40px;
-    }
-
-    div.nakwrap .form-group:nth-of-type(3) select {
-        height: 40px;
-    }
-
-    div.ppwrap div.pp div.size li {
-        font-size: 1.3rem;
-        padding: 10px;
-    }
-}
-
-
-@media (min-width: 1366px) {
+@media (min-width: 1025px) {
 
     .calc {
         width: 46%;
@@ -884,8 +834,9 @@ div.ppwrap div.pp div.size li {
     }
 
     .calc button:hover {
-        background-color: #272D57;
+        /* background-color: var(--blueh); */
         color: #FFF;
+        box-shadow: none;
     }
 
     /* indexpp.html */
@@ -1029,4 +980,53 @@ div.ppwrap div.pp div.size li {
         font-size: 1.5rem;
         padding: 10px;
     }
+
+    /* resultopl.html */
+
+    .roplwrap {
+        font-size: 1.5rem;
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .roplwrap .parameters {
+        border: none;
+        width: 60%;
+    }
+
+    .roplwrap .parameters p:nth-of-type(odd) {
+        margin-top: 40px;
+    }
+
+    .roplwrap .parameters p:nth-of-type(1) {
+        margin-top: 20px;
+    }
+
+    .roplwrap button {
+        font-size: 1.3rem;
+        width: 290px;
+        color: #eee;
+        box-shadow: 2px 8px 8px 0px rgba(0, 0, 0, 0.5);
+        transition: .5s;
+    }
+
+    .roplwrap button:hover {
+        box-shadow: none;
+    }
+
+    .roplwrap button:hover a {
+        text-decoration: none;
+    }
+
+    .roplwrap a:hover {
+        text-decoration: none;
+    }
+
+    .resultsopl .fee {
+        font-size: 3rem;
+    }
+
 }

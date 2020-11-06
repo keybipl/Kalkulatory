@@ -5,8 +5,7 @@
 {% block content %}
 
 <div class="roplwrap">
-    <div class="paremters">
-        <h1>Podane parametry:</h1>
+    <div class="parameters">
         <p>Koszty kwalifikowane:</p>
         <p>{{ '{:,}'.format(expenditures).replace(',', ' ') }} {{ currency }}</p>
         <p>Powierzchnia</p>
@@ -23,9 +22,10 @@
     </div>
     <div class="resultsopl">
 
-        <p>Przy podanych parametrach opłata miesięczna dla zarządzającego specjalną strefą ekonomiczną wyniesie:</p>
+        <p>Przy podanych parametrach <strong>opłata miesięczna</strong> dla zarządzającego specjalną strefą ekonomiczną
+            wyniesie:</p>
 
-        <p><i class='fas fa-handshake'></i>
+        <p class="fee"><i class='fas fa-handshake'></i>
 
             {% set monthly = '{:,.2f}'.format(pay).replace(',', ' ').replace('.', ',') %}
             {% if monthly[-1] == '0' and monthly[-2] == '0' %}
@@ -37,71 +37,73 @@
             {{ currency }}</p>
 
 
-        co daje:
-        <li>
-            {% set calc = '{:,.2f}'.format(przelicznik).replace(',', ' ').replace('.', ',') %}
-            {% if calc[-1] == '0' and calc[-2] == '0' %}
-            {{ calc[:-3] }}
-            {% else %}
-            {{ calc }}
-            {% endif %}
+        <p>co daje:</p>
+        <ul>
+            <li><strong>
+                    {% set calc = '{:,.2f}'.format(przelicznik).replace(',', ' ').replace('.', ',') %}
+                    {% if calc[-1] == '0' and calc[-2] == '0' %}
+                    {{ calc[:-3] }}
+                    {% else %}
+                    {{ calc }}
+                    {% endif %}</strong>
 
-            {% if currency == 'EURO' %}
-            PLN
-            {% else %}
-            EURO
-            {% endif %}</li>
+                {% if currency == 'EURO' %}
+                PLN
+                {% else %}
+                EURO
+                {% endif %}</li>
 
-        <li>w skali roku:
-            {% set yearly = '{:,.2f}'.format(pay*12).replace(',', ' ').replace('.', ',') %}
-            {% if yearly[-1] == '0' and yearly[-2] == '0' %}
-            {{ yearly[:-3] }}
-            {% else %}
-            {{ yearly }}
-            {% endif %}
-            {{ currency }},
+            <li>w skali roku: <strong>
+                    {% set yearly = '{:,.2f}'.format(pay*12).replace(',', ' ').replace('.', ',') %}
+                    {% if yearly[-1] == '0' and yearly[-2] == '0' %}
+                    {{ yearly[:-3] }}
+                    {% else %}
+                    {{ yearly }}
+                    {% endif %}
+                    {{ currency }}</strong>,
 
-            {% if currency == 'EURO' %}
-            {% set policz = pay*12 * cena %}
-            {% else %}
-            {% set policz = pay*12 / cena %}
-            {% endif %}
+                {% if currency == 'EURO' %}
+                {% set policz = pay*12 * cena %}
+                {% else %}
+                {% set policz = pay*12 / cena %}
+                {% endif %}
 
-            czyli
-            {% set yearlyp = '{:,.2f}'.format(policz).replace(',', ' ').replace('.', ',') %}
-            {% if yearlyp[-1] == '0' and yearlyp[-2] == '0' %}
-            {{ yearlyp[:-3] }}
-            {% else %}
-            {{ yearlyp }}
-            {% endif %}
-            {% if currency == 'EURO' %}PLN{% else %}EURO{% endif %}</li>
+                czyli <strong>
+                    {% set yearlyp = '{:,.2f}'.format(policz).replace(',', ' ').replace('.', ',') %}
+                    {% if yearlyp[-1] == '0' and yearlyp[-2] == '0' %}
+                    {{ yearlyp[:-3] }}
+                    {% else %}
+                    {{ yearlyp }}
+                    {% endif %}
+                    {% if currency == 'EURO' %}PLN{% else %}EURO{% endif %}</strong></li>
 
 
-        <li>przez cały okres ważności decyzji
+            <li>przez cały okres ważności decyzji <strong>
 
-            {% set all = '{:,.2f}'.format(pay*12*time).replace(',', ' ').replace('.', ',') %}
-            {% if all[-1] == '0' and all[-2] == '0' %}
-            {{ all[:-3] }}
-            {% else %}
-            {{ all }}
-            {% endif %}
-            {{ currency }},
+                    {% set all = '{:,.2f}'.format(pay*12*time).replace(',', ' ').replace('.', ',') %}
+                    {% if all[-1] == '0' and all[-2] == '0' %}
+                    {{ all[:-3] }}
+                    {% else %}
+                    {{ all }}
+                    {% endif %}
+                    {{ currency }},
 
-            {% if currency == 'EURO' %}
-            {% set policz = pay*12*time * cena %}
-            {% else %}
-            {% set policz = pay*12*time / cena %}
-            {% endif %}
+                    {% if currency == 'EURO' %}
+                    {% set policz = pay*12*time * cena %}
+                    {% else %}
+                    {% set policz = pay*12*time / cena %}
+                    {% endif %}
 
-            czyli
-            {% set allp = '{:,.2f}'.format(policz).replace(',', ' ').replace('.', ',') %}
-            {% if allp[-1] == '0' and yearlyp[-2] == '0' %}
-            {{ allp[:-3] }}
-            {% else %}
-            {{ allp }}
-            {% endif %}
-            {% if currency == 'EURO' %}PLN{% else %}EURO{% endif %}
-        </li>
+                    czyli
+                    {% set allp = '{:,.2f}'.format(policz).replace(',', ' ').replace('.', ',') %}
+                    {% if allp[-1] == '0' and yearlyp[-2] == '0' %}
+                    {{ allp[:-3] }}
+                    {% else %}
+                    {{ allp }}
+                    {% endif %}
+                    {% if currency == 'EURO' %}PLN{% else %}EURO{% endif %}</strong>
+            </li>
+        </ul>
 
         <p>Powyższą opłatę policzono na podstawie <a href="http://kssse.pl/upload/REGULAMIN_OPLAT.pdf"
                 target="_blank">regulaminu świadczenia usług
