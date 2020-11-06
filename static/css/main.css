@@ -145,6 +145,8 @@ div.pp .form-group input {
     display: none;
 }
 
+
+
 /* resultpp.html */
 
 .rpp {
@@ -438,6 +440,12 @@ div.opl p {
     margin-bottom: 40px;
 }
 
+div.ppwrap div.pp div.size li {
+    font-size: 1.1rem;
+    list-style: none;
+    padding: 10px;
+}
+
 
 @media (min-width: 533px) {
 
@@ -550,9 +558,6 @@ div.opl p {
         margin-bottom: 10px;
         height: 33px;
     }
-
-    /* resultsnak.html */
-
 
 }
 
@@ -713,6 +718,13 @@ div.opl p {
         height: 33px;
     }
 
+    /* indexopl.html */
+
+    div.ppwrap div.pp div.size li {
+        font-size: 1.2rem;
+        padding: 10px;
+    }
+
 }
 
 @media (min-width: 1024px) {
@@ -840,171 +852,181 @@ div.opl p {
         height: 40px;
     }
 
+    div.ppwrap div.pp div.size li {
+        font-size: 1.3rem;
+        padding: 10px;
+    }
+}
 
-    @media (min-width: 1366px) {
 
-        .calc {
-            width: 46%;
-            margin: 0 20px;
-            height: 200px;
-        }
+@media (min-width: 1366px) {
 
-        .cwrap p {
-            font-size: 1.5rem;
-        }
+    .calc {
+        width: 46%;
+        margin: 0 20px;
+        height: 200px;
+    }
 
-        .cwrap .calc:nth-child(3) {
-            height: 200px;
-        }
+    .cwrap p {
+        font-size: 1.5rem;
+    }
 
-        .cwrap .calc:nth-child(4) {
-            height: 200px;
-        }
+    .cwrap .calc:nth-child(3) {
+        height: 200px;
+    }
 
-        .calc button {
-            transition: .55s;
-        }
+    .cwrap .calc:nth-child(4) {
+        height: 200px;
+    }
 
-        .calc button:hover {
-            background-color: #272D57;
-            color: #FFF;
-        }
+    .calc button {
+        transition: .55s;
+    }
 
-        /* indexpp.html */
+    .calc button:hover {
+        background-color: #272D57;
+        color: #FFF;
+    }
 
-        .pp {
-            margin-top: 20px;
-        }
+    /* indexpp.html */
 
-        .pp p {
-            font-size: 1.5rem;
-        }
+    .pp {
+        margin-top: 20px;
+    }
 
-        .pp label {
-            font-size: 1.5rem;
-        }
+    .pp p {
+        font-size: 1.5rem;
+    }
 
-        div.pp .form-group input {
-            font-size: 1.5rem;
-        }
+    .pp label {
+        font-size: 1.5rem;
+    }
 
-        div.pp .form-group select {
-            width: 60%;
-            margin: 0 auto;
-            height: 50px;
-            font-size: 1.5rem;
-        }
+    div.pp .form-group input {
+        font-size: 1.5rem;
+    }
 
-        div.pp .form-group input {
-            width: 60%;
-            height: 50px;
-            margin: 0 auto;
-        }
+    div.pp .form-group select {
+        width: 60%;
+        margin: 0 auto;
+        height: 50px;
+        font-size: 1.5rem;
+    }
 
-        .pp li {
-            font-size: 1.5rem;
-        }
+    div.pp .form-group input {
+        width: 60%;
+        height: 50px;
+        margin: 0 auto;
+    }
 
-        .ppcount {
-            width: 230px;
-            font-size: 1.3rem;
-            letter-spacing: 3px;
-            font-weight: bold;
-            margin-bottom: 25px;
-        }
+    .pp li {
+        font-size: 1.5rem;
+    }
 
-        .ppcount:hover {
-            background-color: var(--blueh);
-        }
+    .ppcount {
+        width: 230px;
+        font-size: 1.3rem;
+        letter-spacing: 3px;
+        font-weight: bold;
+        margin-bottom: 25px;
+    }
 
-        .ppwrap a:hover {
-            text-decoration: none;
-            color: var(--blueh);
-        }
+    .ppcount:hover {
+        background-color: var(--blueh);
+    }
 
-        /* resultpp.html */
+    .ppwrap a:hover {
+        text-decoration: none;
+        color: var(--blueh);
+    }
 
-        p.ppvalue {
-            transition: .3s;
-        }
+    /* resultpp.html */
 
-        p.ppvalue:hover {
-            font-size: 4rem;
-        }
+    p.ppvalue {
+        transition: .3s;
+    }
 
-        div.rpp .table {
-            width: 65%;
-            margin: 0 auto;
-            max-width: 824px;
-        }
+    p.ppvalue:hover {
+        font-size: 4rem;
+    }
 
-        /* indexlok.html */
+    div.rpp .table {
+        width: 65%;
+        margin: 0 auto;
+        max-width: 824px;
+    }
 
-        div.lwrap .card-body img {
-            margin: 0 auto;
-            width: 70%;
-        }
+    /* indexlok.html */
 
-        div.lwrap {
-            font-size: 1.5rem;
-            text-align: justify;
-        }
+    div.lwrap .card-body img {
+        margin: 0 auto;
+        width: 70%;
+    }
 
-        div.lok h1 {
-            margin: 50px 0 20px 0;
-        }
+    div.lwrap {
+        font-size: 1.5rem;
+        text-align: justify;
+    }
 
-        div.lok p.title {
-            font-size: 1.6rem;
-            text-align: center;
-            margin: 0 0 40px 0;
-        }
+    div.lok h1 {
+        margin: 50px 0 20px 0;
+    }
 
-        div.lok label {
-            margin-top: 0;
-        }
+    div.lok p.title {
+        font-size: 1.6rem;
+        text-align: center;
+        margin: 0 0 40px 0;
+    }
 
-        div.lwrap a {
-            text-decoration: none;
-            color: var(--blue);
-        }
+    div.lok label {
+        margin-top: 0;
+    }
 
-        div.lwrap a:hover {
-            color: var(--blueh);
-        }
+    div.lwrap a {
+        text-decoration: none;
+        color: var(--blue);
+    }
 
-        div.lwrap .lok form .frd {
-            width: 100%;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
+    div.lwrap a:hover {
+        color: var(--blueh);
+    }
 
-        div.lok .form-group {
-            display: block;
-            float: left;
-            width: calc(100%/3);
-            text-align: center;
-        }
+    div.lwrap .lok form .frd {
+        width: 100%;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 
-        .defkoszty ul {
-            font-size: 1.5rem;
-        }
+    div.lok .form-group {
+        display: block;
+        float: left;
+        width: calc(100%/3);
+        text-align: center;
+    }
 
-        /* resultslok.html */
+    .defkoszty ul {
+        font-size: 1.5rem;
+    }
 
-        div.rlok {
-            font-size: 1.5rem;
-        }
+    /* resultslok.html */
 
-        div.rlok table.table {
-            width: 80%;
-            max-width: 1024px;
-            margin: 0 auto;
-        }
+    div.rlok {
+        font-size: 1.5rem;
+    }
 
-        div.parlok button:hover {
-            background-color: var(--blueh);
-            outline: none;
-        }
+    div.rlok table.table {
+        width: 80%;
+        max-width: 1024px;
+        margin: 0 auto;
+    }
+
+    div.parlok button:hover {
+        background-color: var(--blueh);
+        outline: none;
+    }
+
+    div.ppwrap div.pp div.size li {
+        font-size: 1.5rem;
+        padding: 10px;
     }
 }
